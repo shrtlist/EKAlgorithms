@@ -14,20 +14,24 @@ extension Array where Element : Comparable {
     // MARK: ARRAY STUFF
     // MARK: Max element in array
 
-    func indexOfMaximumElement() -> UInt {
+    func indexOfMaximumElement() -> UInt? {
         
-        var maximumValue = self.first!
+        var indexOfMaximumValue: UInt?
         
-        var indexOfMaximumValue: UInt = 0
-        
-        for (index, value) in self.enumerate() {
+        if self.count > 0 {
+            var maximumValue = self.first!
             
-            if UInt(index) == indexOfMaximumValue {
-                continue
-            }
-            else if value > maximumValue {
-                maximumValue = value
-                indexOfMaximumValue = UInt(index)
+            indexOfMaximumValue = 0
+            
+            for (index, value) in self.enumerate() {
+                
+                if UInt(index) == indexOfMaximumValue {
+                    continue
+                }
+                else if value > maximumValue {
+                    maximumValue = value
+                    indexOfMaximumValue = UInt(index)
+                }
             }
         }
         

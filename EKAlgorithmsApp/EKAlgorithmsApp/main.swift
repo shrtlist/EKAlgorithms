@@ -15,7 +15,7 @@ for var i = 0; i < 5; i++ {
 }
 
 //Max element of array
-NSLog("Max element of created array \(array.debugDescription) equals \(array[Int(array.indexOfMaximumElement())]) and stored at index \(array.indexOfMaximumElement())")
+NSLog("Max element of created array \(array.debugDescription) equals \(array[Int(array.indexOfMaximumElement()!)]) and stored at index \(array.indexOfMaximumElement()!)")
 /*
 //Get the Max and Min Simultaneously.
 let indexes = [array indexesOfMinimumAndMaximumElements];
