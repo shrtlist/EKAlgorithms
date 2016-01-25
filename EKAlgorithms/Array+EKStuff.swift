@@ -1,117 +1,118 @@
 //
-//  NSArray+EKStuff.m
+//  NSArray+EKStuff.swift
 //  EKAlgorithms
 //
 //  Created by Vittorio Monaco on 26/11/13.
+//  Swiftified by Marco Abundo on 24/11/16.
 //  Copyright (c) 2013 EvgenyKarkan. All rights reserved.
 //
 
-#import "NSArray+EKStuff.h"
+import Foundation
 
+extension Array where Element : Comparable {
 
-@implementation NSArray (EKStuff);
+    // MARK: ARRAY STUFF
+    // MARK: Max element in array
 
-#pragma mark - ARRAY STUFF
-#pragma mark - Max element in array
-
-- (NSUInteger)indexOfMaximumElement
-{
-    id maximumValue = [self firstObject];
-
-    NSUInteger indexOfMaximumValue = 0;
-
-    NSUInteger count = [self count];
-
-    for (NSUInteger i = 1; i < count; i++) {
-        id value = self[i];
+    func indexOfMaximumElement() -> UInt {
         
-        if ([value compare:maximumValue] == NSOrderedDescending) {
-            maximumValue        = value;
-            indexOfMaximumValue = i;
+        var maximumValue = self.first!
+        
+        var indexOfMaximumValue: UInt = 0
+        
+        for (index, value) in self.enumerate() {
+            
+            if UInt(index) == indexOfMaximumValue {
+                continue
+            }
+            else if value > maximumValue {
+                maximumValue = value
+                indexOfMaximumValue = UInt(index)
+            }
         }
+        
+        return indexOfMaximumValue
     }
-    
-    return indexOfMaximumValue;
-}
+/*
+    func indexesOfMinimumAndMaximumElements() -> (indexOfMin: Int, indexOfMax: Int)? {
+        let count = self.count
 
-- (NSArray *)indexesOfMinimumAndMaximumElements
-{
-    NSUInteger count = self.count;
+        if count == 0 {
+            return nil
+        }
+    
+        NSNumber  *minimalValue = NSIntegerMax
+        NSNumber  *maximalValue = NSIntegerMin
+        
+        NSUInteger minimalValueIndex = 0;
+        NSUInteger maximalValueIndex = 0;
 
-    if (count == 0) return nil;
-    
-    NSNumber  *minimalValue = @(NSIntegerMax);
-    NSNumber  *maximalValue = @(NSIntegerMin);
-    
-    NSUInteger minimalValueIndex = 0;
-    NSUInteger maximalValueIndex = 0;
+        // Machine way of doing odd/even check is better than mathematical count % 2
+        let oddnessFlag = count & 1
+        
+        if oddnessFlag {
+            minimalValue      = maximalValue      = self.lastObject;
+            minimalValueIndex = maximalValueIndex = count - 1;
+        }
 
-    // Machine way of doing odd/even check is better than mathematical count % 2
-    BOOL oddnessFlag = count & 1;
-    
-    if (oddnessFlag) {
-        minimalValue      = maximalValue      = self.lastObject;
-        minimalValueIndex = maximalValueIndex = count - 1;
+        NSUInteger idx = 0;
+        NSNumber *values[2];
+
+        for (NSNumber *number in self) {
+            if (((idx++) & 1) == 0) {
+                values[0] = number;
+                
+                continue;
+            }
+            else {
+                values[1] = number;
+            }
+            
+            NSNumber *iValue   = values[0];
+            NSNumber *ip1Value = values[1];
+            
+            NSUInteger iidx   = idx - 2;
+            NSUInteger ip1idx = idx - 1;
+            
+            if ([iValue compare:ip1Value] == NSOrderedAscending) {
+                if ([minimalValue compare:iValue] == NSOrderedDescending) {
+                    minimalValue      = iValue;
+                    minimalValueIndex = iidx;
+                }
+                
+                if ([maximalValue compare:ip1Value] == NSOrderedAscending) {
+                    maximalValue      = ip1Value;
+                    maximalValueIndex = ip1idx;
+                }
+            }
+            else if ([iValue compare:ip1Value] == NSOrderedDescending) {
+                if ([minimalValue compare:ip1Value] == NSOrderedDescending) {
+                    minimalValue      = ip1Value;
+                    minimalValueIndex = ip1idx;
+                }
+                
+                if ([maximalValue compare:iValue] == NSOrderedAscending) {
+                    maximalValue      = iValue;
+                    maximalValueIndex = iidx;
+                }
+            }
+            else {
+                if ([minimalValue compare:iValue] == NSOrderedDescending) {
+                    minimalValue      = iValue;
+                    minimalValueIndex = iidx;
+                }
+                
+                if ([maximalValue compare:iValue] == NSOrderedAscending) {
+                    maximalValue      = iValue;
+                    maximalValueIndex = iidx;
+                }
+            }
+        }
+        
+        return (minimalValueIndex, maximalValueIndex)
     }
 
-    NSUInteger idx = 0;
-    NSNumber *values[2];
-
-    for (NSNumber *number in self) {
-        if (((idx++) & 1) == 0) {
-            values[0] = number;
-            
-            continue;
-        }
-        else {
-            values[1] = number;
-        }
-        
-        NSNumber *iValue   = values[0];
-        NSNumber *ip1Value = values[1];
-        
-        NSUInteger iidx   = idx - 2;
-        NSUInteger ip1idx = idx - 1;
-        
-        if ([iValue compare:ip1Value] == NSOrderedAscending) {
-            if ([minimalValue compare:iValue] == NSOrderedDescending) {
-                minimalValue      = iValue;
-                minimalValueIndex = iidx;
-            }
-            
-            if ([maximalValue compare:ip1Value] == NSOrderedAscending) {
-                maximalValue      = ip1Value;
-                maximalValueIndex = ip1idx;
-            }
-        }
-        else if ([iValue compare:ip1Value] == NSOrderedDescending) {
-            if ([minimalValue compare:ip1Value] == NSOrderedDescending) {
-                minimalValue      = ip1Value;
-                minimalValueIndex = ip1idx;
-            }
-            
-            if ([maximalValue compare:iValue] == NSOrderedAscending) {
-                maximalValue      = iValue;
-                maximalValueIndex = iidx;
-            }
-        }
-        else {
-            if ([minimalValue compare:iValue] == NSOrderedDescending) {
-                minimalValue      = iValue;
-                minimalValueIndex = iidx;
-            }
-            
-            if ([maximalValue compare:iValue] == NSOrderedAscending) {
-                maximalValue      = iValue;
-                maximalValueIndex = iidx;
-            }
-        }
-    }
-    
-    return @[@(minimalValueIndex), @(maximalValueIndex)];
-}
-
-#pragma mark - Longest string in array
+// MARK: Longest string in array
 
 - (NSString *)longestString
 {
@@ -126,7 +127,7 @@
     return returnValue;
 }
 
-#pragma mark - Shortest string in array
+// MARK: Shortest string in array
 
 - (NSString *)shortestString
 {
@@ -141,7 +142,7 @@
     return returnValue;
 }
 
-#pragma mark - Intersection of two arrays
+// MARK: Intersection of two arrays
 
 - (NSArray *)intersectionWithArray:(NSArray *)secondArray
 {
@@ -151,7 +152,7 @@
     return [intersection allObjects];
 }
 
-#pragma mark - Union of two arrays
+// MARK: Union of two arrays
 
 - (NSArray *)unionWithoutDuplicatesWithArray:(NSArray *)secondArray
 {
@@ -186,7 +187,7 @@
     return mutableArray;
 }
 
-#pragma mark - Find duplicates
+// MARK: Find duplicates
 
 - (BOOL)hasDuplicates
 {
@@ -208,7 +209,7 @@
     return NO;
 }
 
-#pragma mark - Array with random NSNumber objects
+// MARK: Array with random NSNumber objects
 
 + (NSArray *)randomObjectsWithArraySize:(NSUInteger)arraySize maxRandomValue:(NSUInteger)maxValue uniqueObjects:(BOOL)unique
 {
@@ -230,7 +231,7 @@
     return [objects copy];
 }
 
-#pragma mark - Sum of elements
+// MARK: Sum of elements
 
 - (NSNumber *)sumOfElements
 {
@@ -245,7 +246,7 @@
     return @(sum);
 }
 
-#pragma mark - Occurrences of each element in array
+// MARK: Occurrences of each element in array
 
 - (NSDictionary *)occurencesOfEachElementInArray_naive
 {
@@ -300,8 +301,8 @@
     return dictionary;
 }
 
-#pragma mark - SEARCH STUFF
-#pragma mark - Linear search
+// MARK: SEARCH STUFF
+// MARK: Linear search
 
 - (NSInteger)indexOfObjectViaLinearSearch:(id)object
 {
@@ -316,7 +317,7 @@
     return NSNotFound;
 }
 
-#pragma mark - Binary search
+// MARK: Binary search
 
 - (NSInteger)indexOfObjectViaBinarySearch:(id)object
 {
@@ -339,5 +340,5 @@
     
     return NSNotFound;
 }
-
-@end
+*/
+}
