@@ -128,23 +128,25 @@ extension CollectionType where Generator.Element == Int {
         
         return (indexOfMin: UInt(minimalValueIndex), indexOfMax: UInt(maximalValueIndex))
     }
-
-/*
-// MARK: Longest string in array
-
-- (NSString *)longestString
-{
-    NSString *returnValue = nil;
-    
-    for (NSString *string in self) {
-        if (returnValue == nil || ([string length] > [returnValue length])) {
-            returnValue = string;
-        }
-    }
-    
-    return returnValue;
 }
 
+extension CollectionType where Generator.Element == String {
+    
+    // MARK: Longest string in array
+    
+    func longestString() -> String? {
+        var returnValue: String?
+        
+        for string in self {
+            if (returnValue == nil || (string.characters.count > returnValue?.characters.count)) {
+                returnValue = string
+            }
+        }
+        
+        return returnValue
+    }
+
+/*
 // MARK: Shortest string in array
 
 - (NSString *)shortestString

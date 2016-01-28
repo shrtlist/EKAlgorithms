@@ -21,10 +21,12 @@ NSLog("Max element of created array \(array.debugDescription) equals \(array[Int
 if let indexes = array.indexesOfMinimumAndMaximumElements() {
     NSLog("Min and max elements of created array \(array.debugDescription) equal to \(array[Int(indexes.indexOfMin)]) and \(array[Int(indexes.indexOfMax)]) and stored at indexes: \(indexes.indexOfMin), \(indexes.indexOfMax)")
 }
-/*
-//Longest string from array
-NSLog(@"The longest string is %@", [@[@"Kiev", @"Moscow", @"Tokyo", @"Saint-Petersburg", @"SanFrancisco"] longestString]);
 
+//Longest string from array
+if let longestString = ["Kiev", "Moscow", "Tokyo", "Saint-Petersburg", "SanFrancisco"].longestString() {
+    NSLog("The longest string is \(longestString)")
+}
+/*
 //Shortest string from array
 NSLog(@"The shortest string is %@", [@[@"DRY", @"KISS", @"YAGNI", @"SOLID", @"GRASP"] shortestString]);
 
