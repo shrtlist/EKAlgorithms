@@ -37,85 +37,99 @@ extension Array where Element : Comparable {
         
         return indexOfMaximumValue
     }
-/*
-    func indexesOfMinimumAndMaximumElements() -> (indexOfMin: Int, indexOfMax: Int)? {
-        let count = self.count
+}
 
+extension CollectionType where Generator.Element == Int {
+    func last(count:Int) -> [Self.Generator.Element] {
+        let selfCount = self.count as! Int
+
+        if selfCount <= count - 1 {
+            return Array(self)
+        }
+        else {
+            return Array(self.reverse()[0...count - 1].reverse())
+        }
+    }
+
+    func indexesOfMinimumAndMaximumElements() -> (indexOfMin: UInt, indexOfMax: UInt)? {
         if count == 0 {
             return nil
         }
-    
-        NSNumber  *minimalValue = NSIntegerMax
-        NSNumber  *maximalValue = NSIntegerMin
         
-        NSUInteger minimalValueIndex = 0;
-        NSUInteger maximalValueIndex = 0;
-
+        var minimalValue = Int.max
+        var maximalValue = Int.min
+        
+        var minimalValueIndex = 0
+        var maximalValueIndex = 0
+        
         // Machine way of doing odd/even check is better than mathematical count % 2
         let oddnessFlag = count & 1
         
-        if oddnessFlag {
-            minimalValue      = maximalValue      = self.lastObject;
-            minimalValueIndex = maximalValueIndex = count - 1;
+        if oddnessFlag == 1 {
+            maximalValue = self.last(1).first!
+            minimalValue = maximalValue
+            
+            maximalValueIndex = count.toIntMax() - 1
+            minimalValueIndex = maximalValueIndex
         }
-
-        NSUInteger idx = 0;
-        NSNumber *values[2];
-
-        for (NSNumber *number in self) {
-            if (((idx++) & 1) == 0) {
-                values[0] = number;
+        
+        var idx = 0
+        
+        var iValue: Int?
+        var ip1Value: Int?
+        
+        for element in self {
+            if (idx++ & 1) == 0 {
+                iValue = element
                 
                 continue;
             }
             else {
-                values[1] = number;
+                ip1Value = element
             }
             
-            NSNumber *iValue   = values[0];
-            NSNumber *ip1Value = values[1];
+            let iidx = idx - 2
+            let ip1idx = idx - 1
             
-            NSUInteger iidx   = idx - 2;
-            NSUInteger ip1idx = idx - 1;
-            
-            if ([iValue compare:ip1Value] == NSOrderedAscending) {
-                if ([minimalValue compare:iValue] == NSOrderedDescending) {
-                    minimalValue      = iValue;
-                    minimalValueIndex = iidx;
+            if iValue < ip1Value {
+                if minimalValue > iValue {
+                    minimalValue      = iValue!
+                    minimalValueIndex = iidx
                 }
                 
-                if ([maximalValue compare:ip1Value] == NSOrderedAscending) {
-                    maximalValue      = ip1Value;
-                    maximalValueIndex = ip1idx;
+                if maximalValue < ip1Value {
+                    maximalValue      = ip1Value!
+                    maximalValueIndex = ip1idx
                 }
             }
-            else if ([iValue compare:ip1Value] == NSOrderedDescending) {
-                if ([minimalValue compare:ip1Value] == NSOrderedDescending) {
-                    minimalValue      = ip1Value;
-                    minimalValueIndex = ip1idx;
+            else if iValue > ip1Value {
+                if minimalValue > ip1Value {
+                    minimalValue      = ip1Value!
+                    minimalValueIndex = ip1idx
                 }
                 
-                if ([maximalValue compare:iValue] == NSOrderedAscending) {
-                    maximalValue      = iValue;
-                    maximalValueIndex = iidx;
+                if maximalValue < iValue {
+                    maximalValue      = iValue!
+                    maximalValueIndex = iidx
                 }
             }
             else {
-                if ([minimalValue compare:iValue] == NSOrderedDescending) {
-                    minimalValue      = iValue;
-                    minimalValueIndex = iidx;
+                if minimalValue > iValue {
+                    minimalValue      = iValue!
+                    minimalValueIndex = iidx
                 }
                 
-                if ([maximalValue compare:iValue] == NSOrderedAscending) {
-                    maximalValue      = iValue;
-                    maximalValueIndex = iidx;
+                if maximalValue < iValue {
+                    maximalValue      = iValue!
+                    maximalValueIndex = iidx
                 }
             }
         }
         
-        return (minimalValueIndex, maximalValueIndex)
+        return (indexOfMin: UInt(minimalValueIndex), indexOfMax: UInt(maximalValueIndex))
     }
 
+/*
 // MARK: Longest string in array
 
 - (NSString *)longestString

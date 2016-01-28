@@ -10,18 +10,18 @@
         
 //Init array with 5 random elements
 var array: [Int] = []
-for var i = 0; i < 5; i++ {
+for i in 0 ..< 5 {
     array.append(Int(arc4random()) % 20)
 }
 
 //Max element of array
 NSLog("Max element of created array \(array.debugDescription) equals \(array[Int(array.indexOfMaximumElement()!)]) and stored at index \(array.indexOfMaximumElement()!)")
-/*
-//Get the Max and Min Simultaneously.
-let indexes = [array indexesOfMinimumAndMaximumElements];
-NSLog(@"Min and max elements of created array %@ equal to %@ and %@ and stored at indexes: %@ %@", [array debugDescription], array[[[indexes firstObject] unsignedIntegerValue]], array[[[indexes lastObject] unsignedIntegerValue]],
-      [indexes firstObject], [indexes lastObject]);
 
+//Get the Max and Min Simultaneously.
+if let indexes = array.indexesOfMinimumAndMaximumElements() {
+    NSLog("Min and max elements of created array \(array.debugDescription) equal to \(array[Int(indexes.indexOfMin)]) and \(array[Int(indexes.indexOfMax)]) and stored at indexes: \(indexes.indexOfMin), \(indexes.indexOfMax)")
+}
+/*
 //Longest string from array
 NSLog(@"The longest string is %@", [@[@"Kiev", @"Moscow", @"Tokyo", @"Saint-Petersburg", @"SanFrancisco"] longestString]);
 
