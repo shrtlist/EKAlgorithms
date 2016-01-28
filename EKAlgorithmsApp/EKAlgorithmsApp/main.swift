@@ -31,10 +31,10 @@ if let longestString = ["Kiev", "Moscow", "Tokyo", "Saint-Petersburg", "SanFranc
 if let shortestString = ["DRY", "KISS", "YAGNI", "SOLID", "GRASP"].shortestString() {
     NSLog("The shortest string is \(shortestString)")
 }
-/*
-//Reverse of array
-NSLog(@"Reversed array is %@", [[@[@"one", @"two", @"three", @"four", @"five"] mutableCopy] reverse]);
 
+//Reverse of array
+NSLog("Reversed array is %@", ["one", "two", "three", "four", "five"].reverse())
+/*
 //Intersection of two arrays
 NSLog(@"Intersection is %@", [@[@"one", @"two", @"three"] intersectionWithArray: @[@"two", @"three", @"four"]]);
 
