@@ -159,29 +159,8 @@ extension CollectionType where Generator.Element == String {
         
         return returnValue
     }
+
 /*
-// MARK: Find duplicates
-
-- (BOOL)hasDuplicates
-{
-    NSMutableDictionary *registry = [[NSMutableDictionary alloc] initWithCapacity:self.count];
-
-    for (id element in self) {
-        NSNumber *elementHash = @([element hash]);
-        
-        if (registry[elementHash] == nil) {
-            registry[elementHash] = element;
-        }
-        else {
-            NSLog(@"-[NSArray hasDuplicates] found duplicate elements: %@ and %@", registry[elementHash], element);
-            
-            return YES;
-        }
-    }
-    
-    return NO;
-}
-
 // MARK: Array with random NSNumber objects
 
 + (NSArray *)randomObjectsWithArraySize:(NSUInteger)arraySize maxRandomValue:(NSUInteger)maxValue uniqueObjects:(BOOL)unique

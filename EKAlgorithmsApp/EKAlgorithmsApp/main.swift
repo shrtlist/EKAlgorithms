@@ -53,10 +53,10 @@ for i in 0 ..< 100 {
 }
 oneArray.addObject([someKey: "EKAlgorithms100"])
 NSLog("Union some key is %@", oneArray.unionWithoutDuplicatesWithArray(twoArray, forKey:someKey))
-/*
-//Find duplicates
-NSLog(@"Result of finding duplicates is %@", [@[@"foo", @"bar", @"buzz", @"foo"] hasDuplicates] ? @"YES" : @"NO");
 
+//Find duplicates
+NSLog("Result of finding duplicates is %@", ["foo", "bar", "buzz", "foo"].hasDuplicates() ? "YES" : "NO")
+/*
 //Random object
 NSLog(@"Random array %@", [NSArray randomObjectsWithArraySize:5 maxRandomValue:6 uniqueObjects:YES]);
 

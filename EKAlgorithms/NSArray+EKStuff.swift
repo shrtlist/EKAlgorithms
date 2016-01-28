@@ -52,29 +52,28 @@ extension NSArray {
         
         return mutableArray
     }
-/*
-// MARK: Find duplicates
 
-- (BOOL)hasDuplicates
-{
-    NSMutableDictionary *registry = [[NSMutableDictionary alloc] initWithCapacity:self.count];
+    // MARK: Find duplicates
 
-    for (id element in self) {
-        NSNumber *elementHash = @([element hash]);
-        
-        if (registry[elementHash] == nil) {
-            registry[elementHash] = element;
-        }
-        else {
-            NSLog(@"-[NSArray hasDuplicates] found duplicate elements: %@ and %@", registry[elementHash], element);
+    func hasDuplicates() -> Bool {
+        let registry = NSMutableDictionary(capacity: self.count)
+
+        for element in self {
+            let elementHash = element.hash
             
-            return YES;
+            if let registryElement = registry[elementHash] {
+                NSLog("-[NSArray hasDuplicates] found duplicate elements: \(registryElement) and \(element)")
+                
+                return true
+            }
+            else {
+                registry[elementHash] = element
+            }
         }
+        
+        return false
     }
-    
-    return NO;
-}
-
+/*
 // MARK: Array with random NSNumber objects
 
 + (NSArray *)randomObjectsWithArraySize:(NSUInteger)arraySize maxRandomValue:(NSUInteger)maxValue uniqueObjects:(BOOL)unique
