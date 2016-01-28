@@ -160,29 +160,6 @@ extension CollectionType where Generator.Element == String {
         return returnValue
     }
 /*
-// MARK: Intersection of two arrays
-
-- (NSArray *)intersectionWithArray:(NSArray *)secondArray
-{
-    NSMutableSet *intersection = [NSMutableSet setWithArray:self];
-    [intersection intersectSet:[NSSet setWithArray:secondArray]];
-
-    return [intersection allObjects];
-}
-
-// MARK: Union of two arrays
-
-- (NSArray *)unionWithoutDuplicatesWithArray:(NSArray *)secondArray
-{
-    NSSet *firstSet  = [NSSet setWithArray:self];
-    NSSet *secondSet = [NSSet setWithArray:secondArray];
-    
-    NSMutableSet *resultSet = [NSMutableSet setWithSet:firstSet];
-    [resultSet unionSet:secondSet];
-    
-    return [resultSet allObjects];
-}
-
 - (NSArray *)unionWithoutDuplicatesWithArray:(NSArray *)secondArray forKey:(NSString *)currentKey
 {
     NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:self];

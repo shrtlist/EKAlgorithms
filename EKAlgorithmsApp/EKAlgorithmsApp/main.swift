@@ -37,10 +37,10 @@ NSLog("Reversed array is %@", ["one", "two", "three", "four", "five"].reverse())
 
 //Intersection of two arrays
 NSLog("Intersection is %@", ["one", "two", "three"].intersectionWithArray(["two", "three", "four"]))
-/*
-//Union of two arrays
-NSLog(@"Union is %@", [@[@"Honda", @"Toyota"] unionWithoutDuplicatesWithArray: @[@"Toyota", @"Alfa Romeo"]]);
 
+//Union of two arrays
+NSLog("Union is %@", ["Honda", "Toyota"].unionWithoutDuplicatesWithArray(["Toyota", "Alfa Romeo"]))
+/*
 // Union of two arrays for key
 NSString *someKey = @"someKey";
 NSMutableArray *oneArray = [NSMutableArray arrayWithCapacity:100];

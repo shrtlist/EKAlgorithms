@@ -19,20 +19,19 @@ extension NSArray {
 
         return intersection.allObjects
     }
+
+    // MARK: Union of two arrays
+
+    func unionWithoutDuplicatesWithArray(secondArray: NSArray) -> NSArray {
+        let firstSet  = NSSet(array: self as [AnyObject])
+        let secondSet = NSSet(array: secondArray as [AnyObject])
+        
+        let resultSet = NSMutableSet(set: firstSet)
+        resultSet.unionSet(secondSet as Set<NSObject>)
+        
+        return resultSet.allObjects
+    }
 /*
-// MARK: Union of two arrays
-
-- (NSArray *)unionWithoutDuplicatesWithArray:(NSArray *)secondArray
-{
-    NSSet *firstSet  = [NSSet setWithArray:self];
-    NSSet *secondSet = [NSSet setWithArray:secondArray];
-    
-    NSMutableSet *resultSet = [NSMutableSet setWithSet:firstSet];
-    [resultSet unionSet:secondSet];
-    
-    return [resultSet allObjects];
-}
-
 - (NSArray *)unionWithoutDuplicatesWithArray:(NSArray *)secondArray forKey:(NSString *)currentKey
 {
     NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:self];
