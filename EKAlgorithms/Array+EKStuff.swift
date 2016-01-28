@@ -146,22 +146,20 @@ extension CollectionType where Generator.Element == String {
         return returnValue
     }
 
-/*
-// MARK: Shortest string in array
+    // MARK: Shortest string in array
 
-- (NSString *)shortestString
-{
-    NSString *returnValue = nil;
-    
-    for (NSString *string in self) {
-        if (returnValue == nil || ([string length] < [returnValue length])) {
-            returnValue = string;
+    func shortestString() -> String? {
+        var returnValue: String?
+        
+        for string in self {
+            if (returnValue == nil || (string.characters.count < returnValue?.characters.count)) {
+                returnValue = string
+            }
         }
+        
+        return returnValue
     }
-    
-    return returnValue;
-}
-
+/*
 // MARK: Intersection of two arrays
 
 - (NSArray *)intersectionWithArray:(NSArray *)secondArray

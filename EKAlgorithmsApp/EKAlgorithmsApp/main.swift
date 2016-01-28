@@ -26,10 +26,12 @@ if let indexes = array.indexesOfMinimumAndMaximumElements() {
 if let longestString = ["Kiev", "Moscow", "Tokyo", "Saint-Petersburg", "SanFrancisco"].longestString() {
     NSLog("The longest string is \(longestString)")
 }
-/*
-//Shortest string from array
-NSLog(@"The shortest string is %@", [@[@"DRY", @"KISS", @"YAGNI", @"SOLID", @"GRASP"] shortestString]);
 
+//Shortest string from array
+if let shortestString = ["DRY", "KISS", "YAGNI", "SOLID", "GRASP"].shortestString() {
+    NSLog("The shortest string is \(shortestString)")
+}
+/*
 //Reverse of array
 NSLog(@"Reversed array is %@", [[@[@"one", @"two", @"three", @"four", @"five"] mutableCopy] reverse]);
 
