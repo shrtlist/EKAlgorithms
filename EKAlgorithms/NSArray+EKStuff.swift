@@ -31,29 +31,28 @@ extension NSArray {
         
         return resultSet.allObjects
     }
-/*
-- (NSArray *)unionWithoutDuplicatesWithArray:(NSArray *)secondArray forKey:(NSString *)currentKey
-{
-    NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:self];
-    [mutableArray addObjectsFromArray:secondArray];
-    
-    NSArray *copy = [mutableArray copy];
-    NSUInteger index = [copy count] - 1;
-    
-    for (id object in [copy reverseObjectEnumerator]) {
-        
-        for (NSUInteger i = 0; i < index; i++) {
-            if ([[mutableArray[i] valueForKey:currentKey] isEqualToString:[object valueForKey:currentKey]]){
-                [mutableArray removeObjectAtIndex:index];
-                break;
-            }
-        }
-        index --;
-    }
-    
-    return mutableArray;
-}
 
+    func unionWithoutDuplicatesWithArray(secondArray: NSArray, forKey currentKey: NSString) -> NSArray {
+        let mutableArray = NSMutableArray(array: self)
+        mutableArray.addObjectsFromArray(secondArray as [AnyObject])
+        
+        let copy = mutableArray.copy()
+        var index = copy.count - 1
+
+        for object in copy.reverseObjectEnumerator() {
+            
+            for (var i = 0; i < index; i++) {
+                if mutableArray[i].valueForKey(currentKey as String) as! String == object.valueForKey(currentKey as String) as! String {
+                    mutableArray.removeObjectAtIndex(index)
+                    break
+                }
+            }
+            index--
+        }
+        
+        return mutableArray
+    }
+/*
 // MARK: Find duplicates
 
 - (BOOL)hasDuplicates
