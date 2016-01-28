@@ -1,5 +1,5 @@
 //
-//  Array+EKStuff.swift
+//  NSArray+EKStuff.swift
 //  EKAlgorithms
 //
 //  Created by Vittorio Monaco on 26/11/13.
@@ -9,167 +9,17 @@
 
 import Foundation
 
-extension Array where Element : Comparable {
+extension NSArray {
 
-    // MARK: ARRAY STUFF
-    // MARK: Max element in array
+    // MARK: Intersection of two arrays
 
-    func indexOfMaximumElement() -> UInt? {
-        
-        var indexOfMaximumValue: UInt?
-        
-        if self.count > 0 {
-            var maximumValue = self.first!
-            
-            indexOfMaximumValue = 0
-            
-            for (index, value) in self.enumerate() {
-                
-                if UInt(index) == indexOfMaximumValue {
-                    continue
-                }
-                else if value > maximumValue {
-                    maximumValue = value
-                    indexOfMaximumValue = UInt(index)
-                }
-            }
-        }
-        
-        return indexOfMaximumValue
-    }
-}
+    func intersectionWithArray(secondArray: NSArray) -> NSArray {
+        let intersection = NSMutableSet(array: self as [AnyObject])
+        intersection.intersectSet(NSSet(array: secondArray as [AnyObject]) as Set<NSObject>)
 
-extension CollectionType where Generator.Element == Int {
-    func last(count:Int) -> [Self.Generator.Element] {
-        let selfCount = self.count as! Int
-
-        if selfCount <= count - 1 {
-            return Array(self)
-        }
-        else {
-            return Array(self.reverse()[0...count - 1].reverse())
-        }
-    }
-
-    func indexesOfMinimumAndMaximumElements() -> (indexOfMin: UInt, indexOfMax: UInt)? {
-        if count == 0 {
-            return nil
-        }
-        
-        var minimalValue = Int.max
-        var maximalValue = Int.min
-        
-        var minimalValueIndex = 0
-        var maximalValueIndex = 0
-        
-        // Machine way of doing odd/even check is better than mathematical count % 2
-        let oddnessFlag = count & 1
-        
-        if oddnessFlag == 1 {
-            maximalValue = self.last(1).first!
-            minimalValue = maximalValue
-            
-            maximalValueIndex = count.toIntMax() - 1
-            minimalValueIndex = maximalValueIndex
-        }
-        
-        var idx = 0
-        
-        var iValue: Int?
-        var ip1Value: Int?
-        
-        for element in self {
-            if (idx++ & 1) == 0 {
-                iValue = element
-                
-                continue;
-            }
-            else {
-                ip1Value = element
-            }
-            
-            let iidx = idx - 2
-            let ip1idx = idx - 1
-            
-            if iValue < ip1Value {
-                if minimalValue > iValue {
-                    minimalValue      = iValue!
-                    minimalValueIndex = iidx
-                }
-                
-                if maximalValue < ip1Value {
-                    maximalValue      = ip1Value!
-                    maximalValueIndex = ip1idx
-                }
-            }
-            else if iValue > ip1Value {
-                if minimalValue > ip1Value {
-                    minimalValue      = ip1Value!
-                    minimalValueIndex = ip1idx
-                }
-                
-                if maximalValue < iValue {
-                    maximalValue      = iValue!
-                    maximalValueIndex = iidx
-                }
-            }
-            else {
-                if minimalValue > iValue {
-                    minimalValue      = iValue!
-                    minimalValueIndex = iidx
-                }
-                
-                if maximalValue < iValue {
-                    maximalValue      = iValue!
-                    maximalValueIndex = iidx
-                }
-            }
-        }
-        
-        return (indexOfMin: UInt(minimalValueIndex), indexOfMax: UInt(maximalValueIndex))
-    }
-}
-
-extension CollectionType where Generator.Element == String {
-    
-    // MARK: Longest string in array
-    
-    func longestString() -> String? {
-        var returnValue: String?
-        
-        for string in self {
-            if (returnValue == nil || (string.characters.count > returnValue?.characters.count)) {
-                returnValue = string
-            }
-        }
-        
-        return returnValue
-    }
-
-    // MARK: Shortest string in array
-
-    func shortestString() -> String? {
-        var returnValue: String?
-        
-        for string in self {
-            if (returnValue == nil || (string.characters.count < returnValue?.characters.count)) {
-                returnValue = string
-            }
-        }
-        
-        return returnValue
+        return intersection.allObjects
     }
 /*
-// MARK: Intersection of two arrays
-
-- (NSArray *)intersectionWithArray:(NSArray *)secondArray
-{
-    NSMutableSet *intersection = [NSMutableSet setWithArray:self];
-    [intersection intersectSet:[NSSet setWithArray:secondArray]];
-
-    return [intersection allObjects];
-}
-
 // MARK: Union of two arrays
 
 - (NSArray *)unionWithoutDuplicatesWithArray:(NSArray *)secondArray

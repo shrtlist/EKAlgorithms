@@ -34,10 +34,10 @@ if let shortestString = ["DRY", "KISS", "YAGNI", "SOLID", "GRASP"].shortestStrin
 
 //Reverse of array
 NSLog("Reversed array is %@", ["one", "two", "three", "four", "five"].reverse())
-/*
-//Intersection of two arrays
-NSLog(@"Intersection is %@", [@[@"one", @"two", @"three"] intersectionWithArray: @[@"two", @"three", @"four"]]);
 
+//Intersection of two arrays
+NSLog("Intersection is %@", ["one", "two", "three"].intersectionWithArray(["two", "three", "four"]))
+/*
 //Union of two arrays
 NSLog(@"Union is %@", [@[@"Honda", @"Toyota"] unionWithoutDuplicatesWithArray: @[@"Toyota", @"Alfa Romeo"]]);
 
