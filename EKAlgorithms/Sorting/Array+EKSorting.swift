@@ -18,7 +18,7 @@ extension Array {
     // MARK: Array reverse
 
     mutating func reverse() -> Array {
-        for (var i = 0; i < count / 2; i += 1) {
+        for i in 0 ..< count / 2 {
             swap(&self[i], &self[count - 1 - i])
         }
 
@@ -33,7 +33,7 @@ extension Array where Element : Comparable {
     func isSorted() -> Bool {
         let countMinusOne = self.count - 1
         
-        for (var i = 0; i < countMinusOne; i += 1) {
+        for i in 0 ..< countMinusOne {
             if self[i] > self[i + 1] {
                 return false
             }
