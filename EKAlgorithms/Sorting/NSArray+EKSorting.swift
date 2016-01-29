@@ -118,46 +118,43 @@ extension NSMutableArray {
         
         return self
     }
-/*
+
     // MARK: Quick sort
 
-    - (NSMutableArray *)quickSortWithLeftIndex:(NSInteger)left withRightIndex:(NSInteger)right
-    {
-        NSInteger i = left;
-        NSInteger j = right;
+    func quickSortWithLeftIndex(left: NSInteger, withRightIndex right: NSInteger) -> NSMutableArray {
+        var i = left
+        var j = right
         
-        id pivotalElement = nil;
+        var pivotalElement = self[(left + right) / 2]
         
-        pivotalElement = self[(left + right) / 2];
-        
-        do {
-            while (([self[i] floatValue] < [pivotalElement floatValue]) && (i < right)) {
-                i++;
+        repeat {
+            while self[i].floatValue < pivotalElement.floatValue && (i < right) {
+                i++
             }
-            while (([pivotalElement floatValue] < [self[j] floatValue]) && (j > left)) {
-                j--;
+            while pivotalElement.floatValue < self[j].floatValue && (j > left) {
+                j--
             }
             
-            if (i <= j) {
-                [self exchangeObjectAtIndex:i withObjectAtIndex:j];
+            if i <= j {
+                self.exchangeObjectAtIndex(i, withObjectAtIndex: j)
                 
-                i++;
-                j--;
+                i++
+                j--
             }
         }
-        while (i <= j);
+        while i <= j
         
-        if (left < j) {
-            [self quickSortWithLeftIndex:left withRightIndex:j];
+        if left < j {
+            self.quickSortWithLeftIndex(left, withRightIndex: j)
         }
         
         if (i < right) {
-            [self quickSortWithLeftIndex:i withRightIndex:right];
+            self.quickSortWithLeftIndex(i, withRightIndex: right)
         }
         
-        return self;
+        return self
     }
-
+/*
     // MARK: Insertion sort
 
     - (NSMutableArray *)insertionSort
