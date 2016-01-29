@@ -115,26 +115,24 @@ extension NSArray {
         
         return registry
     }
-/*
-- (NSDictionary *)occurencesOfEachElementInArray
-{
-    NSUInteger count              = [self count];
-    NSMutableDictionary *registry = [NSMutableDictionary dictionaryWithCapacity:count];
-    
-    for (NSUInteger i = 0; i < count; i++) {
-        
-        id currentElement                = self[i];
-        NSNumber *existingElementCounter = registry[currentElement];
-        NSUInteger currentCount          = existingElementCounter ? existingElementCounter.unsignedIntegerValue : 0;
-        
-        currentCount++;
-        
-        registry[currentElement] = @(currentCount);
-    }
-    
-    return registry;
-}
 
+    func occurencesOfEachElementInArray() -> NSDictionary {
+        let registry = NSMutableDictionary(capacity: count)
+        
+        for currentElement in self {
+            var currentCount: UInt = 0
+            if let existingElementCounter = registry[currentElement as! NSCopying] {
+                currentCount = existingElementCounter.unsignedIntegerValue
+            }
+
+            currentCount++
+
+            registry[currentElement as! NSCopying] = currentCount
+        }
+        
+        return registry
+    }
+/*
 - (NSDictionary *)CocoaImplementationOfOccurencesOfEachElementInArray
 {
     NSCountedSet *countedSet        = [[NSCountedSet alloc] initWithArray:self];
