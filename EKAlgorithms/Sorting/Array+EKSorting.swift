@@ -21,8 +21,27 @@ extension Array {
         for i in 0 ..< count / 2 {
             swap(&self[i], &self[count - 1 - i])
         }
+        
+        return self
+    }
+    
+    // MARK: Array shuffle
+    
+    mutating func shuffle() -> Array {
+        // empty and single-element collections don't shuffle
+        if count > 2 {
+            for i in 0..<count - 1 {
+                let randomIndex = Int(arc4random_uniform(UInt32(count - i))) + i
 
-        return self;
+                guard i != randomIndex else {
+                    continue
+                }
+    
+                swap(&self[i], &self[randomIndex])
+            }
+        }
+        
+        return self
     }
 }
 
@@ -41,22 +60,7 @@ extension Array where Element : Comparable {
         
         return true
     }
-
-    /*
-    // MARK: Array shuffle
-
-    - (NSMutableArray *)shuffle
-    {
-        NSUInteger i = self.count;
-
-        while (i) {
-            NSUInteger randomIndex = arc4random_uniform((u_int32_t)i);
-            [self exchangeObjectAtIndex:randomIndex withObjectAtIndex:--i];
-        }
-
-        return self;
-    }
-
+/*
     // MARK: Bubble sort
 
     - (NSMutableArray *)naiveBubbleSort

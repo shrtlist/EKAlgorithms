@@ -62,10 +62,10 @@ NSLog("Random array %@", NSArray.randomObjectsWithArraySize(5, maxRandomValue: 6
 
 //Is sorted check
 NSLog("Given array sorted? --> %@", [1.1, 1.5, 1.9, 2.5, 3, 4, 4].isSorted() ? "YES" : "NO")
-/*
-// Array Shuffle (Fisherâ€“Yates)
-NSLog(@"Array Shuffle of array: %@ is: %@", array, [[array mutableCopy] shuffle]);
 
+// Array Shuffle (Fisherâ€“Yates)
+NSLog("Array Shuffle of array: \(array) is: \(array.shuffle())")
+/*
 //Sum of elements in array
 NSLog(@"Sum is --> %@", [@[@ - 5, @ - 5, @ - 5, @ - 5, @ - 5] sumOfElements]);
 
