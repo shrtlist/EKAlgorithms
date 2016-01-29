@@ -110,18 +110,15 @@ extension NSMutableArray {
 
         return self
     }
-/*
+
     // MARK: Merge sort stuff
 
-    - (NSMutableArray *)mergeSort
-    {
-        NSUInteger count = [self count];
+    func mergeSort() -> NSMutableArray {
+        self.partitionArrayWithMinimalIndex(0, withMaximumIndex: (count - 1))
         
-        [self partitionArrayWithMinimalIndex:0 withMaximumIndex:(count - 1)];
-        
-        return self;
+        return self
     }
-
+/*
     // MARK: Quick sort
 
     - (NSMutableArray *)quickSortWithLeftIndex:(NSInteger)left withRightIndex:(NSInteger)right
@@ -317,65 +314,60 @@ extension NSMutableArray {
     @end
 
 
-
-    @implementation NSMutableArray (EKSortingHelpers);
+*/
 
     // MARK: Used in merge sort
 
-    - (void)partitionArrayWithMinimalIndex:(NSInteger)min withMaximumIndex:(NSInteger)max
-    {
-        NSInteger mid = 0;
+    func partitionArrayWithMinimalIndex(min: NSInteger, withMaximumIndex max: NSInteger) {
+        var mid = 0
         
         if (min < max) {
             mid = (min + max) / 2;
-            [self partitionArrayWithMinimalIndex:min withMaximumIndex:mid];
-            [self partitionArrayWithMinimalIndex:mid + 1 withMaximumIndex:max];
-            [self mergeArrayWithMinimalIndex:min withMediumIndex:mid withMaximalIndex:max];
+            self.partitionArrayWithMinimalIndex(min, withMaximumIndex: mid)
+            self.partitionArrayWithMinimalIndex(mid + 1, withMaximumIndex: max)
+            self.mergeArrayWithMinimalIndex(min, withMediumIndex: mid, withMaximalIndex: max)
         }
     }
 
-    - (void)mergeArrayWithMinimalIndex:(NSInteger)min withMediumIndex:(NSInteger)mid withMaximalIndex:(NSInteger)max
-    {
-        NSMutableArray *temporaryArray = [NSMutableArray array];
+    func mergeArrayWithMinimalIndex(min: NSInteger, withMediumIndex mid: NSInteger, withMaximalIndex max: NSInteger) {
+        let temporaryArray = NSMutableArray()
 
-        NSUInteger count = [self count];
-
-        for (NSInteger i = 0; i < count; i++) {
-            [temporaryArray addObject:[NSNull null]];
+        for i in 0 ..< count {
+            temporaryArray.addObject(NSNull)
         }
 
-        NSInteger i = 0, j = 0, k = 0, m = 0;
-        j = min;
-        m = mid + 1;
+        var i = 0, j = 0, k = 0, m = 0
+        j = min
+        m = mid + 1
 
-        for (i = min; j <= mid && m <= max; i++) {
-            if ([self[j] floatValue] <= [self[m] floatValue]) {
-                temporaryArray[i] = self[j];
-                j++;
+        for (i = min; j <= mid && m <= max; i += 1) {
+            if self[j].floatValue <= self[m].floatValue {
+                temporaryArray[i] = self[j]
+                j += 1
             }
             else {
-                temporaryArray[i] = self[m];
-                m++;
+                temporaryArray[i] = self[m]
+                m += 1
             }
         }
-        if (j > mid) {
-            for (k = m; k <= max; k++) {
-                temporaryArray[i] = self[k];
-                i++;
+        if j > mid {
+            for (k = m; k <= max; k += 1) {
+                temporaryArray[i] = self[k]
+                i += 1
             }
         }
         else {
-            for (k = j; k <= mid; k++) {
-                temporaryArray[i] = self[k];
-                i++;
+            for (k = j; k <= mid; k += 1) {
+                temporaryArray[i] = self[k]
+                i += 1
             }
         }
         
-        for (k = min; k <= max; k++) {
-            self[k] = temporaryArray[k];
+        for (k = min; k <= max; k += 1) {
+            self[k] = temporaryArray[k]
         }
     }
-
+/*
     // MARK: Used in heap sort
 
     - (void)siftDownArrayWithStart:(NSInteger)startIndex end:(NSInteger)endIndex

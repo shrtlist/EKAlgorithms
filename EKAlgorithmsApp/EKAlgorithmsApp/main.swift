@@ -93,10 +93,10 @@ NSLog("Bubble sorted array is: %@", array.bubbleSort())
 
 // Shell sort
 NSLog("Shell sorted array is %@", NSMutableArray(array: [2, 45, 8, 1, 27, 16, 5.3, -53.7]).shellSort())
-/*
-//Merge sort
-NSLog(@"Merge sorted array %@", [[@[@21, @45, @87, @10, @273, @616, @0.2, @ - 0.52] mutableCopy] mergeSort]);
 
+//Merge sort
+NSLog("Merge sorted array %@", NSMutableArray(array: [21, 45, 87, 10, 273, 616, 0.2, -0.52]).mergeSort())
+/*
 //Quick sort numbers
 NSLog(@"Quick sorted array %@", [[@[@2.1, @405, @817, @10, @2732, @616, @0.2, @ - 0.52] mutableCopy] quickSortWithLeftIndex: 0
                                                                                                              withRightIndex:[[NSMutableArray arrayWithArray:@[@21, @45, @87, @10, @273, @616, @0.2, @ - 0.52]] count] - 1]);
