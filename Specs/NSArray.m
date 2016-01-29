@@ -122,7 +122,7 @@ describe(@"NSArray-based algorithms", ^{
             });
         });
 
-        describe(@"CocoaImplementationOfOccurencesOfEachElementInArray", ^{
+        describe(@"cocoaImplementationOfOccurencesOfEachElementInArray", ^{
             specify(^{
                 NSMutableArray *originalArray = [NSMutableArray array];
 
@@ -135,7 +135,7 @@ describe(@"NSArray-based algorithms", ^{
                     }
                 }
 
-                NSDictionary *result = [originalArray CocoaImplementationOfOccurencesOfEachElementInArray];
+                NSDictionary *result = [originalArray cocoaImplementationOfOccurencesOfEachElementInArray];
 
                 for (int i = 1; i <= N; i++) {
                     [[result[@(i)] should] equal:@(i)];

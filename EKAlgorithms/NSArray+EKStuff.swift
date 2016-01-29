@@ -125,28 +125,27 @@ extension NSArray {
                 currentCount = existingElementCounter.unsignedIntegerValue
             }
 
-            currentCount++
+            currentCount += 1
 
             registry[currentElement as! NSCopying] = currentCount
         }
         
         return registry
     }
-/*
-- (NSDictionary *)CocoaImplementationOfOccurencesOfEachElementInArray
-{
-    NSCountedSet *countedSet        = [[NSCountedSet alloc] initWithArray:self];
-    NSMutableDictionary *dictionary = [@{} mutableCopy];
-    
-    NSArray* setAllObjects = [countedSet allObjects];
-    
-    for (id object in setAllObjects) {
-        dictionary[object] = @([countedSet countForObject:object]);
-    }
-    
-    return dictionary;
-}
 
+    func cocoaImplementationOfOccurencesOfEachElementInArray() -> NSDictionary {
+        let countedSet = NSCountedSet(array: self as [AnyObject])
+        let dictionary = NSMutableDictionary()
+        
+        let setAllObjects = countedSet.allObjects
+        
+        for object in setAllObjects {
+            dictionary[object as! NSCopying] = countedSet.countForObject(object)
+        }
+        
+        return dictionary
+    }
+/*
 // MARK: SEARCH STUFF
 // MARK: Linear search
 

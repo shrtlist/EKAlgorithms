@@ -173,61 +173,6 @@ extension CollectionType where Generator.Element == String {
     }
 
 /*
-// MARK: Occurrences of each element in array
-
-- (NSDictionary *)occurencesOfEachElementInArray_naive
-{
-    NSUInteger count = [self count];
-    NSMutableDictionary *registry = [NSMutableDictionary dictionaryWithCapacity:count];
-    
-    for (NSUInteger i = 0; i < count; i++) {
-        NSUInteger counter = 0;
-        
-        for (NSUInteger j = 0; j < count; j++) {
-            if ([self[i] isEqual:self[j]]) {
-                counter++;
-            }
-        }
-        
-        registry[self[i]] = @(counter);
-    }
-    
-    return registry;
-}
-
-- (NSDictionary *)occurencesOfEachElementInArray
-{
-    NSUInteger count              = [self count];
-    NSMutableDictionary *registry = [NSMutableDictionary dictionaryWithCapacity:count];
-    
-    for (NSUInteger i = 0; i < count; i++) {
-        
-        id currentElement                = self[i];
-        NSNumber *existingElementCounter = registry[currentElement];
-        NSUInteger currentCount          = existingElementCounter ? existingElementCounter.unsignedIntegerValue : 0;
-        
-        currentCount++;
-        
-        registry[currentElement] = @(currentCount);
-    }
-    
-    return registry;
-}
-
-- (NSDictionary *)CocoaImplementationOfOccurencesOfEachElementInArray
-{
-    NSCountedSet *countedSet        = [[NSCountedSet alloc] initWithArray:self];
-    NSMutableDictionary *dictionary = [@{} mutableCopy];
-    
-    NSArray* setAllObjects = [countedSet allObjects];
-    
-    for (id object in setAllObjects) {
-        dictionary[object] = @([countedSet countForObject:object]);
-    }
-    
-    return dictionary;
-}
-
 // MARK: SEARCH STUFF
 // MARK: Linear search
 
