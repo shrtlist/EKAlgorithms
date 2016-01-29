@@ -73,29 +73,29 @@ extension NSArray {
         
         return false
     }
-/*
-// MARK: Array with random NSNumber objects
 
-+ (NSArray *)randomObjectsWithArraySize:(NSUInteger)arraySize maxRandomValue:(NSUInteger)maxValue uniqueObjects:(BOOL)unique
-{
-    NSAssert(maxValue >= arraySize, @"Max random value should not be less than array size");
-    
-    NSMutableArray *objects = [@[] mutableCopy];
-    NSUInteger randomObject = 0;
-    
-    while ([objects count] < arraySize) {
-        randomObject = arc4random() % maxValue;
-        if (unique && ![objects containsObject:@(randomObject)]) {
-            [objects addObject:@(randomObject)];
+    // MARK: Array with random NSNumber objects
+
+    static func randomObjectsWithArraySize(arraySize: UInt, maxRandomValue maxValue: UInt, uniqueObjects unique: Bool) -> NSArray {
+        assert(maxValue >= arraySize, "Max random value should not be less than array size")
+        
+        let objects = NSMutableArray()
+        var randomObject: UInt = 0
+        
+        while UInt(objects.count) < arraySize {
+            randomObject = UInt(arc4random()) % maxValue
+            if unique && !objects.containsObject(randomObject) {
+                objects.addObject(randomObject)
+            }
+            
+            if (!unique) {
+                objects.addObject(randomObject)
+            }
         }
-        if (!unique) {
-            [objects addObject:@(randomObject)];
-        }
+        
+        return objects.copy() as! NSArray
     }
-    
-    return [objects copy];
-}
-
+/*
 // MARK: Sum of elements
 
 - (NSNumber *)sumOfElements

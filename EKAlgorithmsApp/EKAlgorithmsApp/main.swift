@@ -56,10 +56,10 @@ NSLog("Union some key is %@", oneArray.unionWithoutDuplicatesWithArray(twoArray,
 
 //Find duplicates
 NSLog("Result of finding duplicates is %@", ["foo", "bar", "buzz", "foo"].hasDuplicates() ? "YES" : "NO")
-/*
-//Random object
-NSLog(@"Random array %@", [NSArray randomObjectsWithArraySize:5 maxRandomValue:6 uniqueObjects:YES]);
 
+//Random object
+NSLog("Random array %@", NSArray.randomObjectsWithArraySize(5, maxRandomValue: 6, uniqueObjects: true))
+/*
 //Is sorted check
 NSLog(@"Given array sorted? --> %@", [@[@1.1, @1.5, @1.9, @2.5, @3, @4, @4] isSorted] ? @"YES" : @"NO");
 

@@ -161,28 +161,6 @@ extension CollectionType where Generator.Element == String {
     }
 
 /*
-// MARK: Array with random NSNumber objects
-
-+ (NSArray *)randomObjectsWithArraySize:(NSUInteger)arraySize maxRandomValue:(NSUInteger)maxValue uniqueObjects:(BOOL)unique
-{
-    NSAssert(maxValue >= arraySize, @"Max random value should not be less than array size");
-    
-    NSMutableArray *objects = [@[] mutableCopy];
-    NSUInteger randomObject = 0;
-    
-    while ([objects count] < arraySize) {
-        randomObject = arc4random() % maxValue;
-        if (unique && ![objects containsObject:@(randomObject)]) {
-            [objects addObject:@(randomObject)];
-        }
-        if (!unique) {
-            [objects addObject:@(randomObject)];
-        }
-    }
-    
-    return [objects copy];
-}
-
 // MARK: Sum of elements
 
 - (NSNumber *)sumOfElements
