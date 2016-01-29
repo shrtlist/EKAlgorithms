@@ -29,9 +29,10 @@ extension NSArray {
 }
 
 extension NSMutableArray {
+    
     // MARK: Array reverse
 
-    func reverse() -> NSArray {
+    func reverse() -> NSMutableArray {
         for i in 0 ..< count / 2 {
             self.exchangeObjectAtIndex(i, withObjectAtIndex: (count - 1 - i))
         }
@@ -41,7 +42,7 @@ extension NSMutableArray {
     
     // MARK: Array shuffle
     
-    func shuffle() -> NSArray {
+    func shuffle() -> NSMutableArray {
         // empty and single-element collections don't shuffle
         if count > 1 {
             var i = count - 1
@@ -60,7 +61,6 @@ extension NSMutableArray {
         
         return self
     }
-}
 
 /*
     // MARK: Bubble sort
@@ -79,22 +79,19 @@ extension NSMutableArray {
 
         return self;
     }
-
-    - (NSMutableArray *)bubbleSort
-    {
-        NSUInteger count = [self count];
-        
-        for (int i = ((int)count - 2); i >= 0; i--) {
-            for (int j = 0; j <= i; j++) {
-                if ([self[j] compare:self[j + 1]] == NSOrderedDescending) {
-                    [self exchangeObjectAtIndex:j withObjectAtIndex:(j + 1)];
+*/
+    func bubbleSort() -> NSMutableArray {
+        for (var i = (count - 2); i >= 0; i -= 1) {
+            for (var j = 0; j <= i; j += 1) {
+                if self[j].isGreaterThan(self[j + 1]) {
+                    self.exchangeObjectAtIndex(j, withObjectAtIndex: (j + 1))
                 }
             }
         }
         
-        return self;
+        return self
     }
-
+/*
     // MARK: Shell sort
 
     - (NSMutableArray *)shellSort
@@ -415,3 +412,4 @@ extension NSMutableArray {
         }
     }
 */
+}

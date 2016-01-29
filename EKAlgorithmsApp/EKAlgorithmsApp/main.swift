@@ -84,13 +84,13 @@ NSLog("Linear search result: \([6, 9, 12, 13, 14, 29, 42].indexOfObjectViaLinear
 
 //Binary search
 NSLog("Binary search result: \([6, 9, 12, 13, 14, 29, 42].indexOfObjectViaBinarySearch(42))")
-/*
+
 // MARK: Search
-//SORTING-----------------------------------------------------------------------------------
+// SORTING-----------------------------------------------------------------------------------
 
-//Bubble sort
-NSLog(@"Bubble sorted array is: %@", [[array mutableCopy] bubbleSort]);
-
+// Bubble sort
+NSLog("Bubble sorted array is: %@", array.bubbleSort())
+/*
 //Shell sort
 NSLog(@"Shell sorted array is %@", [[@[@2, @45, @8, @1, @27, @16, @5.3, @ - 53.7] mutableCopy] shellSort]);
 
