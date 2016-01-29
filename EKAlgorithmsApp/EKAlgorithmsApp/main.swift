@@ -74,13 +74,13 @@ NSLog("Occurences is --> %@", [3, 3, 4, 5, 4, 1, 3, 8, 1].occurencesOfEachElemen
 NSLog("Occurences by using dictionary is --> %@", [["zero"], ["zero":"dark"], "four", "five", "four", "one", "three", "eight", "one", "four"].occurencesOfEachElementInArray())
 NSLog("Occurences is --> %@", [3, 3, 4, 5, 4, 1, 3, 8, 1].occurencesOfEachElementInArray())
 NSLog("Occurences via Cocoa APIs is --> %@", [3, 3, 4, 5, 4, 1, 3, 8, 1].cocoaImplementationOfOccurencesOfEachElementInArray())
-/*
+
 // MARK: Search
 //SEARCH------------------------------------------------------------------------------------
 
 //Linear search
-NSLog(@"Linear search result: %li", (long)[@[@6, @9, @12, @13, @14, @29, @42] indexOfObjectViaLinearSearch: @42]);
-
+NSLog("Linear search result: \([6, 9, 12, 13, 14, 29, 42].indexOfObjectViaLinearSearch(42))")
+/*
 //Binary search
 NSLog(@"Binary search result: %li", (long)[@[@6, @9, @12, @13, @14, @29, @42] indexOfObjectViaBinarySearch: @42]);
 

@@ -145,23 +145,20 @@ extension NSArray {
         
         return dictionary
     }
-/*
-// MARK: SEARCH STUFF
-// MARK: Linear search
 
-- (NSInteger)indexOfObjectViaLinearSearch:(id)object
-{
-    NSUInteger count = [self count];
+    // MARK: SEARCH STUFF
+    // MARK: Linear search
 
-    for (NSUInteger i = 0; i < count; i++) {
-        if ([object isEqual:self[i]]) {
-            return i;
+    func indexOfObjectViaLinearSearch(object: AnyObject) -> Int {
+        for i in 0 ..< count {
+            if object.isEqual(self[i]) {
+                return i
+            }
         }
+
+        return NSNotFound;
     }
-
-    return NSNotFound;
-}
-
+/*
 // MARK: Binary search
 
 - (NSInteger)indexOfObjectViaBinarySearch:(id)object
