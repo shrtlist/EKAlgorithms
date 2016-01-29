@@ -79,10 +79,10 @@ NSLog("Occurences via Cocoa APIs is --> %@", [3, 3, 4, 5, 4, 1, 3, 8, 1].cocoaIm
 // MARK: Search
 //SEARCH------------------------------------------------------------------------------------
 
-//Linear search
+// Linear search
 NSLog("Linear search result: \([6, 9, 12, 13, 14, 29, 42].indexOfObjectViaLinearSearch(42))")
 
-//Binary search
+// Binary search
 NSLog("Binary search result: \([6, 9, 12, 13, 14, 29, 42].indexOfObjectViaBinarySearch(42))")
 
 // MARK: Search
@@ -90,10 +90,10 @@ NSLog("Binary search result: \([6, 9, 12, 13, 14, 29, 42].indexOfObjectViaBinary
 
 // Bubble sort
 NSLog("Bubble sorted array is: %@", array.bubbleSort())
-/*
-//Shell sort
-NSLog(@"Shell sorted array is %@", [[@[@2, @45, @8, @1, @27, @16, @5.3, @ - 53.7] mutableCopy] shellSort]);
 
+// Shell sort
+NSLog("Shell sorted array is %@", NSMutableArray(array: [2, 45, 8, 1, 27, 16, 5.3, -53.7]).shellSort())
+/*
 //Merge sort
 NSLog(@"Merge sorted array %@", [[@[@21, @45, @87, @10, @273, @616, @0.2, @ - 0.52] mutableCopy] mergeSort]);
 

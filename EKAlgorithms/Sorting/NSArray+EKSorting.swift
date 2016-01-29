@@ -91,29 +91,26 @@ extension NSMutableArray {
         
         return self
     }
-/*
+
     // MARK: Shell sort
 
-    - (NSMutableArray *)shellSort
-    {
-        NSUInteger count = [self count];
-
-        for (NSInteger i = count / 2; i > 0; i = i / 2) {
-            for (NSInteger j = i; j < count; j++) {
-                for (NSInteger k = j - i; k >= 0; k = k - i) {
-                    if ([self[k + 1] floatValue] >= [self[k] floatValue]) {
-                        break;
+    func shellSort() -> NSMutableArray {
+        for (var i = count / 2; i > 0; i = i / 2) {
+            for j in i ..< count {
+                for (var k = j - i; k >= 0; k = k - i) {
+                    if self[k + 1].floatValue >= self[k].floatValue {
+                        break
                     }
                     else {
-                        [self exchangeObjectAtIndex:k withObjectAtIndex:(k + i)];
+                        self.exchangeObjectAtIndex(k, withObjectAtIndex: (k + i))
                     }
                 }
             }
         }
 
-        return self;
+        return self
     }
-
+/*
     // MARK: Merge sort stuff
 
     - (NSMutableArray *)mergeSort
