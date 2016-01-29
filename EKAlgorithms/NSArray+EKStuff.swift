@@ -158,29 +158,27 @@ extension NSArray {
 
         return NSNotFound;
     }
-/*
-// MARK: Binary search
 
-- (NSInteger)indexOfObjectViaBinarySearch:(id)object
-{
-    NSUInteger firstIndex = 0;
-    NSUInteger uptoIndex  = [self count];
+    // MARK: Binary search
 
-    while (firstIndex < uptoIndex) {
-        NSUInteger mid = (firstIndex + uptoIndex) / 2;
+    func indexOfObjectViaBinarySearch(object: AnyObject) -> NSInteger {
+        var firstIndex = 0
+        var uptoIndex  = count
 
-        if ([object compare:self[mid]] == NSOrderedAscending) {
-            uptoIndex = mid;
+        while firstIndex < uptoIndex {
+            let mid = (firstIndex + uptoIndex) / 2
+
+            if object.isLessThan(self[mid]) {
+                uptoIndex = mid
+            }
+            else if object.isGreaterThan(self[mid]) {
+                firstIndex = mid + 1
+            }
+            else {
+                return mid
+            }
         }
-        else if ([object compare:self[mid]] == NSOrderedDescending) {
-            firstIndex = mid + 1;
-        }
-        else {
-            return mid;
-        }
+        
+        return NSNotFound
     }
-    
-    return NSNotFound;
-}
-*/
 }
