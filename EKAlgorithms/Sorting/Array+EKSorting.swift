@@ -1,5 +1,5 @@
 //
-//  NSArray+EKSorting.m
+//  Array+EKSorting.m
 //  EKAlgorithmsApp
 //
 //  Created by Stanislaw Pankevich on 31/03/14.
@@ -9,21 +9,6 @@
 
 extension Array {
 /*
-    // MARK: Check if array is sorted
-
-    - (BOOL)isSorted
-    {
-        NSUInteger countMinusOne = self.count - 1;
-
-        for (NSUInteger i = 0; i < countMinusOne; i++) {
-            if ([self[i] compare:self[i + 1]] == NSOrderedDescending) {
-                return NO;
-            }
-        }
-
-        return YES;
-    }
-
     - (NSArray *)CocoaImplementationOfReversedArray
     {
         return [[self reverseObjectEnumerator] allObjects];
@@ -33,11 +18,28 @@ extension Array {
     // MARK: Array reverse
 
     mutating func reverse() -> Array {
-        for (var i = 0; i < count / 2; i++) {
+        for (var i = 0; i < count / 2; i += 1) {
             swap(&self[i], &self[count - 1 - i])
         }
 
         return self;
+    }
+}
+
+extension Array where Element : Comparable {
+
+    // MARK: Check if array is sorted
+    
+    func isSorted() -> Bool {
+        let countMinusOne = self.count - 1
+        
+        for (var i = 0; i < countMinusOne; i += 1) {
+            if self[i] > self[i + 1] {
+                return false
+            }
+        }
+        
+        return true
     }
 
     /*

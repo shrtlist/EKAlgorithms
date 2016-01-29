@@ -59,10 +59,10 @@ NSLog("Result of finding duplicates is %@", ["foo", "bar", "buzz", "foo"].hasDup
 
 //Random object
 NSLog("Random array %@", NSArray.randomObjectsWithArraySize(5, maxRandomValue: 6, uniqueObjects: true))
-/*
-//Is sorted check
-NSLog(@"Given array sorted? --> %@", [@[@1.1, @1.5, @1.9, @2.5, @3, @4, @4] isSorted] ? @"YES" : @"NO");
 
+//Is sorted check
+NSLog("Given array sorted? --> %@", [1.1, 1.5, 1.9, 2.5, 3, 4, 4].isSorted() ? "YES" : "NO")
+/*
 // Array Shuffle (Fisherâ€“Yates)
 NSLog(@"Array Shuffle of array: %@ is: %@", array, [[array mutableCopy] shuffle]);
 
