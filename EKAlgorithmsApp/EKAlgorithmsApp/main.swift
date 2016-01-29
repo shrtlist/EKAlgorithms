@@ -68,9 +68,10 @@ NSLog("Array Shuffle of array: \(array) is: \(array.shuffle())")
 
 //Sum of elements in array
 NSLog("Sum is --> \([-5, -5, -5, -5, -5].sumOfElements())")
-/*
+
 //Find occurences of each element in array
-NSLog(@"Occurences is --> %@", [@[@3, @3, @4, @5, @4, @1, @3, @8, @1] occurencesOfEachElementInArray_naive]);
+NSLog("Occurences is --> %@", [3, 3, 4, 5, 4, 1, 3, 8, 1].occurencesOfEachElementInArray_naive())
+/*
 NSLog(@"Occurences by using dictionary is --> %@", [@[@[], @{}, @"four", @"five", @"four", @"one", @"three", @"eight", @"one", @"four"] occurencesOfEachElementInArray]);
 NSLog(@"Occurences is --> %@", [@[@3, @3, @4, @5, @4, @1, @3, @8, @1] occurencesOfEachElementInArray]);
 //NSLog(@"Occurences by using dictionary is --> %@", [@[@[], @{}, @"four", @"five", @"four", @"one", @"three", @"eight", @"one", @"four"] occurencesOfEachElementInArrayByUsingDictionary]);

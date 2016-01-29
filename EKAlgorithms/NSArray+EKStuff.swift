@@ -41,13 +41,13 @@ extension NSArray {
 
         for object in copy.reverseObjectEnumerator() {
             
-            for (var i = 0; i < index; i++) {
+            for i in 0 ..< index {
                 if mutableArray[i].valueForKey(currentKey as String) as! String == object.valueForKey(currentKey as String) as! String {
                     mutableArray.removeObjectAtIndex(index)
                     break
                 }
             }
-            index--
+            index -= 1
         }
         
         return mutableArray
@@ -95,44 +95,27 @@ extension NSArray {
         
         return objects.copy() as! NSArray
     }
-/*
-// MARK: Sum of elements
 
-- (NSNumber *)sumOfElements
-{
-    NSUInteger count = [self count];
+    // MARK: Occurrences of each element in array
 
-    long long int sum = 0;
-    
-    for (NSUInteger i = 0; i < count; i++) {
-        sum = sum + [self[i] longLongValue];
-    }
-    
-    return @(sum);
-}
-
-// MARK: Occurrences of each element in array
-
-- (NSDictionary *)occurencesOfEachElementInArray_naive
-{
-    NSUInteger count = [self count];
-    NSMutableDictionary *registry = [NSMutableDictionary dictionaryWithCapacity:count];
-    
-    for (NSUInteger i = 0; i < count; i++) {
-        NSUInteger counter = 0;
+    func occurencesOfEachElementInArray_naive() -> NSDictionary {
+        let registry = NSMutableDictionary(capacity: count)
         
-        for (NSUInteger j = 0; j < count; j++) {
-            if ([self[i] isEqual:self[j]]) {
-                counter++;
+        for i in 0 ..< count {
+            var counter = 0
+            
+            for j in 0 ..< count {
+                if self[i].isEqual(self[j]) {
+                    counter += 1
+                }
             }
+            
+            registry[self[i] as! NSCopying] = counter
         }
         
-        registry[self[i]] = @(counter);
+        return registry
     }
-    
-    return registry;
-}
-
+/*
 - (NSDictionary *)occurencesOfEachElementInArray
 {
     NSUInteger count              = [self count];
