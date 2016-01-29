@@ -18,12 +18,12 @@ extension Array where Element : Comparable {
         
         var indexOfMaximumValue: UInt?
         
-        if self.count > 0 {
-            var maximumValue = self.first!
+        if count > 0 {
+            var maximumValue = first!
             
             indexOfMaximumValue = 0
             
-            for (index, value) in self.enumerate() {
+            for (index, value) in enumerate() {
                 
                 if UInt(index) == indexOfMaximumValue {
                     continue
@@ -41,13 +41,13 @@ extension Array where Element : Comparable {
 
 extension CollectionType where Generator.Element == Int {
     func last(count:Int) -> [Self.Generator.Element] {
-        let selfCount = self.count as! Int
+        let selfCount = count
 
         if selfCount <= count - 1 {
             return Array(self)
         }
         else {
-            return Array(self.reverse()[0...count - 1].reverse())
+            return Array(reverse()[0...count - 1].reverse())
         }
     }
 
@@ -66,7 +66,7 @@ extension CollectionType where Generator.Element == Int {
         let oddnessFlag = count & 1
         
         if oddnessFlag == 1 {
-            maximalValue = self.last(1).first!
+            maximalValue = last(1).first!
             minimalValue = maximalValue
             
             maximalValueIndex = count.toIntMax() - 1

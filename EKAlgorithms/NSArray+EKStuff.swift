@@ -56,7 +56,7 @@ extension NSArray {
     // MARK: Find duplicates
 
     func hasDuplicates() -> Bool {
-        let registry = NSMutableDictionary(capacity: self.count)
+        let registry = NSMutableDictionary(capacity: count)
 
         for element in self {
             let elementHash = element.hash

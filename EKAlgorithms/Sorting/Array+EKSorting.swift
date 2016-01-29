@@ -50,7 +50,7 @@ extension Array where Element : Comparable {
     // MARK: Check if array is sorted
     
     func isSorted() -> Bool {
-        let countMinusOne = self.count - 1
+        let countMinusOne = count - 1
         
         for i in 0 ..< countMinusOne {
             if self[i] > self[i + 1] {
