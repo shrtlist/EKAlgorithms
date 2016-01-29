@@ -1,5 +1,5 @@
 //
-//  Array+EKSorting.m
+//  NSArray+EKSorting.m
 //  EKAlgorithmsApp
 //
 //  Created by Stanislaw Pankevich on 31/03/14.
@@ -7,19 +7,33 @@
 //  Copyright (c) 2014 Evgeny Karkan. All rights reserved.
 //
 
-extension Array {
-/*
-    - (NSArray *)CocoaImplementationOfReversedArray
-    {
-        return [[self reverseObjectEnumerator] allObjects];
+extension NSArray {
+    
+    // MARK: Check if array is sorted
+    
+    func isSorted() -> Bool {
+        let countMinusOne = count - 1
+        
+        for i in 0 ..< countMinusOne {
+            if self[i].isGreaterThan(self[i + 1]) {
+                return false
+            }
+        }
+        
+        return true
     }
-    */
+    
+    func CocoaImplementationOfReversedArray() -> NSArray {
+        return self.reverseObjectEnumerator().allObjects
+    }
+}
 
+extension NSMutableArray {
     // MARK: Array reverse
 
-    mutating func reverse() -> Array {
+    func reverse() -> NSArray {
         for i in 0 ..< count / 2 {
-            swap(&self[i], &self[count - 1 - i])
+            self.exchangeObjectAtIndex(i, withObjectAtIndex: (count - 1 - i))
         }
         
         return self
@@ -27,17 +41,20 @@ extension Array {
     
     // MARK: Array shuffle
     
-    mutating func shuffle() -> Array {
+    func shuffle() -> NSArray {
         // empty and single-element collections don't shuffle
-        if count > 2 {
-            for i in 0..<count - 1 {
-                let randomIndex = Int(arc4random_uniform(UInt32(count - i))) + i
-
+        if count > 1 {
+            var i = count - 1
+            
+            while i >= 0 {
+                let randomIndex = Int(arc4random_uniform(UInt32(count)))
+                
                 guard i != randomIndex else {
                     continue
                 }
-    
-                swap(&self[i], &self[randomIndex])
+                
+                self.exchangeObjectAtIndex(randomIndex, withObjectAtIndex: i)
+                i -= 1
             }
         }
         
@@ -45,21 +62,6 @@ extension Array {
     }
 }
 
-extension Array where Element : Comparable {
-
-    // MARK: Check if array is sorted
-    
-    func isSorted() -> Bool {
-        let countMinusOne = count - 1
-        
-        for i in 0 ..< countMinusOne {
-            if self[i] > self[i + 1] {
-                return false
-            }
-        }
-        
-        return true
-    }
 /*
     // MARK: Bubble sort
 
@@ -413,4 +415,3 @@ extension Array where Element : Comparable {
         }
     }
 */
-}

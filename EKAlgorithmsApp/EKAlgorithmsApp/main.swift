@@ -9,37 +9,37 @@
 
 // MARK: Array
         
-//Init array with 5 random elements
-var array: [Int] = []
+// Init array with 5 random elements
+let array = NSMutableArray()
 for i in 0 ..< 5 {
-    array.append(Int(arc4random()) % 20)
+    array.addObject(Int(arc4random()) % 20)
 }
 
-//Max element of array
-NSLog("Max element of created array \(array.debugDescription) equals \(array[Int(array.indexOfMaximumElement()!)]) and stored at index \(array.indexOfMaximumElement()!)")
+// Max element of array
+NSLog("Max element of created array \(array.debugDescription) equals \(array[Int(array.indexOfMaximumElement())]) and stored at index \(array.indexOfMaximumElement())")
 
-//Get the Max and Min Simultaneously.
+// Get the Max and Min Simultaneously.
 if let indexes = array.indexesOfMinimumAndMaximumElements() {
     NSLog("Min and max elements of created array \(array.debugDescription) equal to \(array[Int(indexes.indexOfMin)]) and \(array[Int(indexes.indexOfMax)]) and stored at indexes: \(indexes.indexOfMin), \(indexes.indexOfMax)")
 }
 
-//Longest string from array
+// Longest string from array
 if let longestString = ["Kiev", "Moscow", "Tokyo", "Saint-Petersburg", "SanFrancisco"].longestString() {
     NSLog("The longest string is \(longestString)")
 }
 
-//Shortest string from array
+// Shortest string from array
 if let shortestString = ["DRY", "KISS", "YAGNI", "SOLID", "GRASP"].shortestString() {
     NSLog("The shortest string is \(shortestString)")
 }
 
-//Reverse of array
+// Reverse of array
 NSLog("Reversed array is %@", ["one", "two", "three", "four", "five"].reverse())
 
-//Intersection of two arrays
+// Intersection of two arrays
 NSLog("Intersection is %@", ["one", "two", "three"].intersectionWithArray(["two", "three", "four"]))
 
-//Union of two arrays
+// Union of two arrays
 NSLog("Union is %@", ["Honda", "Toyota"].unionWithoutDuplicatesWithArray(["Toyota", "Alfa Romeo"]))
 
 // Union of two arrays for key
@@ -55,19 +55,19 @@ for i in 0 ..< 100 {
 oneArray.addObject([someKey: "EKAlgorithms100"])
 NSLog("Union some key is %@", oneArray.unionWithoutDuplicatesWithArray(twoArray, forKey:someKey))
 
-//Find duplicates
+// Find duplicates
 NSLog("Result of finding duplicates is %@", ["foo", "bar", "buzz", "foo"].hasDuplicates() ? "YES" : "NO")
 
-//Random object
+// Random object
 NSLog("Random array %@", NSArray.randomObjectsWithArraySize(5, maxRandomValue: 6, uniqueObjects: true))
 
-//Is sorted check
+// Is sorted check
 NSLog("Given array sorted? --> %@", [1.1, 1.5, 1.9, 2.5, 3, 4, 4].isSorted() ? "YES" : "NO")
 
 // Array Shuffle (Fisherâ€“Yates)
 NSLog("Array Shuffle of array: \(array) is: \(array.shuffle())")
 
-//Sum of elements in array
+// Sum of elements in array
 NSLog("Sum is --> \([-5, -5, -5, -5, -5].sumOfElements())")
 
 //Find occurences of each element in array
