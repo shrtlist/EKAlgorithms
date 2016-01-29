@@ -128,6 +128,18 @@ extension CollectionType where Generator.Element == Int {
         
         return (indexOfMin: UInt(minimalValueIndex), indexOfMax: UInt(maximalValueIndex))
     }
+    
+    // MARK: Sum of elements
+    
+    func sumOfElements() -> Int {
+        var sum = 0
+    
+        for element in self {
+            sum = sum + element
+        }
+        
+        return sum
+    }
 }
 
 extension CollectionType where Generator.Element == String {
@@ -161,21 +173,6 @@ extension CollectionType where Generator.Element == String {
     }
 
 /*
-// MARK: Sum of elements
-
-- (NSNumber *)sumOfElements
-{
-    NSUInteger count = [self count];
-
-    long long int sum = 0;
-    
-    for (NSUInteger i = 0; i < count; i++) {
-        sum = sum + [self[i] longLongValue];
-    }
-    
-    return @(sum);
-}
-
 // MARK: Occurrences of each element in array
 
 - (NSDictionary *)occurencesOfEachElementInArray_naive

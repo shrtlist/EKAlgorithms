@@ -65,10 +65,10 @@ NSLog("Given array sorted? --> %@", [1.1, 1.5, 1.9, 2.5, 3, 4, 4].isSorted() ? "
 
 // Array Shuffle (Fisherâ€“Yates)
 NSLog("Array Shuffle of array: \(array) is: \(array.shuffle())")
-/*
-//Sum of elements in array
-NSLog(@"Sum is --> %@", [@[@ - 5, @ - 5, @ - 5, @ - 5, @ - 5] sumOfElements]);
 
+//Sum of elements in array
+NSLog("Sum is --> \([-5, -5, -5, -5, -5].sumOfElements())")
+/*
 //Find occurences of each element in array
 NSLog(@"Occurences is --> %@", [@[@3, @3, @4, @5, @4, @1, @3, @8, @1] occurencesOfEachElementInArray_naive]);
 NSLog(@"Occurences by using dictionary is --> %@", [@[@[], @{}, @"four", @"five", @"four", @"one", @"three", @"eight", @"one", @"four"] occurencesOfEachElementInArray]);
