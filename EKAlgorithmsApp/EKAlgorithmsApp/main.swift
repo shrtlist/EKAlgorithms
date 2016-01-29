@@ -3,6 +3,7 @@
 //  EKAlgorithms
 //
 //  Created by Evgeny Karkan on 11.08.13.
+//  Swiftified by Marco Abundo on 27.01.16.
 //  Copyright (c) 2013 EvgenyKarkan. All rights reserved.
 //
 
