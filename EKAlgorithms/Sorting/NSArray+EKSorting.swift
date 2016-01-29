@@ -98,7 +98,7 @@ extension NSMutableArray {
         for (var i = count / 2; i > 0; i = i / 2) {
             for j in i ..< count {
                 for (var k = j - i; k >= 0; k = k - i) {
-                    if self[k + 1].floatValue >= self[k].floatValue {
+                    if self[k + 1].isGreaterThanOrEqualTo(self[k]) {
                         break
                     }
                     else {
@@ -125,21 +125,21 @@ extension NSMutableArray {
         var i = left
         var j = right
         
-        var pivotalElement = self[(left + right) / 2]
+        let pivotalElement = self[(left + right) / 2]
         
         repeat {
-            while self[i].floatValue < pivotalElement.floatValue && (i < right) {
-                i++
+            while self[i].isLessThan(pivotalElement) && (i < right) {
+                i += 1
             }
-            while pivotalElement.floatValue < self[j].floatValue && (j > left) {
-                j--
+            while pivotalElement.isLessThan(self[j]) && (j > left) {
+                j -= 1
             }
             
             if i <= j {
                 self.exchangeObjectAtIndex(i, withObjectAtIndex: j)
                 
-                i++
-                j--
+                i += 1
+                j -= 1
             }
         }
         while i <= j
@@ -338,7 +338,7 @@ extension NSMutableArray {
         m = mid + 1
 
         for (i = min; j <= mid && m <= max; i += 1) {
-            if self[j].floatValue <= self[m].floatValue {
+            if self[j].isLessThanOrEqualTo(self[m]) {
                 temporaryArray[i] = self[j]
                 j += 1
             }
