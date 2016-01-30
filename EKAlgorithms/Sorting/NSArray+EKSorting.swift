@@ -154,22 +154,19 @@ extension NSMutableArray {
         
         return self
     }
-/*
+
     // MARK: Insertion sort
 
-    - (NSMutableArray *)insertionSort
-    {
-        NSUInteger count = self.count;
-
-        for (int i = 1; i < count; i++) {
-            for (int j = i; (j > 0) && ([self[j - 1] floatValue] > [self[j] floatValue]); j--) {
-                [self exchangeObjectAtIndex:j withObjectAtIndex:(j - 1)];
+    func insertionSort() -> NSMutableArray {
+        for i in 1 ..< count {
+            for var j = i; (j > 0) && self[j - 1].isGreaterThan(self[j]); j -= 1 {
+                self.exchangeObjectAtIndex(j, withObjectAtIndex: (j - 1))
             }
         }
 
-        return self;
+        return self
     }
-
+/*
     // MARK: Selection sort
 
     - (NSMutableArray *)selectionSort
