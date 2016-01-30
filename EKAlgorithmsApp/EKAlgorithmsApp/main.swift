@@ -100,12 +100,12 @@ NSLog("Merge sorted array %@", NSMutableArray(array: [21, 45, 87, 10, 273, 616, 
 // Quick sort numbers
 NSLog("Quick sorted array %@", NSMutableArray(array: [2.1, 405, 817, 10, 2732, 616, 0.2, -0.52]).quickSortWithLeftIndex(0, withRightIndex: NSMutableArray(array: [21, 45, 87, 10, 273, 616, 0.2, -0.52]).count - 1))
 
-//Insertion sort
+// Insertion sort
 NSLog("Insertion sorted array %@", NSMutableArray(array: [-23.0154, 46, 0.021, 42, 5, false, true]).insertionSort())
-/*
-//Selection sort
-NSLog(@"Selection sorted array  %@", [[@[@160, @0.097, @NO, @89, @ - 61.001256, @7.5, @YES] mutableCopy] selectionSort]);
 
+// Selection sort
+NSLog("Selection sorted array  %@", NSMutableArray(array: [160, 0.097, false, 89,  -61.001256, 7.5, true]).selectionSort())
+/*
 //Radix sort
 NSLog(@"Radix sorted array (BASE 10) %@", [[@[@160, @210, @997, @1222, @1334, @3411, @1] mutableCopy] radixSortForBase:10]);
 

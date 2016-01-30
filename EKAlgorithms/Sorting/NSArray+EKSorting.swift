@@ -166,28 +166,25 @@ extension NSMutableArray {
 
         return self
     }
-/*
+
     // MARK: Selection sort
 
-    - (NSMutableArray *)selectionSort
-    {
-        NSUInteger count = self.count;
+    func selectionSort() -> NSMutableArray {
+        for i in 0 ..< count {
+            var min = i
 
-        for (NSUInteger i = 0; i < count; i++) {
-            NSUInteger min = i;
-
-            for (NSUInteger j = i + 1; j < count; j++) {
-                if ([self[j] floatValue]  < [self[min] floatValue]) {
-                    min = j;
+            for j in i + 1 ..< count {
+                if self[j].isLessThan(self[min]) {
+                    min = j
                 }
             }
 
-            [self exchangeObjectAtIndex:i withObjectAtIndex:min];
+            self.exchangeObjectAtIndex(i, withObjectAtIndex: min)
         }
 
-        return self;
+        return self
     }
-
+/*
     // MARK: Radix Sort
 
     - (NSMutableArray *)radixSortForBase:(NSInteger)base
