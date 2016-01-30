@@ -105,10 +105,10 @@ NSLog("Insertion sorted array %@", NSMutableArray(array: [-23.0154, 46, 0.021, 4
 
 // Selection sort
 NSLog("Selection sorted array  %@", NSMutableArray(array: [160, 0.097, false, 89,  -61.001256, 7.5, true]).selectionSort())
-/*
-//Radix sort
-NSLog(@"Radix sorted array (BASE 10) %@", [[@[@160, @210, @997, @1222, @1334, @3411, @1] mutableCopy] radixSortForBase:10]);
 
+// Radix sort
+NSLog("Radix sorted array (BASE 10) %@", NSMutableArray(array: [160, 210, 997, 1222, 1334, 3411, 1]).radixSortForBase(10))
+/*
 //Heap sort
 NSLog(@"Heap sorted array --> %@", [[@[@9871523, @0.0987516, @NO, @89, @ - 61.001256, @712.5, @YES, @384756] mutableCopy] heapSort]);
 

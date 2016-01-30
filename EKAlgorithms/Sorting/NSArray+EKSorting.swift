@@ -184,76 +184,71 @@ extension NSMutableArray {
 
         return self
     }
-/*
+
     // MARK: Radix Sort
 
-    - (NSMutableArray *)radixSortForBase:(NSInteger)base
-    {
-        int max = [[self valueForKeyPath:@"@max.intValue"] intValue];
+    func radixSortForBase(base: Int) -> NSMutableArray {
+        let max = self.valueForKeyPath("@max.intValue")!.intValue
 
-        int numberOfSteps = (log(max) / log(base)) + 1;
+        let numberOfSteps = Int((log(Double(max)) / log(Double(base))) + 1)
 
-        for (int i = 0; i < numberOfSteps; i++) {
-            NSMutableArray *radixTable = [NSMutableArray makeRadixTableForArray:self forBase:base forDigit:i];
+        for i in 0 ..< numberOfSteps {
+            let radixTable = NSMutableArray.makeRadixTableForArray(self, forBase: base, forDigit: i)
 
-            [self setArray:[NSMutableArray makeArrayFromRadixTable:radixTable]];
+            setArray(NSMutableArray.makeArrayFromRadixTable(radixTable) as [AnyObject])
         }
 
-        return self;
+        return self
     }
 
-    + (NSMutableArray *)makeArrayFromRadixTable:(NSMutableArray *)radixTable
-    {
-        NSMutableArray *theArray = [NSMutableArray new];
+    static func makeArrayFromRadixTable(radixTable: [SSRadixNode]) -> NSMutableArray {
+        let theArray = NSMutableArray()
         
-        for (SSRadixNode *bucketNode in radixTable) {
-            SSRadixNode *bucket = bucketNode.next;
-            while (bucket) {
-                [theArray addObject:@(bucket.data)];
-                bucket = bucket.next;
+        for bucketNode in radixTable {
+            var bucket = bucketNode.next
+            while (bucket != nil) {
+                theArray.addObject(bucket!.data)
+                bucket = bucket!.next
             }
         }
-        return theArray;
+        return theArray
     }
 
-    + (NSMutableArray *)makeRadixTableForArray:(NSMutableArray *)theArray forBase:(NSInteger)base forDigit:(NSInteger)digit
-    {
-        NSMutableArray *radixTable = [self getTableOfEmptyBucketsForSize:base];
+    static func makeRadixTableForArray(theArray: NSMutableArray, forBase base: Int, forDigit digit: Int) -> [SSRadixNode] {
+        let radixTable = getTableOfEmptyBucketsForSize(base)
         
-        for (int i = 0; i < theArray.count; i++) {
-            NSInteger value = [theArray[i] integerValue];
-            NSInteger radixIndex = [self getExaminedNumber:value withBase:base atDigit:digit];
-            SSRadixNode *current = (SSRadixNode *)radixTable[radixIndex];
-            if (current.next) {
-                while (current.next) {
-                    current = [current next];
+        for i in 0 ..< theArray.count {
+            let value = theArray[i].integerValue
+            let radixIndex = getExaminedNumber(value, withBase: base, atDigit: digit)
+            var current = radixTable[radixIndex]
+            if (current.next != nil) {
+                while (current.next != nil) {
+                    current = current.next!
                 }
             }
-            SSRadixNode *newEntry = [SSRadixNode new];
-            newEntry.data = [theArray[i] intValue];
-            current.next = newEntry;
+            let newEntry = SSRadixNode()
+            newEntry.data = theArray[i].integerValue
+            current.next = newEntry
         }
         
-        return radixTable;
+        return radixTable
     }
 
-    + (NSMutableArray *)getTableOfEmptyBucketsForSize:(NSInteger)size
-    {
-        NSMutableArray *empty = [NSMutableArray new];
+    static func getTableOfEmptyBucketsForSize(size: NSInteger) -> [SSRadixNode] {
+        var empty: [SSRadixNode] = []
         
-        for (NSInteger i = 0; i < size; i++) {
-            [empty addObject:[SSRadixNode new]];
+        for _ in 0 ..< size {
+            empty.append(SSRadixNode())
         }
         
-        return empty;
+        return empty
     }
 
-    + (NSInteger)getExaminedNumber:(NSInteger)number withBase:(NSInteger)base atDigit:(NSInteger)digit
-    {
-        NSInteger divisor = (digit == 0) ? 1 : (pow(base, digit));
-        return (number / divisor) % base;
+    static func getExaminedNumber(number: NSInteger, withBase base: NSInteger, atDigit digit: NSInteger) -> NSInteger {
+        let divisor = (digit == 0) ? 1 : pow(Double(base), Double(digit))
+        return (number / Int(divisor)) % base
     }
-
+/*
     // MARK: Partial Selection Sort
 
     - (NSMutableArray *)partialSelectionSort:(NSUInteger)K
@@ -323,7 +318,7 @@ extension NSMutableArray {
     func mergeArrayWithMinimalIndex(min: NSInteger, withMediumIndex mid: NSInteger, withMaximalIndex max: NSInteger) {
         let temporaryArray = NSMutableArray()
 
-        for i in 0 ..< count {
+        for _ in 0 ..< count {
             temporaryArray.addObject(NSNull)
         }
 
