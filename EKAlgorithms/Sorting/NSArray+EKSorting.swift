@@ -277,30 +277,23 @@ extension NSMutableArray {
         
         return self;
     }
-
+*/
     // MARK: Heap sort
 
-    - (NSMutableArray *)heapSort
-    {
-        NSUInteger count = self.count;
+    func heapSort() -> NSMutableArray {
 
-        [self heapifyArrayWithSize:count];
+        heapifyArrayWithSize(count)
 
-        NSInteger end = count - 1;
+        var end = count - 1
 
-        while (end > 0) {
-            [self exchangeObjectAtIndex:end withObjectAtIndex:0];
-            [self siftDownArrayWithStart:0 end:end - 1];
-            end--;
+        while end > 0 {
+            exchangeObjectAtIndex(end, withObjectAtIndex: 0)
+            siftDownArrayWithStart(0, end: end - 1)
+            end -= 1
         }
         
-        return self;
+        return self
     }
-
-    @end
-
-
-*/
 
     // MARK: Used in merge sort
 
@@ -353,38 +346,35 @@ extension NSMutableArray {
             self[k] = temporaryArray[k]
         }
     }
-/*
+
     // MARK: Used in heap sort
 
-    - (void)siftDownArrayWithStart:(NSInteger)startIndex end:(NSInteger)endIndex
-    {
-        NSInteger root = startIndex;
+    func siftDownArrayWithStart(startIndex: Int, end endIndex: Int) {
+        var root = startIndex
 
-        while ((root * 2 + 1) <= endIndex) {
-            NSInteger child = root * 2 + 1;
+        while (root * 2 + 1) <= endIndex {
+            var child = root * 2 + 1
 
-            if (child + 1 <= endIndex && [self[child] floatValue] < [self[child + 1] floatValue]) {
-                child++;
+            if child + 1 <= endIndex && self[child].isLessThan(self[child + 1]) {
+                child += 1
             }
 
-            if ([self[root] floatValue] < [self[child] floatValue]) {
-                [self exchangeObjectAtIndex:root withObjectAtIndex:child];
-                root = child;
+            if self[root].isLessThan(self[child]) {
+                exchangeObjectAtIndex(root, withObjectAtIndex: child)
+                root = child
             }
             else {
-                return;
+                return
             }
         }
     }
 
-    - (void)heapifyArrayWithSize:(NSInteger)size
-    {
-        NSInteger start = (size - 2) / 2;
+    func heapifyArrayWithSize(size: Int) {
+        var start = (size - 2) / 2
         
-        while (start >= 0) {
-            [self siftDownArrayWithStart:start end:size - 1];
-            start--;
+        while start >= 0 {
+            siftDownArrayWithStart(start, end: size - 1)
+            start -= 1
         }
     }
-*/
 }
