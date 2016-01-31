@@ -125,11 +125,10 @@ NSLog("Reverse is: %@", "Lorem ipsum dolor".reversedString())
 
 // Count words
 NSLog("Words # %d", "fgf fgfdgfdg dfgfdgfd dfgfdgfd dfg".numberOfWordsInString())
-/*
-//Permutations
-char a[] = "ABC";
-[NSString allPermutationsOfCString:a withFirstCharacterPosition:0 lastCharacterPosition:2];
 
+// Permutations
+NSString.allPermutationsOfString("ABC", withFirstCharacterPosition: 0, lastCharacterPosition: 2)
+/*
 //Count each letter occurence in string
 [@"Hello World" countEachCharacterOccurrenceInString];
 

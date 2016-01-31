@@ -55,31 +55,35 @@ extension NSString {
         
         return wordCounter
     }
-/*
-    // MARK: Permutations of string
 
-    + (void)swapValuesOfPointer:(char *)xPointer toPointer:(char *)yPointer
-    {
-        char temp;
-        temp      = *xPointer;
-        *xPointer = *yPointer;
-        *yPointer = temp;
+    // MARK: Permutations of string
+    
+    static func allPermutationsOfString(string: String, withFirstCharacterPosition i: Int, lastCharacterPosition n: Int) {
+        let characters = Array(string.characters)
+        NSString.allPermutationsOfCharacters(characters, withFirstCharacterPosition: i, lastCharacterPosition: n)
     }
 
-    + (void)allPermutationsOfCString:(char *)string withFirstCharacterPosition:(int)i lastCharacterPosition:(int)n
-    {
-        if (i == n) {
-            NSLog(@"Permutation is - %s\n", string);
+    static func allPermutationsOfCharacters(var characters: [Character], withFirstCharacterPosition i: Int, lastCharacterPosition n: Int) {
+    
+        if i == n {
+            let string = String(characters)
+            NSLog("Permutation is - %@\n", string)
         }
         else {
-            for (NSUInteger j = i; j <= n; j++) {
-                [self swapValuesOfPointer:(string + i) toPointer:(string + j)];
-                [self allPermutationsOfCString:string withFirstCharacterPosition:i + 1 lastCharacterPosition:n];
-                [self swapValuesOfPointer:(string + i) toPointer:(string + j)];
+            for var j = i; j <= n; j += 1 {
+                if i != j {
+                    swap(&characters[i], &characters[j])
+                }
+                
+                NSString.allPermutationsOfCharacters(characters, withFirstCharacterPosition: i + 1, lastCharacterPosition: n)
+                
+                if i != j {
+                    swap(&characters[i], &characters[j])
+                }
             }
         }
     }
-
+/*
     // MARK: Occurrences of each character
 
     - (void)countEachCharacterOccurrenceInString
