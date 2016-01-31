@@ -11,7 +11,7 @@
         
 // Init array with 5 random elements
 let array = NSMutableArray()
-for i in 0 ..< 5 {
+for _ in 0 ..< 5 {
     array.addObject(Int(arc4random()) % 20)
 }
 
@@ -77,7 +77,7 @@ NSLog("Occurences is --> %@", [3, 3, 4, 5, 4, 1, 3, 8, 1].occurencesOfEachElemen
 NSLog("Occurences via Cocoa APIs is --> %@", [3, 3, 4, 5, 4, 1, 3, 8, 1].cocoaImplementationOfOccurencesOfEachElementInArray())
 
 // MARK: Search
-//SEARCH------------------------------------------------------------------------------------
+// SEARCH------------------------------------------------------------------------------------
 
 // Linear search
 NSLog("Linear search result: \([6, 9, 12, 13, 14, 29, 42].indexOfObjectViaLinearSearch(42))")
@@ -111,21 +111,21 @@ NSLog("Radix sorted array (BASE 10) %@", NSMutableArray(array: [160, 210, 997, 1
 
 // Heap sort
 NSLog("Heap sorted array --> %@", NSMutableArray(array: [9871523, 0.0987516, false, 89, -61.001256, 712.5, true, 384756]).heapSort())
-/*
+
 // MARK: Strings
-//STRINGS-----------------------------------------------------------------------------------
+// STRINGS-----------------------------------------------------------------------------------
 
-//Palindrome string
-NSLog(@"Palindrome? Answer:%@", [@"Was it a car or a cat I saw" isPalindrome] ? @"YES" : @"NO");
+// Palindrome string
+NSLog("Palindrome? Answer:%@", "Was it a car or a cat I saw".isPalindrome() ? "YES" : "NO")
 
-NSLog(@"Palindrome? Answer:%@", [@"wasitacaroracatisaw" isPalindrome] ? @"YES" : @"NO");
+NSLog("Palindrome? Answer:%@", "wasitacaroracatisaw".isPalindrome() ? "YES" : "NO")
 
-//Reverse
-NSLog(@"Reverse is: %@", [@"Lorem ipsum dolor" reversedString]);
+// Reverse
+NSLog("Reverse is: %@", "Lorem ipsum dolor".reversedString())
 
-//Count words
-NSLog(@"Words # %lu", (unsigned long)[@"fgf fgfdgfdg dfgfdgfd dfgfdgfd dfg" numberOfWordsInString]);
-
+// Count words
+NSLog("Words # %d", "fgf fgfdgfdg dfgfdgfd dfgfdgfd dfg".numberOfWordsInString())
+/*
 //Permutations
 char a[] = "ABC";
 [NSString allPermutationsOfCString:a withFirstCharacterPosition:0 lastCharacterPosition:2];

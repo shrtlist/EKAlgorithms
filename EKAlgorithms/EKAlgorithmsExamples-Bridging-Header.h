@@ -4,7 +4,6 @@
 
 @import Foundation;
 #import "NSNumber+EKStuff.h"
-#import "NSString+EKStuff.h"
 #import "EKStack.h"
 #import "EKQueue.h"
 #import "EKDeque.h"
