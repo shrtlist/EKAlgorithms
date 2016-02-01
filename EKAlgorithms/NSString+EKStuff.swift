@@ -163,41 +163,38 @@ extension NSString {
 
         return objcString
     }
-/*
+
     // MARK: First occurrence of needle in a haystack
 
-    - (NSInteger)indexOfFirstOccurrenceOfNeedle:(NSString *)needle
-    {
-        NSAssert(needle != nil || self != nil, @"Seems you are trying to pass nil as a parameter");
-        NSAssert(![needle isEqualToString:@""], @"Needle should be valid");
-        NSAssert(![self isEqualToString:@""], @"Haystack should be valid");
-        NSAssert([needle length] <= [self length], @"Needle should be less or equal in compare with haystack");
+    func indexOfFirstOccurrenceOfNeedle(needle: NSString) -> Int {
+        assert(!needle.isEqualToString(""), "Needle should be valid")
+        assert(!isEqualToString(""), "Haystack should be valid")
+        assert(needle.length <= length, "Needle should be less or equal in compare with haystack")
         
-        NSInteger indexOfFirstOccurrence = -1;
-        NSInteger j = 0;
+        var indexOfFirstOccurrence = -1
+        var i = 0, j = 0
 
-        NSUInteger length = [self length];
-
-        for (NSInteger i = 0; i < length; i++) {
-            if ([self characterAtIndex:i] == [needle characterAtIndex:j]) {
-                if (j == 0) {
-                    indexOfFirstOccurrence = i;
+        for i = 0; i < length; i++ {
+            if characterAtIndex(i) == needle.characterAtIndex(j) {
+                if j == 0 {
+                    indexOfFirstOccurrence = i
                 }
-                if (j == [needle length] - 1) {
-                    return indexOfFirstOccurrence;
+                
+                if j == needle.length - 1 {
+                    return indexOfFirstOccurrence
                 }
-                j++;
+                j += 1
             }
-            else if ([self characterAtIndex:i] != [needle characterAtIndex:j] && j > 0) {
-                i--;
-                j = 0;
-                indexOfFirstOccurrence = -1;
+            else if characterAtIndex(i) != needle.characterAtIndex(j) && j > 0 {
+                i -= 1
+                j = 0
+                indexOfFirstOccurrence = -1
             }
         }
         
-        return indexOfFirstOccurrence;
+        return indexOfFirstOccurrence
     }
-
+/*
     // MARK: Last occurrence of needle in a haystack
 
     - (NSInteger)indexOfLastOccurrenceOfNeedle:(NSString *)needle
