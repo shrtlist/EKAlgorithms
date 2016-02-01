@@ -109,25 +109,25 @@ extension NSString {
         }
         //TODO: modify to handle uppercase and special characters
     }
-/*
+
     // MARK: Count needles in a haystack
 
-    - (NSUInteger)numberOfOccurrenciesOfString:(NSString *)needle
-    {
-        NSUInteger count = 0, length = [self length];
-        NSRange range = NSMakeRange(0, length);
+    func numberOfOccurrenciesOfString(needle: NSString) -> UInt {
+        var count: UInt = 0
+
+        var range = NSMakeRange(0, length)
         
-        while (range.location != NSNotFound) {
-            range = [self rangeOfString:needle options:0 range:range];
-            if (range.location != NSNotFound) {
-                range = NSMakeRange(range.location + range.length, length - (range.location + range.length));
-                count++;
+        while range.location != NSNotFound {
+            range = rangeOfString(needle as String, options: NSStringCompareOptions.CaseInsensitiveSearch, range: range)
+            if range.location != NSNotFound {
+                range = NSMakeRange(range.location + range.length, length - (range.location + range.length))
+                count += 1
             }
         }
         
-        return count;
+        return count
     }
-
+/*
     // MARK: Random string
 
     + (NSString *)randomStringWithLength:(NSUInteger)lenght

@@ -131,10 +131,10 @@ NSString.allPermutationsOfString("ABC", withFirstCharacterPosition: 0, lastChara
 
 // Count each letter occurence in string
 "Hello World".countEachCharacterOccurrenceInString()
-/*
-//Needles in haystack
-NSLog(@"Needle %lu", (unsigned long)[@"Foo is a bar with foo bar foo" numberOfOccurrenciesOfString: @"foo"]);
 
+// Needles in haystack
+NSLog("Needle %d", "Foo is a bar with foo bar foo".numberOfOccurrenciesOfString("foo"))
+/*
 //Random string
 NSLog(@"Random string %@", [NSString randomStringWithLength:100]);
 
