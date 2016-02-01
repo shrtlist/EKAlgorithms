@@ -127,21 +127,21 @@ extension NSString {
         
         return count
     }
-/*
+
     // MARK: Random string
 
-    + (NSString *)randomStringWithLength:(NSUInteger)lenght
-    {
-        static char const possibleChars[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 !@#$%^&*()_-/?;:+=[]|~<>";
-        unichar characters[lenght];
+    static func randomStringWithLength(length: Int) -> NSString {
+        let possibleChars = Array("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 !@#$%^&*()_-/?;:+=[]|~<>".characters)
         
-        for (NSUInteger index = 0; index < lenght; ++index) {
-            characters[index] = possibleChars[arc4random_uniform(sizeof(possibleChars) - 1)];
+        var characters = [Character]()
+        
+        for _ in 0 ..< length {
+            characters.append(possibleChars[Int(arc4random_uniform(UInt32(possibleChars.count - 1)))])
         }
         
-        return [NSString stringWithCharacters:characters length:lenght];
+        return String(characters) as NSString
     }
-
+/*
     // MARK: Concatenation
 
     - (NSString *)concatenateWithString:(NSString *)secondString

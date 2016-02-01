@@ -134,10 +134,10 @@ NSString.allPermutationsOfString("ABC", withFirstCharacterPosition: 0, lastChara
 
 // Needles in haystack
 NSLog("Needle %d", "Foo is a bar with foo bar foo".numberOfOccurrenciesOfString("foo"))
-/*
-//Random string
-NSLog(@"Random string %@", [NSString randomStringWithLength:100]);
 
+// Random string
+NSLog("Random string %@", NSString.randomStringWithLength(100))
+/*
 //Concat
 NSLog(@"Concat string is --> %@", [@"Hello" concatenateWithString: @"World!"]);
 
