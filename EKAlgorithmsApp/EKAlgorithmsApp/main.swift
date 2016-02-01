@@ -137,10 +137,10 @@ NSLog("Needle %d", "Foo is a bar with foo bar foo".numberOfOccurrenciesOfString(
 
 // Random string
 NSLog("Random string %@", NSString.randomStringWithLength(100))
-/*
-//Concat
-NSLog(@"Concat string is --> %@", [@"Hello" concatenateWithString: @"World!"]);
 
+// Concat
+NSLog("Concat string is --> %@", "Hello".concatenateWithString("World!"))
+/*
 //First occurance of needle in a haystack
 NSLog(@"Index is --> %ld", (long)[@"Lorem ipsum dolor sit amet lorem ipsum" indexOfFirstOccurrenceOfNeedle: @"em"]);
 

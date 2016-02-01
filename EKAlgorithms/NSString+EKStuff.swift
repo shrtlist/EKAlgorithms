@@ -141,30 +141,29 @@ extension NSString {
         
         return String(characters) as NSString
     }
-/*
+
     // MARK: Concatenation
 
-    - (NSString *)concatenateWithString:(NSString *)secondString
-    {
-        const char *cStringOne = [self UTF8String];
-        const char *cStringTwo = [secondString UTF8String];
-        char cResult[256];
+    func concatenateWithString(secondString: NSString) -> NSString {
+        let stringOne = Array((self as String).characters)
+        let stringTwo = Array((secondString as String).characters)
+        var result = [Character]()
         
-        NSUInteger i = 0, j = 0;
+        var i = 0, j = 0
         
-        for (i = 0; cStringOne[i] != '\0'; ++i) {
-            cResult[i] = cStringOne[i];
+        for i = 0; i < stringOne.count; i += 1 {
+            result.insert(stringOne[i], atIndex: i)
         }
-        for (j = 0; cStringTwo[j] != '\0'; ++j) {
-            cResult[i + j] = cStringTwo[j];
+        
+        for j = 0; j < stringTwo.count; j += 1 {            
+            result.insert(stringTwo[j], atIndex: i + j)
         }
-        cResult[i + j] = '\0';
         
-        NSString *objcString = [NSString stringWithFormat:@"%s", cResult];
-        
-        return objcString;
-    }
+        let objcString = String(result) as NSString
 
+        return objcString
+    }
+/*
     // MARK: First occurrence of needle in a haystack
 
     - (NSInteger)indexOfFirstOccurrenceOfNeedle:(NSString *)needle
