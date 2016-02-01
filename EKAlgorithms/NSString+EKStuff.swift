@@ -201,7 +201,7 @@ extension NSString {
         let reversedNeedle   = needle.reversedString()
         let reversedHaystack = self.reversedString()
         
-        var firstOccurrenceInReversedString = reversedHaystack.indexOfFirstOccurrenceOfNeedle(reversedNeedle)
+        let firstOccurrenceInReversedString = reversedHaystack.indexOfFirstOccurrenceOfNeedle(reversedNeedle)
         
         var result = 0
         
