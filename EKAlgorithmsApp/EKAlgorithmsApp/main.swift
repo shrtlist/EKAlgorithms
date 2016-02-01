@@ -143,10 +143,10 @@ NSLog("Concat string is --> %@", "Hello".concatenateWithString("World!"))
 
 // First occurance of needle in a haystack
 NSLog("Index is --> %d", "Lorem ipsum dolor sit amet lorem ipsum".indexOfFirstOccurrenceOfNeedle("em"))
-/*
-//Last occurance of needle in a haystack
-NSLog(@"Index is --> %ld", (long)[@"Lorem ipsum dolor sit amet lorem ipsum" indexOfLastOccurrenceOfNeedle: @"or"]);
 
+// Last occurance of needle in a haystack
+NSLog("Index is --> %d", "Lorem ipsum dolor sit amet lorem ipsum".indexOfLastOccurrenceOfNeedle("or"))
+/*
 //Longest common sequence
 NSLog(@"Longest common sequence of abcdbceea and cabdefga is --> %@", [@"abcdbceea" LCS_WithString: @"cabdefga"]);
 

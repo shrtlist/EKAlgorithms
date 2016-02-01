@@ -194,28 +194,27 @@ extension NSString {
         
         return indexOfFirstOccurrence
     }
-/*
+
     // MARK: Last occurrence of needle in a haystack
 
-    - (NSInteger)indexOfLastOccurrenceOfNeedle:(NSString *)needle
-    {
-        NSString *reversedNeedle   = [needle reversedString];
-        NSString *reversedHaystack = [self reversedString];
+    func indexOfLastOccurrenceOfNeedle(needle: NSString) -> Int {
+        let reversedNeedle   = needle.reversedString()
+        let reversedHaystack = self.reversedString()
         
-        NSInteger firstOccurrenceInReversedString = [reversedHaystack indexOfFirstOccurrenceOfNeedle:reversedNeedle];
+        var firstOccurrenceInReversedString = reversedHaystack.indexOfFirstOccurrenceOfNeedle(reversedNeedle)
         
-        NSInteger result = 0;
+        var result = 0
         
-        if (firstOccurrenceInReversedString >= 0) {
-            result = [self length] - [needle length] - firstOccurrenceInReversedString;
+        if firstOccurrenceInReversedString >= 0 {
+            result = self.length - needle.length - firstOccurrenceInReversedString
         }
         else {
-            result = -1;
+            result = -1
         }
         
-        return result;
+        return result
     }
-
+/*
     // MARK: Longest common sequence
 
     static char arrayKey;
