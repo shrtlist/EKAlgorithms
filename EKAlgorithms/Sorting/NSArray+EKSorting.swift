@@ -82,7 +82,7 @@ extension NSMutableArray {
 */
     func bubbleSort() -> NSMutableArray {
         for (var i = (count - 2); i >= 0; i -= 1) {
-            for (var j = 0; j <= i; j += 1) {
+            for j in 0...i {
                 if self[j].isGreaterThan(self[j + 1]) {
                     self.exchangeObjectAtIndex(j, withObjectAtIndex: (j + 1))
                 }
@@ -330,19 +330,19 @@ extension NSMutableArray {
             }
         }
         if j > mid {
-            for (k = m; k <= max; k += 1) {
+            for k in m...max {
                 temporaryArray[i] = self[k]
                 i += 1
             }
         }
         else {
-            for (k = j; k <= mid; k += 1) {
+            for k in j...mid {
                 temporaryArray[i] = self[k]
                 i += 1
             }
         }
         
-        for (k = min; k <= max; k += 1) {
+        for k in min...max {
             self[k] = temporaryArray[k]
         }
     }

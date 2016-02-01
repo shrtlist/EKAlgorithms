@@ -70,7 +70,7 @@ extension NSString {
             NSLog("Permutation is - %@\n", string)
         }
         else {
-            for var j = i; j <= n; j += 1 {
+            for j in i...n {
                 if i != j {
                     swap(&characters[i], &characters[j])
                 }
