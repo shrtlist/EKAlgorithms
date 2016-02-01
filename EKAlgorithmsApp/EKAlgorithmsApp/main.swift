@@ -128,10 +128,10 @@ NSLog("Words # %d", "fgf fgfdgfdg dfgfdgfd dfgfdgfd dfg".numberOfWordsInString()
 
 // Permutations
 NSString.allPermutationsOfString("ABC", withFirstCharacterPosition: 0, lastCharacterPosition: 2)
-/*
-//Count each letter occurence in string
-[@"Hello World" countEachCharacterOccurrenceInString];
 
+// Count each letter occurence in string
+"Hello World".countEachCharacterOccurrenceInString()
+/*
 //Needles in haystack
 NSLog(@"Needle %lu", (unsigned long)[@"Foo is a bar with foo bar foo" numberOfOccurrenciesOfString: @"foo"]);
 

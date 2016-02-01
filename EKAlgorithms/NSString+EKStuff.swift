@@ -83,29 +83,33 @@ extension NSString {
             }
         }
     }
-/*
+
     // MARK: Occurrences of each character
 
-    - (void)countEachCharacterOccurrenceInString
-    {
-        const char *string = [[self lowercaseString] UTF8String];
-        int c = 0, count[26] = { 0 };
+    func countEachCharacterOccurrenceInString() {
+        let characters = Array(lowercaseString.characters)
+        var count = [Int](count: 26, repeatedValue: 0)
         
-        while (string[c] != '\0') {
-            if (string[c] >= 'a' && string[c] <= 'z') {
-                count[string[c] - 'a']++;
-            }
-            c++;
-        }
+        let s = String("a").unicodeScalars
+        let aValue = s[s.startIndex].value
         
-        for (c = 0; c < 26; c++) {
-            if (count[c] != 0) {
-                NSLog(@"%c occurs %d times in the entered string\n", c + 'a', count[c]);
+        for character in characters {
+            if (character >= "a" && character <= "z") {
+                let unicodeScalars = String(character).unicodeScalars
+                let unicodeValue = unicodeScalars[unicodeScalars.startIndex].value
+                let index = Int(unicodeValue - aValue)
+                count[index] += 1
             }
         }
-            //TODO: modify to handle uppercase and special characters
+        
+        for (index, char) in "abcdefghijklmnopqrstuvwxyz".characters.enumerate() {
+            if count[index] != 0 {
+                NSLog("\(char) occurs %d times in the entered string\n", count[index])
+            }
+        }
+        //TODO: modify to handle uppercase and special characters
     }
-
+/*
     // MARK: Count needles in a haystack
 
     - (NSUInteger)numberOfOccurrenciesOfString:(NSString *)needle
