@@ -174,7 +174,7 @@ extension NSString {
         var indexOfFirstOccurrence = -1
         var i = 0, j = 0
 
-        for i = 0; i < length; i++ {
+        for i = 0; i < length; i += 1 {
             if characterAtIndex(i) == needle.characterAtIndex(j) {
                 if j == 0 {
                     indexOfFirstOccurrence = i
