@@ -172,9 +172,9 @@ extension NSString {
         assert(needle.length <= length, "Needle should be less or equal in compare with haystack")
         
         var indexOfFirstOccurrence = -1
-        var i = 0, j = 0
+        var j = 0
 
-        for i = 0; i < length; i += 1 {
+        for var i in 0 ..< length {
             if characterAtIndex(i) == needle.characterAtIndex(j) {
                 if j == 0 {
                     indexOfFirstOccurrence = i
