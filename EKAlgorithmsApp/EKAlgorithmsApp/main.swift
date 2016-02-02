@@ -146,10 +146,10 @@ NSLog("Index is --> %d", "Lorem ipsum dolor sit amet lorem ipsum".indexOfFirstOc
 
 // Last occurance of needle in a haystack
 NSLog("Index is --> %d", "Lorem ipsum dolor sit amet lorem ipsum".indexOfLastOccurrenceOfNeedle("or"))
-/*
-//Longest common sequence
-NSLog(@"Longest common sequence of abcdbceea and cabdefga is --> %@", [@"abcdbceea" LCS_WithString: @"cabdefga"]);
 
+//Longest common sequence
+NSLog("Longest common sequence of abcdbceea and cabdefga is --> %@", "abcdbceea".LCS_WithString("cabdefga"))
+/*
 //Levenshtein Distance
 NSLog(@"Levenshtein Distance of levenshtein and meilenstein is --> %ld", (long)[@"levenshtein" LD_WithString: @"meilenstein"]);
 

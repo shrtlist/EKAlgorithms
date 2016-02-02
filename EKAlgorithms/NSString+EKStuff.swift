@@ -214,66 +214,59 @@ extension NSString {
         
         return result
     }
-/*
+
     // MARK: Longest common sequence
 
-    static char arrayKey;
+    private struct AssociatedKey {
+        static var arrayKey: UInt8 = 0
+    }
 
-    enum decreaseDir {kInit = 0, kLeftUp, kUp, kLeft};
+    enum DecreaseDir: Int { case kInit = 0, kLeftUp, kUp, kLeft }
 
-    - (NSArray *)LCS_WithString:(NSString *)other
-    {
-        if (other == nil) {
-            return 0;
+    func LCS_WithString(other: NSString) -> NSArray {
+        let n = other.length
+        
+        if (length == 0 || n == 0) {
+            return NSArray()
         }
         
-        size_t m = self.length;
-        size_t n = other.length;
+        var c = Array(count: length + 1, repeatedValue: Array(count: n + 1, repeatedValue: 0))
+        var b = Array(count: length + 1, repeatedValue: Array(count: n + 1, repeatedValue: 0))
         
-        if (m == 0 || n == 0) {
-            return 0;
-        }
-        
-        NSMutableArray *c = [NSMutableArray arrayWithCapacity:m + 1];
-        NSMutableArray *b = [NSMutableArray arrayWithCapacity:m + 1];
-        
-        for (int i = 0; i <= m; i++) {
-            c[i] = [NSMutableArray arrayWithCapacity:n + 1];
-            b[i] = [NSMutableArray arrayWithCapacity:n + 1];
-            
-            for (int j = 0; j <= n; j++) {
-                c[i][j] = @(0);
-                b[i][j] = @(kInit);
+        for i in 0...length {
+            for j in 0...n {
+                c[i][j] = 0
+                b[i][j] = DecreaseDir.kInit.rawValue
             }
         }
         
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                if ([[self substringWithRange:NSMakeRange(i, 1)] isEqual:[other substringWithRange:NSMakeRange(j, 1)]]) {
-                    c[i + 1][j + 1] = @([c[i][j] integerValue] + 1);
-                    b[i + 1][j + 1] = @(kLeftUp); //↖
+        for i in 0 ..< length {
+            for j in 0 ..< n {
+                if self.substringWithRange(NSMakeRange(i, 1)).isEqual(other.substringWithRange(NSMakeRange(j, 1))) {
+                    c[i + 1][j + 1] = c[i][j] + 1
+                    b[i + 1][j + 1] = DecreaseDir.kLeftUp.rawValue //↖
                 }
-                else if ([c[i][j + 1] integerValue] >= [c[i + 1][j] integerValue]) {
-                    c[i + 1][j + 1] = @([c[i][j + 1] integerValue]);
-                    b[i + 1][j + 1] = @(kUp);  //↑
+                else if c[i][j + 1] >= c[i + 1][j] {
+                    c[i + 1][j + 1] = c[i][j + 1]
+                    b[i + 1][j + 1] = DecreaseDir.kUp.rawValue  //↑
                 }
                 else {
-                    c[i + 1][j + 1] = @([c[i + 1][j] integerValue]);
-                    b[i + 1][j + 1] = @(kLeft); //←
+                    c[i + 1][j + 1] = c[i + 1][j]
+                    b[i + 1][j + 1] = DecreaseDir.kLeft.rawValue //←
                 }
             }
         }
         
-        NSMutableArray *charArray = objc_getAssociatedObject(self, &arrayKey);
-        if (charArray) {
-            charArray = nil;
+        var charArray = objc_getAssociatedObject(self, &AssociatedKey.arrayKey)
+        if charArray != nil {
+            charArray = nil
         }
-        charArray = [NSMutableArray array];
-        objc_setAssociatedObject(self, &arrayKey, charArray, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        charArray = NSMutableArray()
+        objc_setAssociatedObject(self, &AssociatedKey.arrayKey, charArray, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         
-        [self LCS_Print:b withString:other row:m andColumn:n];
+        self.LCS_Print(b, withString: other, row: length, andColumn: n)
         
-        return charArray;
+        return charArray as! NSArray
     }
 
     /** Print a LCS of two strings
@@ -282,41 +275,30 @@ extension NSString {
      *                  row: the row index in the matrix LCS_direction
      *                  col: the column index in the matrix LCS_direction
      **/
-    - (void)LCS_Print:(NSArray *)direction
-           withString:(NSString *)other
-                  row:(NSInteger)i
-            andColumn:(NSInteger)j
-    {
-        if (other == nil) {
-            return;
-        }
-        
-        size_t length1 = self.length;
-        size_t length2 = other.length;
+    func LCS_Print(direction: NSArray, withString other: NSString, row i: NSInteger, andColumn j: NSInteger) {
+        let length1 = length
+        let length2 = other.length
         
         if (length1 == 0 || length2 == 0 || i == 0 || j == 0) {
             return;
         }
         
-        if ([direction[i][j] integerValue] == kLeftUp) {
-            NSLog(@"%@ %@ ", self, [self substringWithRange:NSMakeRange(i - 1, 1)]);     //reverse
+        if direction[i][j].integerValue == DecreaseDir.kLeftUp.rawValue {
+            NSLog("%@ %@ ", self, self.substringWithRange(NSMakeRange(i - 1, 1)))     //reverse
             
-            NSMutableArray *charArray = objc_getAssociatedObject(self, &arrayKey);
-            [charArray insertObject:[self substringWithRange:NSMakeRange(i - 1, 1)] atIndex:0];
+            let charArray = objc_getAssociatedObject(self, &AssociatedKey.arrayKey)
+            charArray.insertObject(self.substringWithRange(NSMakeRange(i - 1, 1)), atIndex: 0)
             
-            [self LCS_Print:direction withString:other row:i - 1 andColumn:j - 1];
+            self.LCS_Print(direction, withString: other, row: i - 1, andColumn: j - 1)
         }
-        else if ([direction[i][j] integerValue] == kUp) {
-            [self LCS_Print:direction withString:other row:i - 1 andColumn:j];
+        else if direction[i][j].integerValue == DecreaseDir.kUp.rawValue {
+            self.LCS_Print(direction, withString: other, row: i - 1, andColumn: j)
         }
         else {
-            [self LCS_Print:direction
-                 withString:other
-                        row:i
-                  andColumn:j - 1];
+            self.LCS_Print(direction, withString: other, row: i, andColumn: j - 1)
         }
     }
-
+/*
     // MARK:  Levenshtein distance
 
     - (NSInteger)LD_WithString:(NSString *)other
