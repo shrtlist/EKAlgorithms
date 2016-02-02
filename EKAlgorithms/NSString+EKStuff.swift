@@ -333,76 +333,47 @@ extension NSString {
         
         return d[length][n]
     }
-/*
+
     // MARK: KMP (Knuth-Morris-Prat)
 
-    - (NSInteger)KMPindexOfSubstringWithPattern:(NSString *)pattern
-    {
-        NSParameterAssert(pattern != nil);
+    func KMPindexOfSubstringWithPattern(pattern: NSString) -> Int {
+        let prefix = self.computePrefixFunctionForPattern(pattern)
+
+        var k = -1
         
-        NSUInteger selfLenght    = [self length];
-        NSUInteger patternLenght = [pattern length];
-        
-        NSInteger *prefix = [self computePrefixFunctionForPattern:pattern];
-        NSParameterAssert(prefix != NULL);
-        
-        const char *utf8Self        = [self UTF8String];
-        size_t self_C_string_lenght = strlen(utf8Self) + 1;
-        
-        char haystack_C_array[self_C_string_lenght];
-        memcpy(haystack_C_array, utf8Self, self_C_string_lenght);
-        
-        const char *utf8Pattern        = [pattern UTF8String];
-        size_t pattern_C_string_lenght = strlen(utf8Pattern) + 1;
-        
-        char needle_C_array[pattern_C_string_lenght];
-        memcpy(needle_C_array, utf8Pattern, pattern_C_string_lenght);
-        
-        NSInteger k = -1;
-        
-        for (NSUInteger i = 0; i < selfLenght; i++) {
-            while (k > -1 && needle_C_array[k + 1] != haystack_C_array[i]) {
-                k = prefix[k];
+        for i in 0 ..< self.length {
+            while k > -1 && pattern.characterAtIndex(k + 1) != self.characterAtIndex(i) {
+                k = prefix[k]
             }
-            if (haystack_C_array[i] == needle_C_array[k + 1]) {
-                k++;
+            
+            if self.characterAtIndex(i) == pattern.characterAtIndex(k + 1) {
+                k += 1
             }
-            if (k == patternLenght - 1) {
-                free(prefix);
-                return i - k;
+
+            if k == pattern.length - 1 {
+                return i - k
             }
         }
-        free(prefix);
         
-        return -1;
+        return -1
     }
 
-    - (NSInteger *)computePrefixFunctionForPattern:(NSString *)pattern
-    {
-        NSUInteger pattern_ObjC_string_lenght = [pattern length];
+    func computePrefixFunctionForPattern(pattern: NSString) -> [Int] {
+        var prefix = [Int](count: pattern.length, repeatedValue: 0)
         
-        const char *utf8Pattern        = [pattern UTF8String];
-        size_t pattern_C_string_lenght = strlen(utf8Pattern) + 1;
+        var k = -1
+        prefix[0] = k
         
-        char pattern_C_Array[pattern_C_string_lenght];
-        memcpy(pattern_C_Array, utf8Pattern, pattern_C_string_lenght);
-        
-        NSInteger *prefix = malloc(sizeof(NSInteger) * pattern_ObjC_string_lenght);
-        NSParameterAssert(prefix != NULL);
-        
-        NSInteger k = -1;
-        prefix[0] = k;
-        
-        for (NSUInteger i = 1; i < pattern_ObjC_string_lenght; i++) {
-            while (k > -1 && pattern_C_Array[k + 1] != pattern_C_Array[i]) {
-                k = prefix[k];
+        for i in 1 ..< pattern.length {
+            while k > -1 && pattern.characterAtIndex(k + 1) != pattern.characterAtIndex(i) {
+                k = prefix[k]
             }
-            if (pattern_C_Array[i] == pattern_C_Array[k + 1]) {
-                k++;
+            
+            if pattern.characterAtIndex(i) == pattern.characterAtIndex(k + 1) {
+                k += 1
             }
-            prefix[i] = k;
+            prefix[i] = k
         }
-        return prefix;
+        return prefix
     }
- */
 }

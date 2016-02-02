@@ -152,10 +152,10 @@ NSLog("Longest common sequence of abcdbceea and cabdefga is --> %@", "abcdbceea"
 
 // Levenshtein Distance
 NSLog("Levenshtein Distance of levenshtein and meilenstein is --> %d", "levenshtein".LD_WithString("meilenstein"))
-/*
-// KMP
-NSLog(@"Index of KMP string match is --> %ld", [@"bacbababaabcbab" KMPindexOfSubstringWithPattern:@"bab"]);
 
+// KMP
+NSLog("Index of KMP string match is --> %ld", "bacbababaabcbab".KMPindexOfSubstringWithPattern("bab"))
+/*
 // MARK: Numeric problems
 //NUMERIC PROBLEMS--------------------------------------------------------------------------
 
