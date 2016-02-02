@@ -298,50 +298,42 @@ extension NSString {
             self.LCS_Print(direction, withString: other, row: i, andColumn: j - 1)
         }
     }
-/*
+
     // MARK:  Levenshtein distance
 
-    - (NSInteger)LD_WithString:(NSString *)other
-    {
-            //creating and retaining a matrix of size self.length+1 by other.length+1
+    func LD_WithString(other: NSString) -> Int {
+        //creating and retaining a matrix of size self.length+1 by other.length+1
+        let n = other.length
         
-        if (other == nil) {
-            return self.length;
+        if length == 0 || n == 0 {
+            return abs(length - n)
         }
         
-        size_t m = self.length;
-        size_t n = other.length;
+        var d = Array(count: length + 1, repeatedValue: Array(count: n + 1, repeatedValue: 0))
         
-        if (m == 0 || n == 0) {
-            return abs((int)m - (int)n);
+        for i in 0...length {
+            d[i][0] = i
         }
         
-        NSMutableArray *d = [NSMutableArray arrayWithCapacity:m + 1];
-        
-        for (int i = 0; i <= m; i++) {
-            d[i] = [NSMutableArray arrayWithCapacity:n + 1];
-            d[i][0] = @(i);
+        for j in 0...n {
+            d[0][j] = j
         }
         
-        for (int j = 0; j <= n; j++) {
-            d[0][j] = @(j);
-        }
-        
-        for (int i = 1; i <= m; i++) {
-            for (int j = 1; j <= n; j++) {
-                int cost = ![[self substringWithRange:NSMakeRange(i - 1, 1)] isEqual:[other substringWithRange:NSMakeRange(j - 1, 1)]];
+        for i in 1...length {
+            for j in 1...n {
+                let cost = !self.substringWithRange(NSMakeRange(i - 1, 1)).isEqual(other.substringWithRange(NSMakeRange(j - 1, 1)))
                 
-                int min1 = [d[i - 1][j] intValue] + 1;
-                int min2 = [d[i][j - 1] intValue] + 1;
-                int min3 = [d[i - 1][j - 1] intValue] + cost;
+                let min1 = d[i - 1][j] + 1
+                let min2 = d[i][j - 1] + 1
+                let min3 = d[i - 1][j - 1] + Int(cost)
                 
-                d[i][j] = @(MIN(MIN(min1, min2), min3));
+                d[i][j] = min(min(min1, min2), min3)
             }
         }
         
-        return [d[m][n] integerValue];
+        return d[length][n]
     }
-
+/*
     // MARK: KMP (Knuth-Morris-Prat)
 
     - (NSInteger)KMPindexOfSubstringWithPattern:(NSString *)pattern
