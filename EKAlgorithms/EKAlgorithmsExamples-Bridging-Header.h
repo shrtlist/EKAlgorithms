@@ -3,7 +3,6 @@
 //
 
 @import Foundation;
-#import "NSNumber+EKStuff.h"
 #import "EKStack.h"
 #import "EKQueue.h"
 #import "EKDeque.h"

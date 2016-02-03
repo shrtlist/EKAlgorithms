@@ -154,77 +154,80 @@ NSLog("Longest common sequence of abcdbceea and cabdefga is --> %@", "abcdbceea"
 NSLog("Levenshtein Distance of levenshtein and meilenstein is --> %d", "levenshtein".LD_WithString("meilenstein"))
 
 // KMP
-NSLog("Index of KMP string match is --> %ld", "bacbababaabcbab".KMPindexOfSubstringWithPattern("bab"))
-/*
+NSLog("Index of KMP string match is --> %d", "bacbababaabcbab".KMPindexOfSubstringWithPattern("bab"))
+
 // MARK: Numeric problems
-//NUMERIC PROBLEMS--------------------------------------------------------------------------
+// NUMERIC PROBLEMS--------------------------------------------------------------------------
 
-//Sieve of Eratosf
-NSLog(@"Primes from sieve %@", [[NSNumber primeNumbersFromSieveEratosthenesWithMaxNumber:42] description]);
+// Sieve of Eratosf
+NSLog("Primes from sieve %@", NSNumber.primeNumbersFromSieveEratosthenesWithMaxNumber(42).description)
 
-//GCD
-NSLog(@"Greatest common divisor of two numbers is %lu", (unsigned long)[@42 greatestCommonDivisorWithNumber: 84]);
+// GCD
+NSLog("Greatest common divisor of two numbers is %d", 42.greatestCommonDivisorWithNumber(84))
 
-//LCM
-NSLog(@"Least common multiple of two numbers is %lu", [@16 leastCommonMultipleWithNumber: 20]);
+// LCM
+NSLog("Least common multiple of two numbers is %d", 16.leastCommonMultipleWithNumber(20))
 
 //Swap integer pointers without using a third element
-NSInteger intValue1 = 12, intValue2 = 21;
-NSLog(@"Integer values before swap: %ld, %ld", (long)intValue1, (long)intValue2);
-[NSNumber swapValueOfIntPointer:&intValue1 withValueOfIntPointer:&intValue2];
-NSLog(@"Integer values after swap: %ld, %ld", (long)intValue1, (long)intValue2);
+var intValue1 = 12, intValue2 = 21
+NSLog("Integer values before swap: %d, %d", intValue1, intValue2)
+NSNumber.swapValueOfIntPointer(&intValue1, withValueOfIntPointer: &intValue2)
+NSLog("Integer values after swap: %d, %d", intValue1, intValue2)
 
 //Factorial
-NSLog(@"Factorial is %llu", (unsigned long long)[@3 factorial]);
+NSLog("Factorial is %d", 3.factorial())
 
-//Fibonacci numbers
-NSLog(@"Fibonacci series is %@", [NSNumber fibonacciNumbersUpToNumber:15]);
+// Fibonacci numbers
+NSLog("Fibonacci series is %@", NSNumber.fibonacciNumbersUpToNumber(15))
 
-for (int i = 298; i < 300; i++) {
-    NSLog(@"Fibonacci at index %i: %@", i, [NSNumber fibonacciAtIndex:i]);         //limited by 92
-    NSLog(@"Fibonacci at index %i: %@", i, [NSNumber fibonacciWithDecimal:i]);
+for i: UInt in 91..<92 {
+    NSLog("Fibonacci at index %i: %@", i, NSNumber.fibonacciAtIndex(i))         //limited by 92
 }
 
-//Find sum of digits
-NSLog(@"Sum of digits is: %lu", (unsigned long)[@1234 sumOfDigits]);
+for i: UInt in 298..<300 {
+    NSLog("Fibonacci at index %i: %@", i, NSNumber.fibonacciWithDecimal(i))
+}
 
-//Binary to decimal convertion
-NSLog(@"Decimal is: %lu", (unsigned long)[NSNumber decimalNumberFromBinary:1101]);
+// Find sum of digits
+NSLog("Sum of digits is: %d", 1234.sumOfDigits())
 
-//Decimal to binary
-NSLog(@"Binary is %lu", (unsigned long)[NSNumber binaryNumberFromDecimal:3]);
+// Binary to decimal convertion
+NSLog("Decimal is: %d", NSNumber.decimalNumberFromBinary(1101))
 
-//Fast Exp
-NSLog(@"Fast exp %ld", (long)[NSNumber fastExpForNumber:2 withPower:10]);
+// Decimal to binary
+NSLog("Binary is %d", NSNumber.binaryNumberFromDecimal(3))
 
-//Number reverse
-NSLog(@"Reversed number is %li", (long)[@123456789 reverseNumber]);
+// Fast Exp
+NSLog("Fast exp %ld", NSNumber.fastExpForNumber(2, withPower: 10))
 
-//Even/Odd
-NSLog(@"Given number even? - %@", [@1234567 isEven] ? @"YES" : @"NO");
+// Number reverse
+NSLog("Reversed number is %d", 123456789.reverseNumber())
 
-//Leap year check
-NSLog(@"Is given year leap? - %@", [@2000 isLeapGivenYear] ? @"YES" : @"NO");
+// Even/Odd
+NSLog("Given number even? - %@", 1234567.isEven() ? "YES" : "NO")
 
-//Armstrong number check
-NSLog(@"Is given number Armstrong? --> %@", [@407 isArmstrongNumber] ? @"YES" : @"NO");
+// Leap year check
+NSLog("Is given year leap? - %@", 2000.isLeapGivenYear() ? "YES" : "NO")
 
-//Prime Number Check
-NSLog(@"Is given number Prime? --> %@", [@23 isPrime] ? @"YES" : @"NO");
+// Armstrong number check
+NSLog("Is given number Armstrong? --> %@", 407.isArmstrongNumber() ? "YES" : "NO")
 
-//Nth prime
-NSLog(@"Nth prime is --> %lu", (unsigned long)[NSNumber nthPrime:101]);
+// Prime Number Check
+NSLog("Is given number Prime? --> %@", 23.isPrime() ? "YES" : "NO")
 
-//Square root
-NSLog(@"Square root is --> %f", [@ - 144.0 squareRoot]);
-NSLog(@"Square root is --> %f", [@2.0 squareRoot]);
+// Nth prime
+NSLog("Nth prime is --> %d", NSNumber.nthPrime(101))
 
-//Convertion to another numeral system
-NSLog(@"Converted number is --> %@", [@42 convertedNumberWithBase: 2]);
+// Square root
+NSLog("Square root is --> %f", -144.0.squareRoot())
+NSLog("Square root is --> %f", 2.0.squareRoot())
+
+// Conversion to another numeral system
+NSLog("Converted number is --> \(42.convertedNumberWithBase(2))")
 
 //Fast inverse square root
-NSLog(@"FISR is --> %@", @([@5 fastInverseSquareRoot]));
-
+NSLog("FISR is --> \(5.fastInverseSquareRoot())")
+/*
 // MARK: Data structures
 //DATA STRUCTURES---------------------------------------------------------------------------
 

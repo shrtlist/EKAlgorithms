@@ -7,7 +7,7 @@
 //
 
 #import "NSDictionary+EKStuff.h"
-#import "NSNumber+EKStuff.h"
+#import "EKAlgorithmsExamples-Swift.h"
 #import "EKGraph.h"
 #import "EKVertex.h"
 #import "EKEdge.h"

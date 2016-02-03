@@ -7,8 +7,7 @@
 //
 
 #import "NSDictionary+EKStuff.h"
-#import "NSNumber+EKStuff.h"
-
+#import "EKAlgorithmsExamples-Swift.h"
 
 @implementation NSDictionary (EKStuff)
 
