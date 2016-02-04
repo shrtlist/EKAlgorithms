@@ -3,7 +3,6 @@
 //
 
 @import Foundation;
-#import "EKStack.h"
 #import "EKQueue.h"
 #import "EKDeque.h"
 #import "EKBHeap.h"

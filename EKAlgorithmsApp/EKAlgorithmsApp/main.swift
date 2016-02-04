@@ -225,22 +225,22 @@ NSLog("Square root is --> %f", 2.0.squareRoot())
 // Conversion to another numeral system
 NSLog("Converted number is --> \(42.convertedNumberWithBase(2))")
 
-//Fast inverse square root
+// Fast inverse square root
 NSLog("FISR is --> \(5.fastInverseSquareRoot())")
-/*
+
 // MARK: Data structures
-//DATA STRUCTURES---------------------------------------------------------------------------
+// DATA STRUCTURES---------------------------------------------------------------------------
 
-//Stack
-EKStack *stack = [[EKStack alloc] initWithSize:3];
-[stack push:@"Hello"];
-[stack push:@"World"];
-[stack push:@"Programming is fun!"];
-NSLog(@"All objects from stack %@", [stack allObjectsFromStack]);
-[stack popLastObject];
-NSLog(@"All objects from stack after POP %@", [stack allObjectsFromStack]);
-NSLog(@"PEEK %@", [stack peek]);
-
+// Stack
+let stack = EKStack(size: 3)
+stack.push("Hello")
+stack.push("World")
+stack.push("Programming is fun!")
+NSLog("All objects from stack \(stack.allObjectsFromStack())")
+stack.popLastObject()
+NSLog("All objects from stack after POP \(stack.allObjectsFromStack())")
+NSLog("PEEK \(stack.peek())")
+/*
 //Queue
 EKQueue *queue = [[EKQueue alloc] init];
 [queue insertObject:@"Foo"];
