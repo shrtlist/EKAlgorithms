@@ -1,5 +1,5 @@
 //
-//  EKStack.m
+//  EKStack.swift
 //  EKAlgorithms
 //
 //  Created by Evgeny Karkan on 20.10.13.
@@ -9,10 +9,10 @@
 
 class EKStack: NSObject {
 
-    var stackArray: NSMutableArray
-    let maxStackSize: Int
+    private var stackArray = [AnyObject]()
+    private let maxStackSize: Int
 
-    // MARK: Default init
+    // MARK: Convenience init
 
     override convenience init() {
         self.init(size: Int.max)
@@ -21,8 +21,6 @@ class EKStack: NSObject {
     // MARK: Init with limited size of stack
 
     init(size: Int) {
-        stackArray   = NSMutableArray()
-        
         if (size > 0) {
             maxStackSize = size
         }
@@ -37,7 +35,7 @@ class EKStack: NSObject {
 
     func popLastObject() -> AnyObject? {
         if let object = peek() {
-        stackArray.removeLastObject()
+            stackArray.removeLast()
         
             return object
         }
@@ -46,23 +44,18 @@ class EKStack: NSObject {
         }
     }
 
-    func push(object: AnyObject?) {
+    func push(object: AnyObject) {
         if isFull() {
             NSLog("Stack is full")
             return
         }
         
-        if object != nil {
-            stackArray.addObject(object!)
-        }
-        else {
-            assert(object != nil, "You can't push nil object to stack")
-        }
+        stackArray.append(object)
     }
 
     func peek() -> AnyObject? {
         if stackArray.count > 0 {
-            return stackArray.lastObject
+            return stackArray.last
         }
         
         return nil
@@ -81,16 +74,16 @@ class EKStack: NSObject {
     }
 
     func clear() {
-        stackArray.removeAllObjects()
+        stackArray.removeAll()
     }
 
     func allObjectsFromStack() -> [AnyObject] {
-        let buffer = NSMutableArray()
+        var buffer = [AnyObject]()
         
         for object in stackArray {
-            buffer.addObject(object)
+            buffer.append(object)
         }
         
-        return buffer.copy() as! [AnyObject]
+        return buffer
     }
 }

@@ -250,21 +250,21 @@ NSLog("All objects from queue \(queue.allObjectsFromQueue())")
 queue.removeFirstObject()
 NSLog("All objects from queue after REMOVE \(queue.allObjectsFromQueue())")
 NSLog("PEEK object \(queue.peek())")
-/*
-//Deque
-EKDeque *deque = [[EKDeque alloc] init];
-[deque insertObjectToFront:@"Foo"];
-[deque insertObjectToFront:@"Bar"];
-NSLog(@"All objects from deque %@", [deque allObjectsFromDeque]);
-[deque insertObjectToBack:@"Hi"];
-NSLog(@"All objects from deque %@", [deque allObjectsFromDeque]);
-NSLog(@"PEEK first object %@", [deque peekFirstObject]);
-[deque removeFirstObject];
-NSLog(@"All objects from deque %@", [deque allObjectsFromDeque]);
-NSLog(@"PEEK last object %@", [deque peekLastObject]);
-[deque removeLastObject];
-NSLog(@"All objects from deque %@", [deque allObjectsFromDeque]);
 
+// Deque
+let deque = EKDeque()
+deque.insertObjectToFront("Foo")
+deque.insertObjectToFront("Bar")
+NSLog("All objects from deque \(deque.allObjectsFromDeque())")
+deque.insertObjectToBack("Hi")
+NSLog("All objects from deque \(deque.allObjectsFromDeque())")
+NSLog("PEEK first object \(deque.peekFirstObject())")
+deque.removeFirstObject()
+NSLog("All objects from deque \(deque.allObjectsFromDeque())")
+NSLog("PEEK last object \(deque.peekLastObject())")
+deque.removeLastObject()
+NSLog("All objects from deque \(deque.allObjectsFromDeque())")
+/*
 // Binary Heap
 EKBHeap *heap = [[EKBHeap alloc] init];
 [heap insertNumber:@6];

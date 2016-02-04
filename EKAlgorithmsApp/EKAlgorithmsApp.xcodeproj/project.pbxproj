@@ -28,6 +28,7 @@
 		5702A3321C61399800197612 /* NSNumber+EKStuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5702A3311C61399800197612 /* NSNumber+EKStuff.swift */; };
 		5702A3341C628CCD00197612 /* EKStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5702A3331C628CCD00197612 /* EKStack.swift */; };
 		5702A3361C62D00500197612 /* EKQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5702A3351C62D00500197612 /* EKQueue.swift */; };
+		5702A3381C62D93C00197612 /* EKDeque.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5702A3371C62D93C00197612 /* EKDeque.swift */; };
 		57C3F2A71C55EB38007C66B1 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C3F2A61C55EB38007C66B1 /* main.swift */; };
 		86C5147B18F80E5A00B5E9AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86C5147A18F80E5A00B5E9AE /* Foundation.framework */; };
 		86C5148218F80E5A00B5E9AE /* EKAlgorithmsApp.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 86C5148118F80E5A00B5E9AE /* EKAlgorithmsApp.1 */; };
@@ -46,8 +47,6 @@
 		86C515D318F8162F00B5E9AE /* EKBTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C5159418F8162F00B5E9AE /* EKBTree.m */; };
 		86C515D418F8162F00B5E9AE /* EKBHeap.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C5159618F8162F00B5E9AE /* EKBHeap.m */; };
 		86C515D518F8162F00B5E9AE /* EKBHeap.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C5159618F8162F00B5E9AE /* EKBHeap.m */; };
-		86C515D618F8162F00B5E9AE /* EKDeque.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C5159818F8162F00B5E9AE /* EKDeque.m */; };
-		86C515D718F8162F00B5E9AE /* EKDeque.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C5159818F8162F00B5E9AE /* EKDeque.m */; };
 		86C515DC18F8162F00B5E9AE /* EKEdge.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C5159F18F8162F00B5E9AE /* EKEdge.m */; };
 		86C515DD18F8162F00B5E9AE /* EKEdge.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C5159F18F8162F00B5E9AE /* EKEdge.m */; };
 		86C515DE18F8162F00B5E9AE /* EKGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C515A118F8162F00B5E9AE /* EKGraph.m */; };
@@ -103,6 +102,7 @@
 		5702A3311C61399800197612 /* NSNumber+EKStuff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSNumber+EKStuff.swift"; sourceTree = "<group>"; };
 		5702A3331C628CCD00197612 /* EKStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKStack.swift; sourceTree = "<group>"; };
 		5702A3351C62D00500197612 /* EKQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKQueue.swift; sourceTree = "<group>"; };
+		5702A3371C62D93C00197612 /* EKDeque.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKDeque.swift; sourceTree = "<group>"; };
 		57C3F2661C53F756007C66B1 /* EKAlgorithmsExamples-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EKAlgorithmsExamples-Bridging-Header.h"; sourceTree = "<group>"; };
 		57C3F2A61C55EB38007C66B1 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		666CA5D0F3A84DDFB57C1434 /* libPods-EKAlgorithmsSpecs.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EKAlgorithmsSpecs.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,8 +128,6 @@
 		86C5159418F8162F00B5E9AE /* EKBTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKBTree.m; sourceTree = "<group>"; };
 		86C5159518F8162F00B5E9AE /* EKBHeap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKBHeap.h; sourceTree = "<group>"; };
 		86C5159618F8162F00B5E9AE /* EKBHeap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKBHeap.m; sourceTree = "<group>"; };
-		86C5159718F8162F00B5E9AE /* EKDeque.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKDeque.h; sourceTree = "<group>"; };
-		86C5159818F8162F00B5E9AE /* EKDeque.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKDeque.m; sourceTree = "<group>"; };
 		86C5159E18F8162F00B5E9AE /* EKEdge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKEdge.h; sourceTree = "<group>"; };
 		86C5159F18F8162F00B5E9AE /* EKEdge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKEdge.m; sourceTree = "<group>"; };
 		86C515A018F8162F00B5E9AE /* EKGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKGraph.h; sourceTree = "<group>"; };
@@ -296,8 +294,7 @@
 				86C5159218F8162F00B5E9AE /* BinaryTree */,
 				86C5159518F8162F00B5E9AE /* EKBHeap.h */,
 				86C5159618F8162F00B5E9AE /* EKBHeap.m */,
-				86C5159718F8162F00B5E9AE /* EKDeque.h */,
-				86C5159818F8162F00B5E9AE /* EKDeque.m */,
+				5702A3371C62D93C00197612 /* EKDeque.swift */,
 				5702A3351C62D00500197612 /* EKQueue.swift */,
 				5702A3331C628CCD00197612 /* EKStack.swift */,
 				86C5159D18F8162F00B5E9AE /* Graph */,
@@ -582,7 +579,6 @@
 			files = (
 				5702A3301C5D7D6F00197612 /* NSString+EKStuff.swift in Sources */,
 				5702A3321C61399800197612 /* NSNumber+EKStuff.swift in Sources */,
-				86C515D618F8162F00B5E9AE /* EKDeque.m in Sources */,
 				5702A3281C5A896200197612 /* NSArray+EKStuff.swift in Sources */,
 				86C515F018F8162F00B5E9AE /* NSArray+EKGeometry.m in Sources */,
 				86C515D418F8162F00B5E9AE /* EKBHeap.m in Sources */,
@@ -590,6 +586,7 @@
 				86C515E618F8162F00B5E9AE /* EKNode.m in Sources */,
 				86C515EE18F8162F00B5E9AE /* EKALocation.m in Sources */,
 				86C515C918F8162F00B5E9AE /* EKAVLTree.m in Sources */,
+				5702A3381C62D93C00197612 /* EKDeque.swift in Sources */,
 				5702A32E1C5D75D600197612 /* SSRadixNode.swift in Sources */,
 				86C515CD18F8162F00B5E9AE /* EKBSTree.m in Sources */,
 				86C515F418F8162F00B5E9AE /* NSDictionary+EKStuff.m in Sources */,
@@ -617,7 +614,6 @@
 				86C515D118F8162F00B5E9AE /* EKBTreeNode.m in Sources */,
 				86C515CE18F8162F00B5E9AE /* EKBSTree.m in Sources */,
 				86EBBC0E18F82B3A00F888C3 /* GeometrySpecs.m in Sources */,
-				86C515D718F8162F00B5E9AE /* EKDeque.m in Sources */,
 				86C515CC18F8162F00B5E9AE /* EKAVLTreeNode.m in Sources */,
 				86EBBC0F18F82B3A00F888C3 /* NSArray.m in Sources */,
 				86C515FB18F8162F00B5E9AE /* NSArray+Selection.m in Sources */,

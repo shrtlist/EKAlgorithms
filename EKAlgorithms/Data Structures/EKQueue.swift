@@ -9,25 +9,17 @@
 
 class EKQueue: NSObject {
 
-    var queueArray: NSMutableArray
-
-    // MARK: init
-
-    override init() {
-        queueArray = NSMutableArray()
-        super.init()
-    }
+    private var queueArray = [AnyObject]()
 
     // MARK: Public API
 
     func insertObject(object: AnyObject) {
-        queueArray.addObject(object)
+        queueArray.append(object)
     }
 
     func removeFirstObject() -> AnyObject? {
         if queueArray.count > 0 {
-            let object = peek()
-            queueArray.removeObjectAtIndex(0)
+            let object = queueArray.removeAtIndex(0)
             return object
         }
         
@@ -36,7 +28,7 @@ class EKQueue: NSObject {
 
     func peek() -> AnyObject? {
         if queueArray.count > 0 {
-            return queueArray.objectAtIndex(0)
+            return queueArray.first
         }
         
         return nil
@@ -47,16 +39,16 @@ class EKQueue: NSObject {
     }
 
     func clear() {
-        queueArray.removeAllObjects()
+        queueArray.removeAll()
     }
 
     func allObjectsFromQueue() -> [AnyObject] {
-        let buffer = NSMutableArray()
+        var buffer = [AnyObject]()
         
         for object in queueArray {
-            buffer.addObject(object)
+            buffer.append(object)
         }
         
-        return buffer.copy() as! [AnyObject]
+        return buffer
     }
 }
