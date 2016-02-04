@@ -336,7 +336,7 @@ gV.adjacentEdges = Set([EKEdge(adjacentFrom: gV, to: fV, andWeight: 1),
 
 // Init graph (see EKGraphPicture.png)
 var graph = EKGraph(startVertex: aV)
-graph.vertices = [aV, bV, cV, dV, eV, fV, gV].mutableCopy() as! NSMutableArray
+graph.vertices = [aV, bV, cV, dV, eV, fV, gV]
 
 // Is it a directed Graph
 if graph.isUndirectedGraph() {
@@ -394,7 +394,7 @@ d211V.adjacentEdges = Set([EKEdge(adjacentFrom: d211V, to: g201V, andWeight: 1),
 e107V.adjacentEdges = Set([EKEdge(adjacentFrom: e107V, to: f110V, andWeight: 1)])
 
 let topGraph = EKGraph()
-topGraph.vertices = [c101V, c102V, c103V, d211V, e107V, f110V, g201V].mutableCopy() as! NSMutableArray
+topGraph.vertices = [c101V, c102V, c103V, d211V, e107V, f110V, g201V]
 
 // Result may vary due to random order in Objective-C fast enumeration
 topGraph.topSort()
