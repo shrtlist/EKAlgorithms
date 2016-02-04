@@ -9,8 +9,6 @@
 #import "NSDictionary+EKStuff.h"
 #import "EKAlgorithmsExamples-Swift.h"
 #import "EKGraph.h"
-#import "EKVertex.h"
-#import "EKEdge.h"
 
 #if TARGET_OS_IPHONE
 #import "NSNumber+EKComparisonForIOS.h"

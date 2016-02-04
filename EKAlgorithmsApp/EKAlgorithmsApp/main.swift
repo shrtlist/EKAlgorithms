@@ -276,70 +276,76 @@ heap.insertNumber(17)
 heap.insertNumber(5)
 
 NSLog("Minimum Number deleted: \(heap.deleteMin())")
-/*
+
 //Graph stuff
 
-//DFS
-//Init vertices
-EKVertex *aV = [[EKVertex alloc] init];         //this is a start vertex
-aV.label = @"A vertex";
+// DFS
+// Init vertices
+let aV = EKVertex()         //this is a start vertex
+aV.label = "A vertex"
 
-EKVertex *bV = [[EKVertex alloc] init];
-bV.label = @"B vertex";
+let bV = EKVertex()
+bV.label = "B vertex"
 
-EKVertex *cV = [[EKVertex alloc] init];
-cV.label = @"C vertex";
+let cV = EKVertex()
+cV.label = "C vertex"
 
-EKVertex *dV = [[EKVertex alloc] init];
-dV.label = @"D vertex";
+let dV = EKVertex()
+dV.label = "D vertex"
 
-EKVertex *eV = [[EKVertex alloc] init];
-eV.label = @"E vertex";
+let eV = EKVertex()
+eV.label = "E vertex"
 
-EKVertex *fV = [[EKVertex alloc] init];
-fV.label = @"F vertex";
+let fV = EKVertex()
+fV.label = "F vertex"
 
-EKVertex *gV = [[EKVertex alloc] init];
-gV.label = @"G vertex";
+let gV = EKVertex()
+gV.label = "G vertex"
 
-//Set adjacent vertices
-aV.adjacentEdges = [[NSMutableSet alloc] initWithObjects:[[EKEdge alloc] initWithAdjacentFrom:aV To:cV andWeight:@4],
-                    [[EKEdge alloc] initWithAdjacentFrom:aV To:dV andWeight:@1],
-                    [[EKEdge alloc] initWithAdjacentFrom:aV To:bV andWeight:@2], nil];
-bV.adjacentEdges = [[NSMutableSet alloc] initWithObjects:[[EKEdge alloc] initWithAdjacentFrom:bV To:aV andWeight:@2],
-                    [[EKEdge alloc] initWithAdjacentFrom:bV To:dV andWeight:@3],
-                    [[EKEdge alloc] initWithAdjacentFrom:bV To:eV andWeight:@10], nil];
-cV.adjacentEdges = [[NSMutableSet alloc] initWithObjects:[[EKEdge alloc] initWithAdjacentFrom:cV To:aV andWeight:@4],
-                    [[EKEdge alloc] initWithAdjacentFrom:cV To:dV andWeight:@2],
-                    [[EKEdge alloc] initWithAdjacentFrom:cV To:fV andWeight:@5], nil];
-dV.adjacentEdges = [[NSMutableSet alloc] initWithObjects:[[EKEdge alloc] initWithAdjacentFrom:dV To:aV andWeight:@1],
-                    [[EKEdge alloc] initWithAdjacentFrom:dV To:bV andWeight:@3],
-                    [[EKEdge alloc] initWithAdjacentFrom:dV To:cV andWeight:@2],
-                    [[EKEdge alloc] initWithAdjacentFrom:dV To:eV andWeight:@7],
-                    [[EKEdge alloc] initWithAdjacentFrom:dV To:fV andWeight:@8],
-                    [[EKEdge alloc] initWithAdjacentFrom:dV To:gV andWeight:@4], nil];
-eV.adjacentEdges = [[NSMutableSet alloc] initWithObjects:[[EKEdge alloc] initWithAdjacentFrom:eV To:bV andWeight:@10],
-                    [[EKEdge alloc] initWithAdjacentFrom:eV To:dV andWeight:@7],
-                    [[EKEdge alloc] initWithAdjacentFrom:eV To:gV andWeight:@6], nil];
-fV.adjacentEdges = [[NSMutableSet alloc] initWithObjects:[[EKEdge alloc] initWithAdjacentFrom:fV To:cV andWeight:@5],
-                    [[EKEdge alloc] initWithAdjacentFrom:fV To:dV andWeight:@8],
-                    [[EKEdge alloc] initWithAdjacentFrom:fV To:gV andWeight:@1], nil];
-gV.adjacentEdges = [[NSMutableSet alloc] initWithObjects:[[EKEdge alloc] initWithAdjacentFrom:gV To:fV andWeight:@1],
-                    [[EKEdge alloc] initWithAdjacentFrom:gV To:dV andWeight:@4],
-                    [[EKEdge alloc] initWithAdjacentFrom:gV To:eV andWeight:@6], nil];
+// Set adjacent vertices
+aV.adjacentEdges = Set([EKEdge(adjacentFrom: aV, to: cV, andWeight: 4),
+    EKEdge(adjacentFrom: aV, to: dV, andWeight: 1),
+    EKEdge(adjacentFrom: aV, to: bV, andWeight: 2)])
+    
+bV.adjacentEdges = Set([EKEdge(adjacentFrom: bV, to: aV, andWeight: 2),
+    EKEdge(adjacentFrom: bV, to: dV, andWeight: 3),
+    EKEdge(adjacentFrom: bV, to: eV, andWeight: 10)])
 
-//Init graph (see EKGraphPicture.png)
-EKGraph *graph = [[EKGraph alloc] initWithStartVertex:aV];
-graph.vertices = [@[aV, bV, cV, dV, eV, fV, gV] mutableCopy];
+cV.adjacentEdges = Set([EKEdge(adjacentFrom: cV, to: aV, andWeight: 4),
+    EKEdge(adjacentFrom: cV, to: dV, andWeight: 2),
+    EKEdge(adjacentFrom: cV, to: fV, andWeight: 5)])
 
+dV.adjacentEdges = Set([EKEdge(adjacentFrom: dV, to: aV, andWeight: 1),
+    EKEdge(adjacentFrom: dV, to: bV, andWeight: 3),
+    EKEdge(adjacentFrom: dV, to: cV, andWeight: 2),
+    EKEdge(adjacentFrom: dV, to: eV, andWeight: 7),
+    EKEdge(adjacentFrom: dV, to: fV, andWeight: 8),
+    EKEdge(adjacentFrom: dV, to: gV, andWeight: 4)])
 
-//Is it a directed Graph
-if ([graph isUndirectedGraph]) {
-    NSLog(@"This graph is a undirected graph");
-} else {
-    NSLog(@"This graph is a directed graph");
+eV.adjacentEdges = Set([EKEdge(adjacentFrom: eV, to: bV, andWeight: 10),
+    EKEdge(adjacentFrom: eV, to: dV, andWeight: 7),
+    EKEdge(adjacentFrom: eV, to: gV, andWeight: 6)])
+
+fV.adjacentEdges = Set([EKEdge(adjacentFrom: fV, to: cV, andWeight: 5),
+    EKEdge(adjacentFrom: fV, to: dV, andWeight: 8),
+    EKEdge(adjacentFrom: fV, to: gV, andWeight: 1)])
+
+gV.adjacentEdges = Set([EKEdge(adjacentFrom: gV, to: fV, andWeight: 1),
+    EKEdge(adjacentFrom: gV, to: dV, andWeight: 4),
+    EKEdge(adjacentFrom: gV, to: eV, andWeight: 6)])
+
+// Init graph (see EKGraphPicture.png)
+var graph = EKGraph(startVertex: aV)
+graph.vertices = [aV, bV, cV, dV, eV, fV, gV].mutableCopy() as! NSMutableArray
+
+// Is it a directed Graph
+if graph.isUndirectedGraph() {
+    NSLog("This graph is a undirected graph")
 }
-
+else {
+    NSLog("This graph is a directed graph")
+}
+/*
 [graph depthFirstSearch];
 [graph depthFirstSearchRecursive: aV];
 [graph clearVisitHistory];
