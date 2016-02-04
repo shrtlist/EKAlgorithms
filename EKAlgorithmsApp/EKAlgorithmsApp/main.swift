@@ -345,60 +345,60 @@ if graph.isUndirectedGraph() {
 else {
     NSLog("This graph is a directed graph")
 }
+
+graph.depthFirstSearch()
+graph.depthFirstSearchRecursive(aV)
+graph.clearVisitHistory()
+
+// BFS
+graph.breadthFirstSearch()
+
+// Prim
+graph.primMST(aV)
+
+// Kruskal
+graph.kruskalMST()
+
+// Dijkstra
+graph.dijkstraSPTFrom(aV, to: nil)
+
+// Topsort (see EKTopsort.png)
+let c101V = EKVertex()         //We simulate courses in university
+c101V.label = "C101"
+
+let c102V = EKVertex()
+c102V.label = "C102"
+
+let c103V = EKVertex()
+c103V.label = "C103"
+
+let d211V = EKVertex()
+d211V.label = "D211"
+
+let e107V = EKVertex()
+e107V.label = "E107"
+
+let f110V = EKVertex()
+f110V.label = "F110"
+
+let g201V = EKVertex()
+g201V.label = "G201"
+
+c101V.adjacentEdges = Set([EKEdge(adjacentFrom: c101V, to: c103V, andWeight: 1)])
+c103V.adjacentEdges = Set([EKEdge(adjacentFrom: c103V, to: g201V, andWeight: 1)])
+c102V.adjacentEdges = Set([EKEdge(adjacentFrom: c102V, to: c103V, andWeight: 1),
+    EKEdge(adjacentFrom: c102V, to: d211V, andWeight: 1),
+    EKEdge(adjacentFrom: c102V, to: e107V, andWeight: 1)])
+d211V.adjacentEdges = Set([EKEdge(adjacentFrom: d211V, to: g201V, andWeight: 1),
+    EKEdge(adjacentFrom: d211V, to: f110V, andWeight: 1)])
+e107V.adjacentEdges = Set([EKEdge(adjacentFrom: e107V, to: f110V, andWeight: 1)])
+
+let topGraph = EKGraph()
+topGraph.vertices = [c101V, c102V, c103V, d211V, e107V, f110V, g201V].mutableCopy() as! NSMutableArray
+
+// Result may vary due to random order in Objective-C fast enumeration
+topGraph.topSort()
 /*
-[graph depthFirstSearch];
-[graph depthFirstSearchRecursive: aV];
-[graph clearVisitHistory];
-
-//BFS
-[graph breadthFirstSearch];
-
-//Prim
-[graph primMST:aV];
-
-//Kruskal
-[graph kruskalMST];
-
-//Dijkstra
-[graph dijkstraSPTFrom:aV To:nil];
-
-//Topsort (see EKTopsort.png)
-EKVertex *c101V = [[EKVertex alloc] init];         //We simulate courses in university
-c101V.label = @"C101";
-
-EKVertex *c102V = [[EKVertex alloc] init];
-c102V.label = @"C102";
-
-EKVertex *c103V = [[EKVertex alloc] init];
-c103V.label = @"C103";
-
-EKVertex *d211V = [[EKVertex alloc] init];
-d211V.label = @"D211";
-
-EKVertex *e107V = [[EKVertex alloc] init];
-e107V.label = @"E107";
-
-EKVertex *f110V = [[EKVertex alloc] init];
-f110V.label = @"F110";
-
-EKVertex *g201V = [[EKVertex alloc] init];
-g201V.label = @"G201";
-
-c101V.adjacentEdges = [[NSMutableSet alloc] initWithObjects:[[EKEdge alloc] initWithAdjacentFrom:c101V To:c103V andWeight:@1], nil];
-c103V.adjacentEdges = [[NSMutableSet alloc] initWithObjects:[[EKEdge alloc] initWithAdjacentFrom:c103V To:g201V andWeight:@1], nil];
-c102V.adjacentEdges = [[NSMutableSet alloc] initWithObjects:[[EKEdge alloc] initWithAdjacentFrom:c102V To:c103V andWeight:@1],
-                       [[EKEdge alloc] initWithAdjacentFrom:c102V To:d211V andWeight:@1],
-                       [[EKEdge alloc] initWithAdjacentFrom:c102V To:e107V andWeight:@1], nil];
-d211V.adjacentEdges = [[NSMutableSet alloc] initWithObjects:[[EKEdge alloc] initWithAdjacentFrom:d211V To:g201V andWeight:@1],
-                       [[EKEdge alloc] initWithAdjacentFrom:d211V To:f110V andWeight:@1], nil];
-e107V.adjacentEdges = [[NSMutableSet alloc] initWithObjects:[[EKEdge alloc] initWithAdjacentFrom:e107V To:f110V andWeight:@1], nil];
-
-EKGraph *topGraph = [[EKGraph alloc] init];
-topGraph.vertices = [@[c101V, c102V, c103V, d211V, e107V, f110V, g201V] mutableCopy];
-
-//Result may vary due to random order in Objective-C fast enumeration
-[topGraph topSort];
-
 //Linked list stuff
 EKLinkedList *list = [[EKLinkedList alloc] initWithHead:@5];
 [list addToFront:@7];
