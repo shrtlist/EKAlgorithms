@@ -11,7 +11,6 @@
 #import "EKGraph.h"
 #import "EKVertex.h"
 #import "EKEdge.h"
-#import "EKQueue.h"
 
 #if TARGET_OS_IPHONE
 #import "NSNumber+EKComparisonForIOS.h"

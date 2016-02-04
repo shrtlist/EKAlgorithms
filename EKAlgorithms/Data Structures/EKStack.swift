@@ -3,6 +3,7 @@
 //  EKAlgorithms
 //
 //  Created by Evgeny Karkan on 20.10.13.
+//  Swiftified by Marco Abundo on 02/03/16.
 //  Copyright (c) 2013 EvgenyKarkan. All rights reserved.
 //
 
@@ -28,6 +29,8 @@ class EKStack: NSObject {
         else {
             maxStackSize = Int.max
         }
+        
+        super.init()
     }
 
     // MARK: Public API
@@ -81,13 +84,13 @@ class EKStack: NSObject {
         stackArray.removeAllObjects()
     }
 
-    func allObjectsFromStack() -> NSArray {
+    func allObjectsFromStack() -> [AnyObject] {
         let buffer = NSMutableArray()
         
         for object in stackArray {
             buffer.addObject(object)
         }
         
-        return buffer.copy() as! NSArray
+        return buffer.copy() as! [AnyObject]
     }
 }

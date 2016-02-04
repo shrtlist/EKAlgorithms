@@ -7,7 +7,7 @@
 //
 
 #import "EKBTree.h"
-#import "EKQueue.h"
+#import "EKAlgorithmsExamples-Swift.h"
 
 #if TARGET_OS_IPHONE
 #import "NSObject+EKComparisonForIOS.h"

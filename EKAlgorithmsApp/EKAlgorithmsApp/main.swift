@@ -240,17 +240,17 @@ NSLog("All objects from stack \(stack.allObjectsFromStack())")
 stack.popLastObject()
 NSLog("All objects from stack after POP \(stack.allObjectsFromStack())")
 NSLog("PEEK \(stack.peek())")
-/*
-//Queue
-EKQueue *queue = [[EKQueue alloc] init];
-[queue insertObject:@"Foo"];
-[queue insertObject:@"Bar"];
-[queue insertObject:@"HakunaMatata"];
-NSLog(@"All objects from queue %@", [queue allObjectsFromQueue]);
-[queue removeFirstObject];
-NSLog(@"All objects from queue after REMOVE %@", [queue allObjectsFromQueue]);
-NSLog(@"PEEK object %@", [queue peek]);
 
+// Queue
+let queue = EKQueue()
+queue.insertObject("Foo")
+queue.insertObject("Bar")
+queue.insertObject("HakunaMatata")
+NSLog("All objects from queue \(queue.allObjectsFromQueue())")
+queue.removeFirstObject()
+NSLog("All objects from queue after REMOVE \(queue.allObjectsFromQueue())")
+NSLog("PEEK object \(queue.peek())")
+/*
 //Deque
 EKDeque *deque = [[EKDeque alloc] init];
 [deque insertObjectToFront:@"Foo"];
