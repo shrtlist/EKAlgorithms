@@ -149,13 +149,14 @@ extension NSString {
         let stringTwo = Array((secondString as String).characters)
         var result = [Character]()
         
-        var i = 0, j = 0
+        var i = 0
         
-        for i = 0; i < stringOne.count; i += 1 {
+        for _ in 0 ..< stringOne.count {
             result.insert(stringOne[i], atIndex: i)
+            i += 1
         }
         
-        for j = 0; j < stringTwo.count; j += 1 {            
+        for j in 0 ..< stringTwo.count {
             result.insert(stringTwo[j], atIndex: i + j)
         }
         

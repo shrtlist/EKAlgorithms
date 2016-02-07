@@ -13,7 +13,7 @@ extension NSNumber {
 
     // MARK: Sieve of Eratosthenes
 
-    static func primeNumbersFromSieveEratosthenesWithMaxNumber(maxNumber: Int) -> NSArray {
+    static func primeNumbersFromSieveEratosthenesWithMaxNumber(maxNumber: Int) -> [Int] {
         var resultArray = [Int](count: maxNumber, repeatedValue: 0)
         
         for i in 0 ..< maxNumber {
@@ -32,7 +32,7 @@ extension NSNumber {
         
         let filtered = resultArray.filter({$0 != 0})
         
-        return filtered as NSArray
+        return filtered
     }
 
     // MARK: GCD
@@ -188,23 +188,22 @@ extension NSNumber {
     // MARK: Decimal to binary
 
     static func binaryNumberFromDecimal(decimal: UInt) -> Int {
-        var quotient: UInt = 0
+        var quotient = decimal
         var binaryNumber = [UInt](count: 100, repeatedValue: 0)
         var i = 1
-        quotient = decimal
         
         while quotient != 0 {
             binaryNumber[i++] = quotient % 2
             quotient          = quotient / 2
         }
         
-        let result = NSMutableString()
+        var result = String()
         
         for var j = i - 1; j > 0; j -= 1 {
-            result.appendString(NSString(format: "%d", binaryNumber[j]) as String)
+            result += String(binaryNumber[j])
         }
         
-        return result.integerValue
+        return Int(result)!
     }
 
     // MARK: Fast exponentiation
@@ -228,16 +227,16 @@ extension NSNumber {
     func reverseNumber() -> UInt {
         var numberToReverse = self.unsignedIntegerValue
         var rightDigit: UInt      = 0
-        let fooString = NSMutableString()
+        var fooString = String()
         
         repeat {
             rightDigit = numberToReverse % 10
-            fooString.appendString(NSString(format: "%d", rightDigit) as String)
+            fooString += String(rightDigit)
             numberToReverse = numberToReverse / 10
         }
         while numberToReverse != 0
         
-        return UInt(fooString.integerValue)
+        return UInt(fooString)!
     }
 
     // MARK: Even/Odd check
@@ -267,7 +266,7 @@ extension NSNumber {
         remainder_100 = givenYear % 100
         remainder_400 = givenYear % 400
         
-        return ((remainder_4 == 0 && remainder_100 != 0) || remainder_400 == 0) ? true : false
+        return (remainder_4 == 0 && remainder_100 != 0) || remainder_400 == 0 ? true : false
     }
 
     // MARK: Armstrong number check
@@ -295,7 +294,7 @@ extension NSNumber {
             return false
         }
         
-        for var i = 2.0; i <= sqrt(Double(givenNumber)); i++ {
+        for var i = 2.0; i <= sqrt(Double(givenNumber)); i += 1 {
             if givenNumber % UInt(i) == 0 {
                 return false
             }
@@ -311,7 +310,7 @@ extension NSNumber {
         
         while count < n {
             number = number + 1
-            for i = 2; i <= number; i++ {
+            for i = 2; i <= number; i += 1 {
                 if number % i == 0 {
                     break
                 }
@@ -358,7 +357,7 @@ extension NSNumber {
 
     // MARK: Convert integer to another numeral system (2, 8, 12, 16)
 
-    func convertedNumberWithBase(var base: Int) -> AnyObject {
+    func convertedNumberWithBase(var base: Int) -> NSNumber {
         if (base != 2 && base != 8 && base != 10 && base != 12 && base != 16) {
             NSLog("Bad base - base must be 2, 8, 10, 12 or 16 only")
             base = 10
@@ -368,8 +367,8 @@ extension NSNumber {
         var numberToConvert = self.longValue
         var convertedNumber = [Int](count: 64, repeatedValue: 0)
         var nextDigit = 0, index = 0
-        var resultOfConversion: AnyObject!
-        let resultString = NSMutableString()
+        var resultOfConversion: NSNumber!
+        var resultString = String()
         
         repeat {
             convertedNumber[index] = numberToConvert % base
@@ -378,18 +377,18 @@ extension NSNumber {
         }
         while (numberToConvert != 0)
         
-        for (--index; index >= 0; --index) {
+        for --index; index >= 0; --index {
             nextDigit = convertedNumber[index]
-            resultString.appendString(String(baseDigits[nextDigit]))
+            resultString += baseDigits[nextDigit]
         }
         
-        if (base == 2 || base == 8 || base == 10) {
+        if base == 2 || base == 8 || base == 10 {
             let f = NSNumberFormatter()
-            let myNumber   = f.numberFromString(resultString as String)
+            let myNumber   = f.numberFromString(resultString)
             resultOfConversion   = myNumber
         }
         else {
-            resultOfConversion = resultString.copy() as! NSNumber
+            resultOfConversion = NSNumber(integer: Int(resultString)!)
         }
         
         return resultOfConversion
@@ -397,8 +396,7 @@ extension NSNumber {
 
     // MARK: Fast inverse square root
 
-    func fastInverseSquareRoot() -> Float
-    {
+    func fastInverseSquareRoot() -> Float {
         assert(self.floatValue > 0)
         
         var result = self.floatValue
@@ -408,7 +406,7 @@ extension NSNumber {
         i         = 0x5f3759df - (i >> 1)  // gives initial guess
         result    = Float._fromBitPattern(i)         // convert bits back to float
         
-        for var idx = 0; idx < 4; idx++ {
+        for _ in 0 ..< 4 {
             result = result * (1.5 - halfOfResult * result * result)  // Newton step, repeating increases accuracy
         }
         
@@ -423,7 +421,7 @@ extension NSNumber {
     }
 
     // MARK: Quick Sum
-    // FIXME: Switch logic
+    // TODO: Switch logic
 
     static func sumOfNumbers(numbers: NSArray) -> NSNumber {
         // Be careful about number types, we will

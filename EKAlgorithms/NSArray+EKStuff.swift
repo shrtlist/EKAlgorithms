@@ -111,11 +111,11 @@ extension NSArray {
     
     // MARK: Longest string in array
     
-    func longestString() -> NSString? {
-        var returnValue: NSString?
+    func longestString() -> String? {
+        var returnValue: String?
         
-        for string in self as! [NSString] {
-            if returnValue == nil || string.length > returnValue!.length {
+        for string in self as! [String] {
+            if returnValue == nil || string.characters.count > returnValue!.characters.count {
                 returnValue = string
             }
         }
@@ -125,11 +125,11 @@ extension NSArray {
     
     // MARK: Shortest string in array
     
-    func shortestString() -> NSString? {
-        var returnValue: NSString?
+    func shortestString() -> String? {
+        var returnValue: String?
         
-        for string in self as! [NSString] {
-            if returnValue == nil || string.length < returnValue!.length {
+        for string in self as! [String] {
+            if returnValue == nil || string.characters.count < returnValue!.characters.count {
                 returnValue = string
             }
         }
@@ -158,7 +158,7 @@ extension NSArray {
         return resultSet.allObjects
     }
 
-    func unionWithoutDuplicatesWithArray(secondArray: NSArray, forKey currentKey: NSString) -> NSArray {
+    func unionWithoutDuplicatesWithArray(secondArray: NSArray, forKey currentKey: String) -> NSArray {
         let mutableArray = NSMutableArray(array: self)
         mutableArray.addObjectsFromArray(secondArray as [AnyObject])
         
@@ -168,7 +168,7 @@ extension NSArray {
         for object in copy.reverseObjectEnumerator() {
             
             for i in 0 ..< index {
-                if mutableArray[i].valueForKey(currentKey as String) as! String == object.valueForKey(currentKey as String) as! String {
+                if mutableArray[i].valueForKey(currentKey) as! String == object.valueForKey(currentKey) as! String {
                     mutableArray.removeObjectAtIndex(index)
                     break
                 }
@@ -228,7 +228,7 @@ extension NSArray {
         var sum = 0
         
         for element in self {
-            sum = sum + element.integerValue
+            sum += element.integerValue
         }
         
         return sum
@@ -294,12 +294,12 @@ extension NSArray {
             }
         }
 
-        return NSNotFound;
+        return NSNotFound
     }
 
     // MARK: Binary search
 
-    func indexOfObjectViaBinarySearch(object: AnyObject) -> NSInteger {
+    func indexOfObjectViaBinarySearch(object: AnyObject) -> Int {
         var firstIndex = 0
         var uptoIndex  = count
 

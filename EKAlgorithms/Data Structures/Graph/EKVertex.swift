@@ -10,7 +10,11 @@
 import Foundation
 
 class EKVertex: NSObject {
-    var label: NSString?
+    var label: String
     var wasVisited = false
     var adjacentEdges: Set<EKEdge>?
+    
+    init(label: String) {
+        self.label = label
+    }
 }

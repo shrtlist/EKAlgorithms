@@ -80,21 +80,19 @@ extension NSMutableArray {
         return self;
     }
 */
-    func bubbleSort() -> NSMutableArray {
-        for var i = (count - 2); i >= 0; i -= 1 {
+    func bubbleSort() {
+        for var i = count - 2; i >= 0; i -= 1 {
             for j in 0...i {
                 if self[j].isGreaterThan(self[j + 1]) {
                     self.exchangeObjectAtIndex(j, withObjectAtIndex: (j + 1))
                 }
             }
         }
-        
-        return self
     }
 
     // MARK: Shell sort
 
-    func shellSort() -> NSMutableArray {
+    func shellSort() {
         for var i = count / 2; i > 0; i = i / 2 {
             for j in i ..< count {
                 for var k = j - i; k >= 0; k = k - i {
@@ -107,21 +105,17 @@ extension NSMutableArray {
                 }
             }
         }
-
-        return self
     }
 
     // MARK: Merge sort stuff
 
-    func mergeSort() -> NSMutableArray {
-        self.partitionArrayWithMinimalIndex(0, withMaximumIndex: (count - 1))
-        
-        return self
+    func mergeSort() {
+        self.partitionArrayWithMinimalIndex(0, withMaximumIndex: count - 1)
     }
 
     // MARK: Quick sort
 
-    func quickSortWithLeftIndex(left: NSInteger, withRightIndex right: NSInteger) -> NSMutableArray {
+    func quickSortWithLeftIndex(left: Int, withRightIndex right: Int) -> NSMutableArray {
         var i = left
         var j = right
         
@@ -157,19 +151,17 @@ extension NSMutableArray {
 
     // MARK: Insertion sort
 
-    func insertionSort() -> NSMutableArray {
+    func insertionSort() {
         for i in 1 ..< count {
             for var j = i; (j > 0) && self[j - 1].isGreaterThan(self[j]); j -= 1 {
                 self.exchangeObjectAtIndex(j, withObjectAtIndex: (j - 1))
             }
         }
-
-        return self
     }
 
     // MARK: Selection sort
 
-    func selectionSort() -> NSMutableArray {
+    func selectionSort() {
         for i in 0 ..< count {
             var min = i
 
@@ -181,13 +173,11 @@ extension NSMutableArray {
 
             self.exchangeObjectAtIndex(i, withObjectAtIndex: min)
         }
-
-        return self
     }
 
     // MARK: Radix Sort
 
-    func radixSortForBase(base: Int) -> NSMutableArray {
+    func radixSortForBase(base: Int) {
         let max = self.valueForKeyPath("@max.intValue")!.intValue
 
         let numberOfSteps = Int((log(Double(max)) / log(Double(base))) + 1)
@@ -197,8 +187,6 @@ extension NSMutableArray {
 
             setArray(NSMutableArray.makeArrayFromRadixTable(radixTable) as [AnyObject])
         }
-
-        return self
     }
 
     static func makeArrayFromRadixTable(radixTable: [SSRadixNode]) -> NSMutableArray {
@@ -280,8 +268,7 @@ extension NSMutableArray {
 */
     // MARK: Heap sort
 
-    func heapSort() -> NSMutableArray {
-
+    func heapSort() {
         heapifyArrayWithSize(count)
 
         var end = count - 1
@@ -291,8 +278,6 @@ extension NSMutableArray {
             siftDownArrayWithStart(0, end: end - 1)
             end -= 1
         }
-        
-        return self
     }
 
     // MARK: Used in merge sort
@@ -315,9 +300,9 @@ extension NSMutableArray {
             temporaryArray.addObject(NSNull)
         }
 
-        var i = 0, j = 0, m = 0
-        j = min
-        m = mid + 1
+        var i = 0
+        var j = min
+        var m = mid + 1
 
         for i = min; j <= mid && m <= max; i += 1 {
             if self[j].isLessThanOrEqualTo(self[m]) {

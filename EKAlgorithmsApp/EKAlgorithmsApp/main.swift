@@ -10,7 +10,7 @@
 // MARK: Array
         
 // Init array with 5 random elements
-let array = NSMutableArray()
+var array = NSMutableArray()
 for _ in 0 ..< 5 {
     array.addObject(Int(arc4random()) % 20)
 }
@@ -89,28 +89,43 @@ NSLog("Binary search result: \([6, 9, 12, 13, 14, 29, 42].indexOfObjectViaBinary
 // SORTING-----------------------------------------------------------------------------------
 
 // Bubble sort
-NSLog("Bubble sorted array is: %@", array.bubbleSort())
+array.bubbleSort()
+NSLog("Bubble sorted array \(array)")
 
 // Shell sort
-NSLog("Shell sorted array is %@", NSMutableArray(array: [2, 45, 8, 1, 27, 16, 5.3, -53.7]).shellSort())
+array = NSMutableArray(array: [2, 45, 8, 1, 27, 16, 5.3, -53.7])
+array.shellSort()
+NSLog("Shell sorted array \(array)")
 
 // Merge sort
-NSLog("Merge sorted array %@", NSMutableArray(array: [21, 45, 87, 10, 273, 616, 0.2, -0.52]).mergeSort())
+array = NSMutableArray(array: [21, 45, 87, 10, 273, 616, 0.2, -0.52])
+array.mergeSort()
+NSLog("Merge sorted array \(array)")
 
 // Quick sort numbers
-NSLog("Quick sorted array %@", NSMutableArray(array: [2.1, 405, 817, 10, 2732, 616, 0.2, -0.52]).quickSortWithLeftIndex(0, withRightIndex: NSMutableArray(array: [21, 45, 87, 10, 273, 616, 0.2, -0.52]).count - 1))
+array = NSMutableArray(array: [2.1, 405, 817, 10, 2732, 616, 0.2, -0.52])
+array.quickSortWithLeftIndex(0, withRightIndex: NSMutableArray(array: [21, 45, 87, 10, 273, 616, 0.2, -0.52]).count - 1)
+NSLog("Quick sorted array \(array)")
 
 // Insertion sort
-NSLog("Insertion sorted array %@", NSMutableArray(array: [-23.0154, 46, 0.021, 42, 5, false, true]).insertionSort())
+array = NSMutableArray(array: [-23.0154, 46, 0.021, 42, 5, false, true])
+array.insertionSort()
+NSLog("Insertion sorted array \(array)")
 
 // Selection sort
-NSLog("Selection sorted array  %@", NSMutableArray(array: [160, 0.097, false, 89,  -61.001256, 7.5, true]).selectionSort())
+array = NSMutableArray(array: [160, 0.097, false, 89,  -61.001256, 7.5, true])
+array.selectionSort()
+NSLog("Selection sorted array \(array)")
 
 // Radix sort
-NSLog("Radix sorted array (BASE 10) %@", NSMutableArray(array: [160, 210, 997, 1222, 1334, 3411, 1]).radixSortForBase(10))
+array = NSMutableArray(array: [160, 210, 997, 1222, 1334, 3411, 1])
+array.radixSortForBase(10)
+NSLog("Radix sorted array (BASE 10) \(array)")
 
 // Heap sort
-NSLog("Heap sorted array --> %@", NSMutableArray(array: [9871523, 0.0987516, false, 89, -61.001256, 712.5, true, 384756]).heapSort())
+array = NSMutableArray(array: [9871523, 0.0987516, false, 89, -61.001256, 712.5, true, 384756])
+array.heapSort()
+NSLog("Heap sorted array \(array)")
 
 // MARK: Strings
 // STRINGS-----------------------------------------------------------------------------------
@@ -132,7 +147,7 @@ NSString.allPermutationsOfString("ABC", withFirstCharacterPosition: 0, lastChara
 // Count each letter occurence in string
 "Hello World".countEachCharacterOccurrenceInString()
 
-// Needles in haystack
+// Needle in haystack
 NSLog("Needle %d", "Foo is a bar with foo bar foo".numberOfOccurrenciesOfString("foo"))
 
 // Random string
@@ -157,7 +172,6 @@ NSLog("Levenshtein Distance of levenshtein and meilenstein is --> %d", "levensht
 NSLog("Index of KMP string match is --> %d", "bacbababaabcbab".KMPindexOfSubstringWithPattern("bab"))
 
 // MARK: Numeric problems
-// NUMERIC PROBLEMS--------------------------------------------------------------------------
 
 // Sieve of Eratosf
 NSLog("Primes from sieve %@", NSNumber.primeNumbersFromSieveEratosthenesWithMaxNumber(42).description)
@@ -168,13 +182,13 @@ NSLog("Greatest common divisor of two numbers is %d", 42.greatestCommonDivisorWi
 // LCM
 NSLog("Least common multiple of two numbers is %d", 16.leastCommonMultipleWithNumber(20))
 
-//Swap integer pointers without using a third element
+// Swap integer pointers without using a third element
 var intValue1 = 12, intValue2 = 21
 NSLog("Integer values before swap: %d, %d", intValue1, intValue2)
 NSNumber.swapValueOfIntPointer(&intValue1, withValueOfIntPointer: &intValue2)
 NSLog("Integer values after swap: %d, %d", intValue1, intValue2)
 
-//Factorial
+// Factorial
 NSLog("Factorial is %d", 3.factorial())
 
 // Fibonacci numbers
@@ -229,7 +243,6 @@ NSLog("Converted number is --> \(42.convertedNumberWithBase(2))")
 NSLog("FISR is --> \(5.fastInverseSquareRoot())")
 
 // MARK: Data structures
-// DATA STRUCTURES---------------------------------------------------------------------------
 
 // Stack
 let stack = EKStack(size: 3)
@@ -277,30 +290,17 @@ heap.insertNumber(5)
 
 NSLog("Minimum Number deleted: \(heap.deleteMin())")
 
-//Graph stuff
+// Graph stuff
 
 // DFS
 // Init vertices
-let aV = EKVertex()         //this is a start vertex
-aV.label = "A vertex"
-
-let bV = EKVertex()
-bV.label = "B vertex"
-
-let cV = EKVertex()
-cV.label = "C vertex"
-
-let dV = EKVertex()
-dV.label = "D vertex"
-
-let eV = EKVertex()
-eV.label = "E vertex"
-
-let fV = EKVertex()
-fV.label = "F vertex"
-
-let gV = EKVertex()
-gV.label = "G vertex"
+let aV = EKVertex(label: "A vertex") // This is a start vertex
+let bV = EKVertex(label: "B vertex")
+let cV = EKVertex(label: "C vertex")
+let dV = EKVertex(label: "D vertex")
+let eV = EKVertex(label: "E vertex")
+let fV = EKVertex(label: "F vertex")
+let gV = EKVertex(label: "G vertex")
 
 // Set adjacent vertices
 aV.adjacentEdges = Set([EKEdge(adjacentFrom: aV, to: cV, andWeight: 4),
@@ -335,8 +335,7 @@ gV.adjacentEdges = Set([EKEdge(adjacentFrom: gV, to: fV, andWeight: 1),
     EKEdge(adjacentFrom: gV, to: eV, andWeight: 6)])
 
 // Init graph (see EKGraphPicture.png)
-var graph = EKGraph(startVertex: aV)
-graph.vertices = [aV, bV, cV, dV, eV, fV, gV]
+var graph = EKGraph(startVertex: aV, vertices: [aV, bV, cV, dV, eV, fV, gV])
 
 // Is it a directed Graph
 if graph.isUndirectedGraph() {
@@ -363,26 +362,13 @@ graph.kruskalMST()
 graph.dijkstraSPTFrom(aV, to: nil)
 
 // Topsort (see EKTopsort.png)
-let c101V = EKVertex()         //We simulate courses in university
-c101V.label = "C101"
-
-let c102V = EKVertex()
-c102V.label = "C102"
-
-let c103V = EKVertex()
-c103V.label = "C103"
-
-let d211V = EKVertex()
-d211V.label = "D211"
-
-let e107V = EKVertex()
-e107V.label = "E107"
-
-let f110V = EKVertex()
-f110V.label = "F110"
-
-let g201V = EKVertex()
-g201V.label = "G201"
+let c101V = EKVertex(label: "C101") // We simulate courses in university
+let c102V = EKVertex(label: "C102")
+let c103V = EKVertex(label: "C103")
+let d211V = EKVertex(label: "D211")
+let e107V = EKVertex(label: "E107")
+let f110V = EKVertex(label: "F110")
+let g201V = EKVertex(label: "G201")
 
 c101V.adjacentEdges = Set([EKEdge(adjacentFrom: c101V, to: c103V, andWeight: 1)])
 c103V.adjacentEdges = Set([EKEdge(adjacentFrom: c103V, to: g201V, andWeight: 1)])
@@ -393,8 +379,7 @@ d211V.adjacentEdges = Set([EKEdge(adjacentFrom: d211V, to: g201V, andWeight: 1),
     EKEdge(adjacentFrom: d211V, to: f110V, andWeight: 1)])
 e107V.adjacentEdges = Set([EKEdge(adjacentFrom: e107V, to: f110V, andWeight: 1)])
 
-let topGraph = EKGraph()
-topGraph.vertices = [c101V, c102V, c103V, d211V, e107V, f110V, g201V]
+let topGraph = EKGraph(vertices: [c101V, c102V, c103V, d211V, e107V, f110V, g201V])
 
 // Result may vary due to random order in Objective-C fast enumeration
 topGraph.topSort()

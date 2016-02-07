@@ -12,14 +12,14 @@ import Foundation
 class EKEdge: NSObject {
     var adjacentFrom: EKVertex
     var adjacentTo: EKVertex
-    var weight: NSNumber
+    var weight: Int
     var used: Bool
 
-    init(adjacentFrom vertexFrom: EKVertex, to vertexTo: EKVertex, andWeight weight: NSNumber) {
-        adjacentFrom = vertexFrom
-        adjacentTo   = vertexTo
-        self.weight  = weight
-        used         = false
+    init(adjacentFrom vertexFrom: EKVertex, to vertexTo: EKVertex, andWeight weight: Int) {
+        self.adjacentFrom = vertexFrom
+        self.adjacentTo   = vertexTo
+        self.weight       = weight
+        self.used         = false
         super.init()
     }
 }
