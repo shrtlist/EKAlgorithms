@@ -383,35 +383,35 @@ let topGraph = EKGraph(vertices: [c101V, c102V, c103V, d211V, e107V, f110V, g201
 
 // Result may vary due to random order in Objective-C fast enumeration
 topGraph.topSort()
-/*
+
 //Linked list stuff
-EKLinkedList *list = [[EKLinkedList alloc] initWithHead:@5];
-[list addToFront:@7];
-[list addToFront:@9];
-[list addToFront:@11];
-[list addToFront:@13];
-[list addToFront:@15];
-[list addToBack:@11];
-[list addToBack:@5];
+let list = EKLinkedList(head: 5)
+list.addToFront(7)
+list.addToFront(9)
+list.addToFront(11)
+list.addToFront(13)
+list.addToFront(15)
+list.addToBack(11)
+list.addToBack(5)
 
-NSLog(@"Head is %@", list.head.value);
-NSLog(@"Nodes in list - %lu", (unsigned long)[list count]);
+NSLog("Head is \(list.head.value)")
+NSLog("Nodes in list - \(list.count)")
 
-[list printList];
+list.printList()
 
-[list reverseList];
-NSLog(@"Nodes in list after reverse:");
-[list printList];
+list.reverseList()
+NSLog("Nodes in list after reverse:")
+list.printList()
 
-[list removeObjectAtIndex:3];
+list.removeObjectAtIndex(3)
 
-NSLog(@"Nodes in list after remove - %lu", (unsigned long)[list count]);
-[list printList];
+NSLog("Nodes in list after remove - \(list.count)")
+list.printList()
 
-NSLog(@"Find number 3 in list, count: %lu", (unsigned long)[list findObject:@3].count);
-NSLog(@"Find number 11 in list, count: %lu", (unsigned long)[list findObject:@11].count);
+NSLog("Find number 3 in list, count: \(list.findObject(3).count)")
+NSLog("Find number 11 in list, count: \(list.findObject(11).count)")
 
-
+/*
 //BST stuff
 EKBSTree *tree = [[EKBSTree alloc] initWithObject:@4 compareSelector:@selector(compare:)];
 [tree insertObject:@9];
