@@ -384,7 +384,7 @@ let topGraph = EKGraph(vertices: [c101V, c102V, c103V, d211V, e107V, f110V, g201
 // Result may vary due to random order in Objective-C fast enumeration
 topGraph.topSort()
 
-//Linked list stuff
+// Linked list stuff
 let list = EKLinkedList(head: 5)
 list.addToFront(7)
 list.addToFront(9)

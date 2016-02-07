@@ -13,7 +13,7 @@ class EKNode: NSObject {
     var previous: EKNode?
     var next: EKNode?
  
-    init(object: NSObject ) {
+    init(_ object: AnyObject ) {
         value = object
         super.init()
     }
