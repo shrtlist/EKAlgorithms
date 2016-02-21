@@ -70,11 +70,11 @@ NSLog("Array Shuffle of array: \(array) is: \(array.shuffle())")
 // Sum of elements in array
 NSLog("Sum is --> \([-5, -5, -5, -5, -5].sumOfElements())")
 
-//Find occurences of each element in array
-NSLog("Occurences is --> %@", [3, 3, 4, 5, 4, 1, 3, 8, 1].occurencesOfEachElementInArray_naive())
-NSLog("Occurences by using dictionary is --> %@", [NSArray(), NSDictionary(), "four", "five", "four", "one", "three", "eight", "one", "four"].occurencesOfEachElementInArray())
-NSLog("Occurences is --> %@", [3, 3, 4, 5, 4, 1, 3, 8, 1].occurencesOfEachElementInArray())
-NSLog("Occurences via Cocoa APIs is --> %@", [3, 3, 4, 5, 4, 1, 3, 8, 1].cocoaImplementationOfOccurencesOfEachElementInArray())
+// Find occurrences of each element in array
+NSLog("Occurrences is --> %@", [3, 3, 4, 5, 4, 1, 3, 8, 1].occurencesOfEachElementInArray_naive())
+NSLog("Occurrences by using dictionary is --> %@", [NSArray(), NSDictionary(), "four", "five", "four", "one", "three", "eight", "one", "four"].occurencesOfEachElementInArray())
+NSLog("Occurrences is --> %@", [3, 3, 4, 5, 4, 1, 3, 8, 1].occurencesOfEachElementInArray())
+NSLog("Occurrences via Cocoa APIs is --> %@", [3, 3, 4, 5, 4, 1, 3, 8, 1].cocoaImplementationOfOccurencesOfEachElementInArray())
 
 // MARK: Search
 // SEARCH------------------------------------------------------------------------------------
@@ -144,7 +144,7 @@ NSLog("Words # %d", "fgf fgfdgfdg dfgfdgfd dfgfdgfd dfg".numberOfWordsInString()
 // Permutations
 NSString.allPermutationsOfString("ABC", withFirstCharacterPosition: 0, lastCharacterPosition: 2)
 
-// Count each letter occurence in string
+// Count each letter occurrence in string
 "Hello World".countEachCharacterOccurrenceInString()
 
 // Needle in haystack
