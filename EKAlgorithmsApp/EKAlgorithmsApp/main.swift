@@ -478,10 +478,9 @@ forest1.printDescription()
 forest2.printDescription()
 
 EKTree.forestToBinaryTree([forest1, forest2])?.levelOrderTraversal()
-/*
-// MARK: Recursion
-//RECURSION---------------------------------------------------------------------------------
 
-//Tower of Hanoi
-[EKRecursionStuff solveTowerOfHanoiWithDisksNumber:3 from:@"A" to:@"C" withExtraPin:@"B"];
-*/
+// MARK: Recursion
+// RECURSION---------------------------------------------------------------------------------
+
+// Tower of Hanoi
+EKRecursionStuff.solveTowerOfHanoiWithDisksNumber(3, from: "A", to: "C", withExtraPin: "B")
