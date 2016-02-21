@@ -72,7 +72,7 @@ NSLog("Sum is --> \([-5, -5, -5, -5, -5].sumOfElements())")
 
 //Find occurences of each element in array
 NSLog("Occurences is --> %@", [3, 3, 4, 5, 4, 1, 3, 8, 1].occurencesOfEachElementInArray_naive())
-NSLog("Occurences by using dictionary is --> %@", [["zero"], ["zero":"dark"], "four", "five", "four", "one", "three", "eight", "one", "four"].occurencesOfEachElementInArray())
+NSLog("Occurences by using dictionary is --> %@", [NSArray(), NSDictionary(), "four", "five", "four", "one", "three", "eight", "one", "four"].occurencesOfEachElementInArray())
 NSLog("Occurences is --> %@", [3, 3, 4, 5, 4, 1, 3, 8, 1].occurencesOfEachElementInArray())
 NSLog("Occurences via Cocoa APIs is --> %@", [3, 3, 4, 5, 4, 1, 3, 8, 1].cocoaImplementationOfOccurencesOfEachElementInArray())
 
