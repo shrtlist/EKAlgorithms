@@ -5,6 +5,5 @@
 @import Foundation;
 #import "EKBSTree.h"
 #import "EKAVLTree.h"
-#import "EKTree.h"
-#import "EKBTree.h"
+#import "EKBTreeNode.h"
 #import "EKRecursionStuff.h"

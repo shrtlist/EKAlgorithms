@@ -411,84 +411,74 @@ list.printList()
 NSLog("Find number 3 in list, count: \(list.findObject(3).count)")
 NSLog("Find number 11 in list, count: \(list.findObject(11).count)")
 
-/*
-//BST stuff
-EKBSTree *tree = [[EKBSTree alloc] initWithObject:@4 compareSelector:@selector(compare:)];
-[tree insertObject:@9];
-[tree insertObject:@2];
-[tree insertObject:@10];
-[tree insertObject:@7];
-[tree insertObject:@ - 5];
-[tree insertObject:@ - 1];
-[tree insertObject:@2.5f];
-[tree insertObject:@ - 5.5f];
+// BST stuff
+let tree = EKBSTree(object: 4, compareSelector: "compare:")
+tree.insertObject(9)
+tree.insertObject(2)
+tree.insertObject(10)
+tree.insertObject(7)
+tree.insertObject(-5)
+tree.insertObject(-1)
+tree.insertObject(2.5)
+tree.insertObject(-5.5)
 
-[tree printDescription];         // see EKBSTree.png picture
+tree.printDescription()        // see EKBSTree.png picture
 
-NSLog(@"Finded %@", [tree find:@7].object);        // find @7 and print it
+NSLog("Found %@", tree.find(7).object)        // find @7 and print it
 
-NSLog(@"Deleted %@", [tree deleteObject:@2]);      // delete @2 node
+NSLog("Deleted %@", tree.deleteObject(2))      // delete @2 node
 
-[tree printDescription];
-
+tree.printDescription()
 
 // AVL Tree stuff.
 
-EKAVLTree *avlt = [[EKAVLTree alloc] initWithObject:@4 compareSelector:@selector(compare:)];
-[avlt insertObject:@9];
-[avlt insertObject:@2];
-[avlt insertObject:@10];
-[avlt insertObject:@7];
-[avlt insertObject:@ - 5];
-[avlt insertObject:@ - 1];
-[avlt insertObject:@2.5f];
-[avlt insertObject:@ - 5.5f];
-[avlt insertObject:@11];
-[avlt insertObject:@22];
-[avlt insertObject:@21];
+let avlt = EKAVLTree(object: 4, compareSelector: "compare:")
+avlt.insertObject(9)
+avlt.insertObject(2)
+avlt.insertObject(10)
+avlt.insertObject(7)
+avlt.insertObject(-5)
+avlt.insertObject(-1)
+avlt.insertObject(2.5)
+avlt.insertObject(-5.5)
+avlt.insertObject(11)
+avlt.insertObject(22)
+avlt.insertObject(21)
 
-[avlt printDescription];
+avlt.printDescription()
 
-[avlt deleteObject:@11];
+avlt.deleteObject(11)
 
-[avlt printDescription];
+avlt.printDescription()
 
 // Tree stuff
-EKTree *forest1 = [[EKTree alloc] initWithObject:@"A"];
-EKTree *forest2 = [[EKTree alloc] initWithObject:@"D"];
+let forest1 = EKTree(object: "A")
+let forest2 = EKTree(object: "D")
 
-EKTreeNode *nodeB = [[EKTreeNode alloc] init];
-nodeB.object = @"B";
-EKTreeNode *nodeC = [[EKTreeNode alloc] init];
-nodeC.object = @"C";
-EKTreeNode *nodeE = [[EKTreeNode alloc] init];
-nodeE.object = @"E";
-EKTreeNode *nodeF = [[EKTreeNode alloc] init];
-nodeF.object = @"F";
-EKTreeNode *nodeG = [[EKTreeNode alloc] init];
-nodeG.object = @"G";
-EKTreeNode *nodeH = [[EKTreeNode alloc] init];
-nodeH.object = @"H";
-EKTreeNode *nodeJ = [[EKTreeNode alloc] init];
-nodeJ.object = @"J";
-EKTreeNode *nodeK = [[EKTreeNode alloc] init];
-nodeK.object = @"K";
+let nodeB = EKTreeNode(object: "B")
+let nodeC = EKTreeNode(object: "C")
+let nodeE = EKTreeNode(object: "E")
+let nodeF = EKTreeNode(object: "F")
+let nodeG = EKTreeNode(object: "G")
+let nodeH = EKTreeNode(object: "H")
+let nodeJ = EKTreeNode(object: "J")
+let nodeK = EKTreeNode(object: "K")
 
-[forest1 insertNode:nodeB leftSibling:nil parent:forest1.root];
-[forest1 insertNode:nodeC leftSibling:nodeB parent:forest1.root];
-[forest1 insertNode:nodeK leftSibling:nil parent:nodeC];
+forest1.insertNode(nodeB, leftSibling: nil, parent: forest1.root)
+forest1.insertNode(nodeC, leftSibling: nodeB, parent: forest1.root)
+forest1.insertNode(nodeK, leftSibling: nil, parent:nodeC)
 
-[forest2 insertNode:nodeE leftSibling:nil parent:forest2.root];
-[forest2 insertNode:nodeH leftSibling:nil parent:nodeE];
-[forest2 insertNode:nodeF leftSibling:nodeE parent:forest2.root];
-[forest2 insertNode:nodeJ leftSibling:nil parent:nodeF];
-[forest2 insertNode:nodeG leftSibling:nodeF parent:forest2.root];
+forest2.insertNode(nodeE, leftSibling: nil, parent: forest2.root)
+forest2.insertNode(nodeH, leftSibling: nil, parent: nodeE)
+forest2.insertNode(nodeF, leftSibling: nodeE, parent: forest2.root)
+forest2.insertNode(nodeJ, leftSibling: nil, parent: nodeF)
+forest2.insertNode(nodeG, leftSibling: nodeF, parent: forest2.root)
 
-[forest1 printDescription];
-[forest2 printDescription];
+forest1.printDescription()
+forest2.printDescription()
 
-[[EKTree forestToBinaryTree:@[forest1, forest2]] levelOrderTraversal];
-
+EKTree.forestToBinaryTree([forest1, forest2])?.levelOrderTraversal()
+/*
 // MARK: Recursion
 //RECURSION---------------------------------------------------------------------------------
 
