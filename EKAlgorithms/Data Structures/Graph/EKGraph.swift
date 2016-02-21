@@ -376,10 +376,10 @@ class EKGraph: NSObject {
                             break
                         }
                     }
-
-                    if !isAddNewVertex {
-                        stack.popLastObject()
-                    }
+                }
+                
+                if !isAddNewVertex {
+                    stack.popLastObject()
                 }
             }
         
