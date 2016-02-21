@@ -112,13 +112,13 @@ extension NSString {
 
     // MARK: Count needles in a haystack
 
-    func numberOfOccurrenciesOfString(needle: NSString) -> UInt {
+    func numberOfOccurrencesOfString(needle: NSString) -> UInt {
         var count: UInt = 0
 
         var range = NSMakeRange(0, length)
         
         while range.location != NSNotFound {
-            range = rangeOfString(needle as String, options: NSStringCompareOptions.CaseInsensitiveSearch, range: range)
+            range = rangeOfString(needle as String, options: NSStringCompareOptions.init(rawValue: 0), range: range)
             if range.location != NSNotFound {
                 range = NSMakeRange(range.location + range.length, length - (range.location + range.length))
                 count += 1

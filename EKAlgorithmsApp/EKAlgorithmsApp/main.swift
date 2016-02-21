@@ -148,7 +148,7 @@ NSString.allPermutationsOfString("ABC", withFirstCharacterPosition: 0, lastChara
 "Hello World".countEachCharacterOccurrenceInString()
 
 // Needle in haystack
-NSLog("Needle %d", "Foo is a bar with foo bar foo".numberOfOccurrenciesOfString("foo"))
+NSLog("Needle %d", "Foo is a bar with foo bar foo".numberOfOccurrencesOfString("foo"))
 
 // Random string
 NSLog("Random string %@", NSString.randomStringWithLength(100))
