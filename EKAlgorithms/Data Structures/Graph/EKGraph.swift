@@ -363,11 +363,11 @@ class EKGraph: NSObject {
             
             while !stack.isEmpty() {
                 // We can unwrap when peeking since the stack is not empty
-                let lastVertex = stack.peek()!
+                let lastVertex = stack.peek()! as! EKVertex
                 var isAddNewVertex = false
                 
                 if let adjacentEdges = lastVertex.adjacentEdges {
-                    for adjacentEdge in adjacentEdges! {
+                    for adjacentEdge in adjacentEdges {
                         if !adjacentEdge.adjacentTo.wasVisited {
                             stack.push(adjacentEdge.adjacentTo)
                             adjacentEdge.adjacentTo.wasVisited = true
