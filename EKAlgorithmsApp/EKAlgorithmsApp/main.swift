@@ -233,8 +233,8 @@ NSLog("Is given number Prime? --> %@", 23.isPrime() ? "YES" : "NO")
 NSLog("Nth prime is --> %d", NSNumber.nthPrime(101))
 
 // Square root
-NSLog("Square root is --> %f", -144.0.squareRoot())
-NSLog("Square root is --> %f", 2.0.squareRoot())
+NSLog("Square root is --> %f", NSNumber(double: -144.0).squareRoot())
+NSLog("Square root is --> %f", NSNumber(double: 2.0).squareRoot())
 
 // Conversion to another numeral system
 NSLog("Converted number is --> \(42.convertedNumberWithBase(2))")
