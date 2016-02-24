@@ -12,13 +12,13 @@
 #endif
 
 
-class EKBTree: NSObject {
+class EKBTree {
     
     var root: EKBTreeNode
 
     init(object: AnyObject) {
-            self.root = EKBTreeNode()
-            self.root.object = object as! NSObject
+        self.root = EKBTreeNode()
+        self.root.object = object as! NSObject
     }
 
     func insertNode(node: EKBTreeNode, parent: EKBTreeNode, isLeftChild value: Bool) -> Bool {
