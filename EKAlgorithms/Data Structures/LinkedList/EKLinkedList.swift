@@ -7,7 +7,7 @@
 //  Copyright (c) 2013 EvgenyKarkan. All rights reserved.
 //
 
-class EKLinkedList: NSObject {
+class EKLinkedList {
     
     var head: EKNode
     var tail: EKNode?
@@ -17,7 +17,6 @@ class EKLinkedList: NSObject {
     init(head value: AnyObject) {
         head = EKNode(value)
         count = 1
-        super.init()
     }
 
     func addToFront(value: AnyObject) {

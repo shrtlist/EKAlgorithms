@@ -7,14 +7,14 @@
 //  Copyright (c) 2013 EvgenyKarkan. All rights reserved.
 //
 
-class EKStack: NSObject {
+class EKStack {
 
     private var stackArray = [AnyObject]()
     private let maxStackSize: Int
 
     // MARK: Convenience init
 
-    override convenience init() {
+    convenience init() {
         self.init(size: Int.max)
     }
 
@@ -27,8 +27,6 @@ class EKStack: NSObject {
         else {
             maxStackSize = Int.max
         }
-        
-        super.init()
     }
 
     // MARK: Public API

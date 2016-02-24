@@ -7,14 +7,12 @@
 //  Copyright (c) 2014 Evgeny Karkan. All rights reserved.
 //
 
-class EKBHeap: NSObject {
+class EKBHeap {
 
     private var heap = [NSNumber]()
 
-    override init() {
-        heap.insert(-1, atIndex: 0)
-        super.init()
-    }
+    init() {
+        heap.insert(-1, atIndex: 0)    }
 
     func insertNumber(num: NSNumber) {
         heap.append(num)

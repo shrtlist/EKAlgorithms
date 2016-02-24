@@ -7,7 +7,7 @@
 //  Copyright (c) 2013 EvgenyKarkan. All rights reserved.
 //
 
-class EKQueue: NSObject {
+class EKQueue {
 
     private var queueArray = [AnyObject]()
 

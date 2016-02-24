@@ -7,7 +7,7 @@
 //  Copyright (c) 2013 EvgenyKarkan. All rights reserved.
 //
 
-class EKNode: NSObject {
+class EKNode {
     
     var value: AnyObject
     var previous: EKNode?
@@ -15,7 +15,6 @@ class EKNode: NSObject {
  
     init(_ object: AnyObject ) {
         value = object
-        super.init()
     }
 
 }

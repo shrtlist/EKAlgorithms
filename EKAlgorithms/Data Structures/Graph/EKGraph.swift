@@ -9,7 +9,7 @@
 
 import Foundation
 
-class EKGraph: NSObject {
+class EKGraph {
     var firstVertex: EKVertex?
     var indegree: [String : Int]?
     var vertices: [EKVertex]
@@ -19,7 +19,6 @@ class EKGraph: NSObject {
     init(startVertex: EKVertex?, vertices: [EKVertex]) {
         self.firstVertex = startVertex
         self.vertices = vertices
-        super.init()
     }
     
     convenience init(vertices: [EKVertex]) {
@@ -43,7 +42,7 @@ class EKGraph: NSObject {
         if let adjacentEdges = vertex.adjacentEdges {
             for eachEdge in adjacentEdges {
                 for edge in eachEdge.adjacentTo.adjacentEdges! {
-                    if edge.adjacentTo == vertex {
+                    if edge.adjacentTo === vertex {
                         return true
                     }
                 }
@@ -165,7 +164,7 @@ class EKGraph: NSObject {
 
     func hasPathBetweenVertices(vertices: [EKVertex]) -> Bool {
         assert(vertices.count == 2, "Vertices Count must be two!")
-        assert(vertices.first != vertices.last, "Vertices must be different!")
+        assert(vertices.first !== vertices.last, "Vertices must be different!")
         
         let queue = EKQueue()
         clearVisitHistory()
@@ -186,7 +185,7 @@ class EKGraph: NSObject {
             let peekVertex  = queue.removeFirstObject() as! EKVertex
             peekVertex.wasVisited = true
             
-            if peekVertex == vertices.last {
+            if peekVertex === vertices.last {
                 return true
             }
             else {
@@ -208,7 +207,7 @@ class EKGraph: NSObject {
         let endVertex   = edge.adjacentTo
         
         for e in edges {
-            if e.adjacentFrom == endVertex && e.adjacentTo == startVertex && e.weight == edge.weight {
+            if e.adjacentFrom === endVertex && e.adjacentTo === startVertex && e.weight == edge.weight {
                 return e
             }
         }
@@ -232,7 +231,7 @@ class EKGraph: NSObject {
         
         while Q.count > visitedVertices().count {
             let u = EKGraph.hasMinimumDistance(dist, inVertices: Q)
-            if (u == targetVertex) {
+            if (u === targetVertex) {
                 break
             }
     
@@ -273,12 +272,12 @@ class EKGraph: NSObject {
                 let label = vertex.label
                 if minDist == nil {
                     minDist = dist[label]
-                    index   = Q.indexOf(vertex)!
+                    index   = Q.indexOf( { $0 === vertex } )!
                 }
                 else {
                     if minDist > dist[label] {
                         minDist = dist[label]
-                        index   = Q.indexOf(vertex)!
+                        index   = Q.indexOf( { $0 === vertex } )!
                     }
                 }
             }
@@ -315,7 +314,7 @@ class EKGraph: NSObject {
         }
         
         for vertex in topNum {
-            NSLog("Topsort \(topNum.indexOf(vertex)!) --> \(vertex.label)")
+            NSLog("Topsort \(topNum.indexOf( { $0 === vertex } )!) --> \(vertex.label)")
         }
     }
 

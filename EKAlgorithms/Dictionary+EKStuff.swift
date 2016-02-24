@@ -3,6 +3,7 @@
 //  EKAlgorithmsApp
 //
 //  Created by Yifei Zhou on 4/11/14.
+//  Swiftified by Marco Abundo on 2/14/16.
 //  Copyright (c) 2014 Evgeny Karkan. All rights reserved.
 //
 

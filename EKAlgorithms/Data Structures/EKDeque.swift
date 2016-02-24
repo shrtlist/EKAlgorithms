@@ -7,7 +7,7 @@
 //  Copyright (c) 2013 EvgenyKarkan. All rights reserved.
 //
 
-class EKDeque: NSObject {
+class EKDeque {
 
     private var dequeArray = [AnyObject]()
 
