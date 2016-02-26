@@ -7,15 +7,14 @@
 //
 
 #import "EKAVLTree.h"
-#import "EKAVLTreeNode.h"
+#import "EKAlgorithmsExamples-Swift.h"
 
 @implementation EKAVLTree
 
 - (instancetype)initWithObject:(NSObject *)obj
 {
     if (self = [super init]) {
-        _root            = [[EKAVLTreeNode alloc] init];
-        self.root.object = obj;
+        _root            = [[EKAVLTreeNode alloc] initWithObject:obj];
         self.root.height = 0;
     }
     
@@ -30,8 +29,7 @@
 - (EKAVLTreeNode *)insertObject:(NSObject *)newObject AtNode:(EKAVLTreeNode *)T
 {
     if (!T) {
-        T           = [[EKAVLTreeNode alloc] init];
-        T.object    = newObject;
+        T           = [[EKAVLTreeNode alloc] initWithObject:newObject];
         T.leftChild = T.rightChild = nil;
         T.height    = 0;
     } else {

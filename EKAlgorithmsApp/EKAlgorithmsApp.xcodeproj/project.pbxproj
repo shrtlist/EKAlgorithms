@@ -35,6 +35,7 @@
 		5702A3401C63D99300197612 /* EKGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5702A33F1C63D99300197612 /* EKGraph.swift */; };
 		5702A3421C6657D200197612 /* Dictionary+EKStuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5702A3411C6657D200197612 /* Dictionary+EKStuff.swift */; };
 		571755B11C7A4416004BEB05 /* EKRecursionStuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571755B01C7A4416004BEB05 /* EKRecursionStuff.swift */; };
+		573D6C041C7FFC2800C5946E /* EKAVLTreeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573D6C031C7FFC2800C5946E /* EKAVLTreeNode.swift */; };
 		576756821C6B0142008EDA44 /* EKBTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576756811C6B0142008EDA44 /* EKBTree.swift */; };
 		576756841C6C4796008EDA44 /* EKTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576756831C6C4796008EDA44 /* EKTree.swift */; };
 		576756861C6C4ED8008EDA44 /* EKTreeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576756851C6C4ED8008EDA44 /* EKTreeNode.swift */; };
@@ -47,8 +48,6 @@
 		86C5149418F80E8000B5E9AE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 86C5149218F80E8000B5E9AE /* InfoPlist.strings */; };
 		86C515C918F8162F00B5E9AE /* EKAVLTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C5158918F8162F00B5E9AE /* EKAVLTree.m */; };
 		86C515CA18F8162F00B5E9AE /* EKAVLTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C5158918F8162F00B5E9AE /* EKAVLTree.m */; };
-		86C515CB18F8162F00B5E9AE /* EKAVLTreeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C5158B18F8162F00B5E9AE /* EKAVLTreeNode.m */; };
-		86C515CC18F8162F00B5E9AE /* EKAVLTreeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C5158B18F8162F00B5E9AE /* EKAVLTreeNode.m */; };
 		86C515CD18F8162F00B5E9AE /* EKBSTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C5158E18F8162F00B5E9AE /* EKBSTree.m */; };
 		86C515CE18F8162F00B5E9AE /* EKBSTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C5158E18F8162F00B5E9AE /* EKBSTree.m */; };
 		86C515CF18F8162F00B5E9AE /* EKBSTree.png in Resources */ = {isa = PBXBuildFile; fileRef = 86C5158F18F8162F00B5E9AE /* EKBSTree.png */; };
@@ -98,6 +97,7 @@
 		5702A33F1C63D99300197612 /* EKGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKGraph.swift; sourceTree = "<group>"; };
 		5702A3411C6657D200197612 /* Dictionary+EKStuff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+EKStuff.swift"; sourceTree = "<group>"; };
 		571755B01C7A4416004BEB05 /* EKRecursionStuff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKRecursionStuff.swift; sourceTree = "<group>"; };
+		573D6C031C7FFC2800C5946E /* EKAVLTreeNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKAVLTreeNode.swift; sourceTree = "<group>"; };
 		576756811C6B0142008EDA44 /* EKBTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKBTree.swift; sourceTree = "<group>"; };
 		576756831C6C4796008EDA44 /* EKTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKTree.swift; sourceTree = "<group>"; };
 		576756851C6C4ED8008EDA44 /* EKTreeNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKTreeNode.swift; sourceTree = "<group>"; };
@@ -117,8 +117,6 @@
 		86C5149718F80E8000B5E9AE /* EKAlgorithmsSpecs-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EKAlgorithmsSpecs-Prefix.pch"; sourceTree = "<group>"; };
 		86C5158818F8162F00B5E9AE /* EKAVLTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKAVLTree.h; sourceTree = "<group>"; };
 		86C5158918F8162F00B5E9AE /* EKAVLTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKAVLTree.m; sourceTree = "<group>"; };
-		86C5158A18F8162F00B5E9AE /* EKAVLTreeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKAVLTreeNode.h; sourceTree = "<group>"; };
-		86C5158B18F8162F00B5E9AE /* EKAVLTreeNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKAVLTreeNode.m; sourceTree = "<group>"; };
 		86C5158D18F8162F00B5E9AE /* EKBSTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKBSTree.h; sourceTree = "<group>"; };
 		86C5158E18F8162F00B5E9AE /* EKBSTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKBSTree.m; sourceTree = "<group>"; };
 		86C5158F18F8162F00B5E9AE /* EKBSTree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EKBSTree.png; sourceTree = "<group>"; };
@@ -284,8 +282,7 @@
 			children = (
 				86C5158818F8162F00B5E9AE /* EKAVLTree.h */,
 				86C5158918F8162F00B5E9AE /* EKAVLTree.m */,
-				86C5158A18F8162F00B5E9AE /* EKAVLTreeNode.h */,
-				86C5158B18F8162F00B5E9AE /* EKAVLTreeNode.m */,
+				573D6C031C7FFC2800C5946E /* EKAVLTreeNode.swift */,
 			);
 			path = AVLTree;
 			sourceTree = "<group>";
@@ -557,6 +554,7 @@
 				86C515D018F8162F00B5E9AE /* EKBTreeNode.m in Sources */,
 				576756841C6C4796008EDA44 /* EKTree.swift in Sources */,
 				5702A3361C62D00500197612 /* EKQueue.swift in Sources */,
+				573D6C041C7FFC2800C5946E /* EKAVLTreeNode.swift in Sources */,
 				57A4F1931C66EFB3008B8944 /* EKNode.swift in Sources */,
 				57C3F2A71C55EB38007C66B1 /* main.swift in Sources */,
 				576756861C6C4ED8008EDA44 /* EKTreeNode.swift in Sources */,
@@ -566,7 +564,6 @@
 				5702A3401C63D99300197612 /* EKGraph.swift in Sources */,
 				5702A3421C6657D200197612 /* Dictionary+EKStuff.swift in Sources */,
 				5702A3341C628CCD00197612 /* EKStack.swift in Sources */,
-				86C515CB18F8162F00B5E9AE /* EKAVLTreeNode.m in Sources */,
 				5702A33C1C62FC0600197612 /* EKVertex.swift in Sources */,
 				5702A33A1C62EBA400197612 /* EKBHeap.swift in Sources */,
 				576756821C6B0142008EDA44 /* EKBTree.swift in Sources */,
@@ -581,7 +578,6 @@
 				86C515D118F8162F00B5E9AE /* EKBTreeNode.m in Sources */,
 				86C515CE18F8162F00B5E9AE /* EKBSTree.m in Sources */,
 				86EBBC0E18F82B3A00F888C3 /* GeometrySpecs.m in Sources */,
-				86C515CC18F8162F00B5E9AE /* EKAVLTreeNode.m in Sources */,
 				86EBBC0F18F82B3A00F888C3 /* NSArray.m in Sources */,
 				86C515FB18F8162F00B5E9AE /* NSArray+Selection.m in Sources */,
 				86C515F118F8162F00B5E9AE /* NSArray+EKGeometry.m in Sources */,
