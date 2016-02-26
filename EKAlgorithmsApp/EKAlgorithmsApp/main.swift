@@ -432,7 +432,7 @@ tree.printDescription()
 
 // AVL Tree stuff.
 
-let avlt = EKAVLTree(object: 4, compareSelector: "compare:")
+let avlt = EKAVLTree(object: 4)
 avlt.insertObject(9)
 avlt.insertObject(2)
 avlt.insertObject(10)

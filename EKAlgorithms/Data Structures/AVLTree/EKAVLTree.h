@@ -8,11 +8,12 @@
 
 @class EKAVLTreeNode;
 
+
 @interface EKAVLTree : NSObject
 
 @property (nonatomic, strong) EKAVLTreeNode *root;
 
-- (instancetype)initWithObject:(NSObject *)object compareSelector:(SEL)selector;
+- (instancetype)initWithObject:(NSObject *)object;
 - (void)insertObject:(NSObject *)newObject;
 - (void)printDescription;
 - (EKAVLTreeNode *)find:(NSObject *)object;
