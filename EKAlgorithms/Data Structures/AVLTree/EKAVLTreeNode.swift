@@ -19,7 +19,7 @@ class EKAVLTreeNode: NSObject {
     }
 
     func printDescription() {
-        NSLog("(self.object)")
+        NSLog("\(self.object)")
         
         if self.leftChild != nil {
             NSLog("Left child of %@ will be the -->", self.object)

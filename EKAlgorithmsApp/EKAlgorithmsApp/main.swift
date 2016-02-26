@@ -424,9 +424,9 @@ tree.insertObject(-5.5)
 
 tree.printDescription()        // see EKBSTree.png picture
 
-NSLog("Found %@", tree.find(7).object)        // find @7 and print it
+NSLog("Found \(tree.find(7).object)")        // find @7 and print it
 
-NSLog("Deleted %@", tree.deleteObject(2))      // delete @2 node
+NSLog("Deleted \(tree.deleteObject(2))")      // delete @2 node
 
 tree.printDescription()
 
