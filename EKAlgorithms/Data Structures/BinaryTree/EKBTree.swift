@@ -17,8 +17,7 @@ class EKBTree {
     var root: EKBTreeNode
 
     init(object: AnyObject) {
-        self.root = EKBTreeNode()
-        self.root.object = object as! NSObject
+        self.root = EKBTreeNode(object: object as! NSObject)
     }
 
     func insertNode(node: EKBTreeNode, parent: EKBTreeNode, isLeftChild value: Bool) -> Bool {
@@ -39,19 +38,19 @@ class EKBTree {
         let queue = EKQueue()
         queue.insertObject(self.root)
         while !queue.isEmpty() {
-            let node = queue.removeFirstObject()!
+            let node = queue.removeFirstObject()! as! EKBTreeNode
             
-            if let nodeObject = node.object {
-                if nodeObject.isEqualTo(object) {
-                    return node as? EKBTreeNode
-                }
+            let nodeObject = node.object
+
+            if nodeObject.isEqualTo(object) {
+                return node
             }
             
-            if let leftChild = node.leftChild! {
+            if let leftChild = node.leftChild {
                 queue.insertObject(leftChild)
             }
             
-            if let rightChild = node.rightChild! {
+            if let rightChild = node.rightChild {
                 queue.insertObject(rightChild)
             }
         }
@@ -74,35 +73,35 @@ class EKBTree {
         let queue = EKQueue()
         queue.insertObject(self.root)
         while !queue.isEmpty() {
-            let currentNode = queue.removeFirstObject()!
+            let currentNode = queue.removeFirstObject()! as! EKBTreeNode
             
-            if let leftChild = currentNode.leftChild! {
+            if let leftChild = currentNode.leftChild {
                 queue.insertObject(leftChild)
             }
             
-            if let rightChild = currentNode.rightChild! {
+            if let rightChild = currentNode.rightChild {
                 queue.insertObject(rightChild)
             }
             
-            NSLog("%@", currentNode.object)
+            NSLog("\(currentNode.object)")
         }
     }
 
     static func preOrderTraversalRecursive(node: EKBTreeNode) {
         NSLog("%@", node.object)
-        EKBTree.preOrderTraversalRecursive(node.leftChild)
-        EKBTree.preOrderTraversalRecursive(node.rightChild)
+        EKBTree.preOrderTraversalRecursive(node.leftChild!)
+        EKBTree.preOrderTraversalRecursive(node.rightChild!)
     }
 
     static func inOrderTraversalRecursive(node: EKBTreeNode) {
-        EKBTree.inOrderTraversalRecursive(node.leftChild)
+        EKBTree.inOrderTraversalRecursive(node.leftChild!)
         NSLog("%@", node.object)
-        EKBTree.inOrderTraversalRecursive(node.rightChild)
+        EKBTree.inOrderTraversalRecursive(node.rightChild!)
     }
 
     static func postOrderTraversalRecursive(node: EKBTreeNode) {
-        EKBTree.postOrderTraversalRecursive(node.leftChild)
-        EKBTree.postOrderTraversalRecursive(node.rightChild)
+        EKBTree.postOrderTraversalRecursive(node.leftChild!)
+        EKBTree.postOrderTraversalRecursive(node.rightChild!)
         NSLog("%@", node.object)
     }
 

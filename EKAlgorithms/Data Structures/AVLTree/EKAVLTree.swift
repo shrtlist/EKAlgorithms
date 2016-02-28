@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Evgeny Karkan. All rights reserved.
 //
 
-class EKAVLTree: NSObject {
+class EKAVLTree {
     
     var root: EKAVLTreeNode
 

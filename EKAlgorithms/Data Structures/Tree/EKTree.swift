@@ -44,7 +44,7 @@ class EKTree: NSObject {
             
             let queue = EKQueue()
             queue.insertObject(trees[0].root)
-            let result = EKBTree(object: queue.peek()!.object)
+            let result = EKBTree(object: (queue.peek()?.object!)!)
             
             // Create binary tree
             while !queue.isEmpty() {
@@ -52,15 +52,13 @@ class EKTree: NSObject {
                     if let root = result.find(node.object) {
                         if node.child != nil {
                             queue.insertObject(node.child!)
-                            root.leftChild        = EKBTreeNode()
-                            root.leftChild.object = node.child!.object as! NSObject
-                            root.leftChild.parent = root
+                            root.leftChild        = EKBTreeNode(object: node.child!.object as! NSObject)
+                            root.leftChild!.parent = root
                         }
                         if node.sibling != nil {
                             queue.insertObject(node.sibling!)
-                            root.rightChild        = EKBTreeNode()
-                            root.rightChild.object = node.sibling!.object as! NSObject
-                            root.rightChild.parent = root
+                            root.rightChild        = EKBTreeNode(object: node.sibling!.object as! NSObject)
+                            root.rightChild!.parent = root
                         }
                     }
                 }

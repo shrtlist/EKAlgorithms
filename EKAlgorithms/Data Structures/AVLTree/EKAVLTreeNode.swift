@@ -7,7 +7,7 @@
 //  Copyright (c) 2014 Evgeny Karkan. All rights reserved.
 //
 
-class EKAVLTreeNode: NSObject {
+class EKAVLTreeNode {
     
     var height = 0
     var object: NSObject

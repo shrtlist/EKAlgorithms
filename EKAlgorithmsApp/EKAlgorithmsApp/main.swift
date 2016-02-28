@@ -412,7 +412,7 @@ NSLog("Find number 3 in list, count: \(list.findObject(3).count)")
 NSLog("Find number 11 in list, count: \(list.findObject(11).count)")
 
 // BST stuff
-let tree = EKBSTree(object: 4, compareSelector: "compare:")
+let tree = EKBSTree(obj: 4)
 tree.insertObject(9)
 tree.insertObject(2)
 tree.insertObject(10)
@@ -424,7 +424,7 @@ tree.insertObject(-5.5)
 
 tree.printDescription()        // see EKBSTree.png picture
 
-NSLog("Found \(tree.find(7).object)")        // find @7 and print it
+NSLog("Found \(tree.find(7)!.object)")        // find @7 and print it
 
 NSLog("Deleted \(tree.deleteObject(2))")      // delete @2 node
 
